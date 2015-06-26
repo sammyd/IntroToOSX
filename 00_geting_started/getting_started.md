@@ -1,10 +1,16 @@
 # Introduction to developing for OS X: Getting Started
 
 ## Introduction
-- What is OS X?
-- Why would you want to develop for it?
-- Apple makes it easy
-- Outline this article
+
+OS X is one of the world’s most advanced desktop operating systems, and is home to some of the best crafted software products. For developers it offers an extremely powerful and versatile framework upon which they can build amazing software products.
+
+Apple makes developing for OS X incredibly easy - providing an excellent development environment in Xcode, and a complete distribution channel in the Mac App Store.
+
+This tutorial is the first of a series of three tutorials covering an introduction to developing for OS X. In this instalment you'll first learn about how to obtain the tools you need to develop for OS X. Then, using an app you've downloaded as an example, you'll take a tour of Xcode, discovering how to run an app, edit code, design the UI and debug it.
+
+By the end of this tutorial you will have your computer set up to develop OS X apps, and you'll be familiar with Xcode. In part two of this series you'll learn about the anatomy of an OS X app, before finally creating your first app in part three.
+
+So what are you waiting for? The world of desktop apps awaits!
 
 ## Prerequisites
 
@@ -254,5 +260,11 @@ The second method of accessing documentation shows you the full documentation in
 
 
 ## Where to go from here?
-- Next tutorial will be "Anatomy of an app"
-- Links to some of Apple's docs
+
+You can download __HubEvent__, the sample project which accompanies this tutorial here.
+
+If you're completely new to OS X programming, then this tutorial has covered a lot of ground. However, you'll be forgiven for thinking that you still don't really know where to start with creating your own app. In the next article you'll learn about the anatomy of an app, before then moving on to creating your first OS X app.
+
+Apple has a huge amount of documentation for OS X - all available on the [Developer Portal](https://developer.apple.com/library/mac/navigation/).
+
+If you have any questions or comments then please join in below or on the forums.
