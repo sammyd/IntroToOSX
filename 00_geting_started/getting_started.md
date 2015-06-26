@@ -242,9 +242,16 @@ This gives you a really brief introduction to the debugger in Xcode. There is lo
 
 ### Documentation
 
-- Built in tooltip for code view
-- Documentation browser
-- How to download docs
+Xcode has a couple of integrated ways to get access to documentation for system frameworks. The first is the ability to show a tooltip containing the most salient information about a class or method.
+
+![Tooltip](img/tooltip.png)
+
+To access this, simply __Option-Click__ on a class or method name within the code editor.
+
+The second method of accessing documentation shows you the full documentation in a dedicated browser. To access this you can either click on the __Reference__ link at the bottom of the tooltip, or use the __Window \ Documentation and Reference__ menu:
+
+![Documentation Browser](img/doc_browser.png)
+
 
 ## Where to go from here?
 - Next tutorial will be "Anatomy of an app"
