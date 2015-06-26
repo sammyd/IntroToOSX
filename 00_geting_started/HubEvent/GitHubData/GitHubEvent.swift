@@ -13,7 +13,7 @@ import Foundation
 Describes what constitutes an event on GitHub
 */
 
-public class GitHubEvent: NSObject, Printable, Equatable {
+public class GitHubEvent: NSObject {
   public let id: Int
   public let eventType: GitHubEventType
   public let repoName: String?
@@ -40,9 +40,9 @@ public class GitHubEvent: NSObject, Printable, Equatable {
   }
   
   public class func extractDataFromJson(jsonEvent: JSON) -> (id: Int, eventType: GitHubEventType, repoName: String?, time: NSDate?) {
-    let id = jsonEvent["id"].string!.toInt()!
+    let id = Int(jsonEvent["id"].string!)!
     
-    var repoName = jsonEvent["repo"]["name"].string
+    let repoName = jsonEvent["repo"]["name"].string
     
     var eventType: GitHubEventType = .Other
     if let eventString = jsonEvent["type"].string {
@@ -133,8 +133,6 @@ public enum GitHubEventType: String {
       return ""
     case .Watch:
       return ""
-    default:
-      return ""
     }
   }
 }

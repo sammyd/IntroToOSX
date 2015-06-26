@@ -50,7 +50,7 @@ extension GitHubDataFileProvider: GitHubDataProvider {
     // Note that we're ignoring the supplied user name here
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
       let data = NSData(contentsOfFile: self.path)!
-      let json = JSON(data: data, options: .allZeros, error: nil)
+      let json = JSON(data: data, options: [], error: nil)
       let events = json.convertToGitHubEvents()
       dispatch_async(dispatch_get_main_queue()) {
         callback(events)
@@ -72,13 +72,13 @@ extension GitHubDataNetworkProvider: GitHubDataProvider {
     let task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: {
       (data, response, error) in
       if (error != nil) {
-        println("Error: \(error.localizedDescription)")
+        print("Error: \(error!.localizedDescription)")
         return
       }
-      let json = JSON(data: data, options: .allZeros, error: nil)
+      let json = JSON(data: data!, options: [], error: nil)
       let events = json.convertToGitHubEvents()
       callback(events)
     })
-    task.resume()
+    task?.resume()
   }
 }

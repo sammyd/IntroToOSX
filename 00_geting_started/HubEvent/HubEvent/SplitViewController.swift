@@ -29,7 +29,7 @@ class SplitViewController: NSSplitViewController {
 extension SplitViewController {
   override var representedObject: AnyObject? {
     didSet {
-      for viewController in self.childViewControllers as! [NSViewController] {
+      for viewController in self.childViewControllers as [NSViewController] {
         viewController.representedObject = representedObject
       }
     }

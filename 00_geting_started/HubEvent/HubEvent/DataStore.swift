@@ -32,7 +32,10 @@ class DataStore : NSObject {
     super.init()
     
     dataProvider.getEvents(username) {
-      self.events = $0
+      eventList in
+      dispatch_async(dispatch_get_main_queue()) {
+        self.events = eventList
+      }
     }
   }
   
