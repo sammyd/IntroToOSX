@@ -164,9 +164,36 @@ Now you can build and run __HubEvent__ again to see the effect your change has h
 
 ### Asset Catalog
 
-- Store for assets
-- Includes metadata about usage
-- Add something to the catalog
+In addition to code and user interfaces, your app will also need some assets such as artwork. Due to the different screen types (e.g. retina and non-retina), you often need to provide multiple versions of each asset. To simplify this process, Xcode uses __Asset Libraries__ to store and organize the assets that accompany the app.
+
+__HubEvent__ already has the default asset library, called __Images.xcassets__. Select it in the __Project navigator__ to reveal its content:
+
+![Asset Library](img/asset_library.png)
+
+When you create a new app, the template includes an asset library, with just one entry - the app logo. This is exactly the state of the asset library in __HubEvent__. You can see the different asset types you can create by right clicking in the left pane of the library:
+
+![Asset types](img/asset_types.png)
+
+Currently the app icon for __HubEvent__ is the default OS X icon:
+
+![Original Icon](img/original_icon.png)
+
+Since the app icon is provided by the asset catalog, you're going to replace it with something more appropriate. Click on the __AppIcon__ asset:
+
+![App Icon](img/appicon.png)
+
+When you provide an app icon for an app, you have to provide it in many different sizes and densities for use around the system. As a demonstration, you're going to add one of these sizes to see the app icon change.
+
+Use Finder to locate __rw_icon.png__ in the unzipped directory you downloaded. Then drag this from Finder into the __Mac 512pt 2x__ cell in the __AppIcon__ asset:
+
+![App Icon](img/appicon_updated.png)
+
+> __Note:__ Providing a single image in this manner is not generally appropriate. In a real application you should provide all ten versions of the icon.
+
+Now build and run the app again and you'll see the updated icon in the dock:
+
+![New Icon](img/new_icon.png)
+
 
 ### Debugging
 
