@@ -197,12 +197,48 @@ Now build and run the app again and you'll see the updated icon in the dock:
 
 ### Debugging
 
-- Explain what debugging is (very high level)
-- Add a breakpoint
-- Debug, show it stopped
-- Look at variable values
-- Continue
-- Nothing more advanced
+Nobody is capable of writing code that works perfectly every time, and therefore you're likely to spend time trying to fix problems in your code. You'll soon find that it'd be really helpful to be able to stop your app at a particular line of code and investigate the values of variables. This is precisely the functionality provided by a debugger.
+
+Once again, Xcode is here to help. It has an integrated debugger that makes runtime investigation of your code really easy. To demonstrate some of its functionality, you're going to use it.
+
+Open __CodeStringFormattingTransformer.swift__ by selecting it in the __Project navigator__. Find the following line in the code:
+
+````swift
+return NSAttributedString(string: unescaped, attributes: attributes)
+````
+
+__Click__ in the gutter to the left of this line to insert a __breakpoint__:
+
+![breakpoint](img/breakpoint.png)
+
+A breakpoint marks the line in your code at which point execution will stop. Your app will pause at this point to allow you to investigate the state.
+
+__Build and run__ the app. You'll see the app start, before Xcode comes back to the foreground. You'll see the line you added the breakpoint to highlighted:
+
+![Highlighted Line](img/highlighted_line.png)
+
+This means that your app has started running, and then reached this line of code. It has paused here to allow you to investigate.
+
+The bottom pane in Xcode shows you the state of the variables at the current point of execution, including their variables.
+
+![Debug Pane](img/debug_pane.png)
+
+This particular method is removing escaped characters from the JSON downloaded from the GitHub API. You can see the input string `s` and the resultant string `unescaped`.
+
+You can progress to the next line of execution with the __stepover__ button:
+
+![Stepover](img/stepover.png)
+
+Or to continue the program execution, use the __continue__ button:
+
+![Continue](img/continue.png)
+
+Note that continuing will then run the program until it comes across another breakpoint.
+
+To remove a breakpoint, you can drag it out of the gutter until the pointer changes to a __x__.
+
+This gives you a really brief introduction to the debugger in Xcode. There is loads of powerful functionality for you to discover.
+
 
 ### Documentation
 
