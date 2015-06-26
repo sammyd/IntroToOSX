@@ -1,4 +1,4 @@
-# Introduction to developing for OS X: Tooling
+# Introduction to developing for OS X: Getting Started
 
 ## Introduction
 - What is OS X?
@@ -90,5 +90,3 @@
 ## Where to go from here?
 - Next tutorial will be "Anatomy of an app"
 - Links to some of Apple's docs
-
-

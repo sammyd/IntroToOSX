@@ -1,4 +1,4 @@
-# Introduction to developing for OS X: Building a UI
+# Introduction to developing for OS X: Your First App
 
 ## Introduction
 - UI very important
