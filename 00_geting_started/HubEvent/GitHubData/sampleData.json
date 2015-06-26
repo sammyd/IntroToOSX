@@ -1,0 +1,1447 @@
+[
+ {
+ "id": "2730454661",
+ "type": "IssueCommentEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 20667410,
+ "name": "raywenderlich/swift-style-guide",
+ "url": "https://api.github.com/repos/raywenderlich/swift-style-guide"
+ },
+ "payload": {
+ "action": "created",
+ "issue": {
+ "url": "https://api.github.com/repos/raywenderlich/swift-style-guide/issues/88",
+ "labels_url": "https://api.github.com/repos/raywenderlich/swift-style-guide/issues/88/labels{/name}",
+ "comments_url": "https://api.github.com/repos/raywenderlich/swift-style-guide/issues/88/comments",
+ "events_url": "https://api.github.com/repos/raywenderlich/swift-style-guide/issues/88/events",
+ "html_url": "https://github.com/raywenderlich/swift-style-guide/issues/88",
+ "id": 68698569,
+ "number": 88,
+ "title": "Lazy initializing pattern",
+ "user": {
+ "login": "rwenderlich",
+ "id": 438377,
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?v=3",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "html_url": "https://github.com/rwenderlich",
+ "followers_url": "https://api.github.com/users/rwenderlich/followers",
+ "following_url": "https://api.github.com/users/rwenderlich/following{/other_user}",
+ "gists_url": "https://api.github.com/users/rwenderlich/gists{/gist_id}",
+ "starred_url": "https://api.github.com/users/rwenderlich/starred{/owner}{/repo}",
+ "subscriptions_url": "https://api.github.com/users/rwenderlich/subscriptions",
+ "organizations_url": "https://api.github.com/users/rwenderlich/orgs",
+ "repos_url": "https://api.github.com/users/rwenderlich/repos",
+ "events_url": "https://api.github.com/users/rwenderlich/events{/privacy}",
+ "received_events_url": "https://api.github.com/users/rwenderlich/received_events",
+ "type": "User",
+ "site_admin": false
+ },
+ "labels": [
+ 
+ ],
+ "state": "open",
+ "locked": false,
+ "assignee": null,
+ "milestone": null,
+ "comments": 4,
+ "created_at": "2015-04-15T14:34:51Z",
+ "updated_at": "2015-04-16T14:58:56Z",
+ "closed_at": null,
+ "body": "A lot of us in tutorials these days are using patterns like this to initialize variables:\r\n\r\n```\r\nlazy var locationManager: CLLocationManager = {\r\n    let manager = CLLocationManager()\r\n    manager.desiredAccuracy = kCLLocationAccuracyBest\r\n    manager.delegate = self\r\n    manager.requestAlwaysAuthorization()\r\n    return manager\r\n  }()\r\n```\r\n\r\nI've seen this for setting up controls like `UILabels` and such too. This has the advantage of keeping the initialization code in one handy place.\r\n\r\nI thought I'd start a discussion to see if this is a pattern we want to encourage in the style guide?"
+ },
+ "comment": {
+ "url": "https://api.github.com/repos/raywenderlich/swift-style-guide/issues/comments/93756228",
+ "html_url": "https://github.com/raywenderlich/swift-style-guide/issues/88#issuecomment-93756228",
+ "issue_url": "https://api.github.com/repos/raywenderlich/swift-style-guide/issues/88",
+ "id": 93756228,
+ "user": {
+ "login": "rwenderlich",
+ "id": 438377,
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?v=3",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "html_url": "https://github.com/rwenderlich",
+ "followers_url": "https://api.github.com/users/rwenderlich/followers",
+ "following_url": "https://api.github.com/users/rwenderlich/following{/other_user}",
+ "gists_url": "https://api.github.com/users/rwenderlich/gists{/gist_id}",
+ "starred_url": "https://api.github.com/users/rwenderlich/starred{/owner}{/repo}",
+ "subscriptions_url": "https://api.github.com/users/rwenderlich/subscriptions",
+ "organizations_url": "https://api.github.com/users/rwenderlich/orgs",
+ "repos_url": "https://api.github.com/users/rwenderlich/repos",
+ "events_url": "https://api.github.com/users/rwenderlich/events{/privacy}",
+ "received_events_url": "https://api.github.com/users/rwenderlich/received_events",
+ "type": "User",
+ "site_admin": false
+ },
+ "created_at": "2015-04-16T14:58:56Z",
+ "updated_at": "2015-04-16T14:58:56Z",
+ "body": "Thanks, I updated the original code block to remove the '!'. But we still need to discuss the main question - should we encourage this pattern in our style guide or not?"
+ }
+ },
+ "public": true,
+ "created_at": "2015-04-16T14:58:56Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2727076303",
+ "type": "IssuesEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 20667410,
+ "name": "raywenderlich/swift-style-guide",
+ "url": "https://api.github.com/repos/raywenderlich/swift-style-guide"
+ },
+ "payload": {
+ "action": "opened",
+ "issue": {
+ "url": "https://api.github.com/repos/raywenderlich/swift-style-guide/issues/88",
+ "labels_url": "https://api.github.com/repos/raywenderlich/swift-style-guide/issues/88/labels{/name}",
+ "comments_url": "https://api.github.com/repos/raywenderlich/swift-style-guide/issues/88/comments",
+ "events_url": "https://api.github.com/repos/raywenderlich/swift-style-guide/issues/88/events",
+ "html_url": "https://github.com/raywenderlich/swift-style-guide/issues/88",
+ "id": 68698569,
+ "number": 88,
+ "title": "Lazy initializing pattern",
+ "user": {
+ "login": "rwenderlich",
+ "id": 438377,
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?v=3",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "html_url": "https://github.com/rwenderlich",
+ "followers_url": "https://api.github.com/users/rwenderlich/followers",
+ "following_url": "https://api.github.com/users/rwenderlich/following{/other_user}",
+ "gists_url": "https://api.github.com/users/rwenderlich/gists{/gist_id}",
+ "starred_url": "https://api.github.com/users/rwenderlich/starred{/owner}{/repo}",
+ "subscriptions_url": "https://api.github.com/users/rwenderlich/subscriptions",
+ "organizations_url": "https://api.github.com/users/rwenderlich/orgs",
+ "repos_url": "https://api.github.com/users/rwenderlich/repos",
+ "events_url": "https://api.github.com/users/rwenderlich/events{/privacy}",
+ "received_events_url": "https://api.github.com/users/rwenderlich/received_events",
+ "type": "User",
+ "site_admin": false
+ },
+ "labels": [
+ 
+ ],
+ "state": "open",
+ "locked": false,
+ "assignee": null,
+ "milestone": null,
+ "comments": 0,
+ "created_at": "2015-04-15T14:34:51Z",
+ "updated_at": "2015-04-15T14:34:51Z",
+ "closed_at": null,
+ "body": "A lot of us in tutorials these days are using patterns like this to initialize variables:\r\n\r\n```\r\nlazy var locationManager: CLLocationManager! = {\r\n    let manager = CLLocationManager()\r\n    manager.desiredAccuracy = kCLLocationAccuracyBest\r\n    manager.delegate = self\r\n    manager.requestAlwaysAuthorization()\r\n    return manager\r\n  }()\r\n```\r\n\r\nI've seen this for setting up controls like `UILabels` and such too. This has the advantage of keeping the initialization code in one handy place.\r\n\r\nI thought I'd start a discussion to see if this is a pattern we want to encourage in the style guide?"
+ }
+ },
+ "public": true,
+ "created_at": "2015-04-15T14:34:52Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2646841616",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 32152366,
+ "name": "rwenderlich/recipes",
+ "url": "https://api.github.com/repos/rwenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 601079834,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "7c8cad352f57c5e42b1694d6e5ff4ab7b01841de",
+ "before": "6c81a31535e6467266ff4e5c56c16a40fbb86838",
+ "commits": [
+             {
+             "sha": "7c8cad352f57c5e42b1694d6e5ff4ab7b01841de",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/recipes/commits/7c8cad352f57c5e42b1694d6e5ff4ab7b01841de"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-03-13T13:19:06Z"
+ },
+ {
+ "id": "2646830498",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 32152366,
+ "name": "rwenderlich/recipes",
+ "url": "https://api.github.com/repos/rwenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 601075176,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "6c81a31535e6467266ff4e5c56c16a40fbb86838",
+ "before": "a4d0c7b2e99a85aa22a2349b53379a54486d76e5",
+ "commits": [
+             {
+             "sha": "6c81a31535e6467266ff4e5c56c16a40fbb86838",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/recipes/commits/6c81a31535e6467266ff4e5c56c16a40fbb86838"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-03-13T13:14:16Z"
+ },
+ {
+ "id": "2646825156",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 32152366,
+ "name": "rwenderlich/recipes",
+ "url": "https://api.github.com/repos/rwenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 601072913,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "a4d0c7b2e99a85aa22a2349b53379a54486d76e5",
+ "before": "dd8481ab3f0c3c8a5c1c28796f863c5e24621a69",
+ "commits": [
+             {
+             "sha": "a4d0c7b2e99a85aa22a2349b53379a54486d76e5",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/recipes/commits/a4d0c7b2e99a85aa22a2349b53379a54486d76e5"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-03-13T13:11:53Z"
+ },
+ {
+ "id": "2646820319",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 32152366,
+ "name": "rwenderlich/recipes",
+ "url": "https://api.github.com/repos/rwenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 601070793,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "dd8481ab3f0c3c8a5c1c28796f863c5e24621a69",
+ "before": "94aedf7c973a26d0321ea7cadae96f9e01907fcd",
+ "commits": [
+             {
+             "sha": "dd8481ab3f0c3c8a5c1c28796f863c5e24621a69",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/recipes/commits/dd8481ab3f0c3c8a5c1c28796f863c5e24621a69"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-03-13T13:09:43Z"
+ },
+ {
+ "id": "2646809514",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 32152366,
+ "name": "rwenderlich/recipes",
+ "url": "https://api.github.com/repos/rwenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 601066049,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "94aedf7c973a26d0321ea7cadae96f9e01907fcd",
+ "before": "a102ae05f241a06765255069c5f42d90f88e5c80",
+ "commits": [
+             {
+             "sha": "94aedf7c973a26d0321ea7cadae96f9e01907fcd",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/recipes/commits/94aedf7c973a26d0321ea7cadae96f9e01907fcd"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-03-13T13:04:48Z"
+ },
+ {
+ "id": "2646797509",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 32152366,
+ "name": "rwenderlich/recipes",
+ "url": "https://api.github.com/repos/rwenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 601060856,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "a102ae05f241a06765255069c5f42d90f88e5c80",
+ "before": "225a0f1c95c8407731be6b06cdaf3ed263850318",
+ "commits": [
+             {
+             "sha": "a102ae05f241a06765255069c5f42d90f88e5c80",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/recipes/commits/a102ae05f241a06765255069c5f42d90f88e5c80"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-03-13T12:59:13Z"
+ },
+ {
+ "id": "2646779463",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 32152366,
+ "name": "rwenderlich/recipes",
+ "url": "https://api.github.com/repos/rwenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 601053273,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "225a0f1c95c8407731be6b06cdaf3ed263850318",
+ "before": "43402eb058ec42840038d326894d7cb568ce8b0c",
+ "commits": [
+             {
+             "sha": "225a0f1c95c8407731be6b06cdaf3ed263850318",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/recipes/commits/225a0f1c95c8407731be6b06cdaf3ed263850318"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-03-13T12:51:05Z"
+ },
+ {
+ "id": "2646759856",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 32152366,
+ "name": "rwenderlich/recipes",
+ "url": "https://api.github.com/repos/rwenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 601044850,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "43402eb058ec42840038d326894d7cb568ce8b0c",
+ "before": "498d34faa5543692d17d04389b48bce7b758bbe6",
+ "commits": [
+             {
+             "sha": "43402eb058ec42840038d326894d7cb568ce8b0c",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/recipes/commits/43402eb058ec42840038d326894d7cb568ce8b0c"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-03-13T12:41:56Z"
+ },
+ {
+ "id": "2646747936",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 32152366,
+ "name": "rwenderlich/recipes",
+ "url": "https://api.github.com/repos/rwenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 601039729,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "498d34faa5543692d17d04389b48bce7b758bbe6",
+ "before": "744b930791f33565b527f4692eed5ad64ab39c11",
+ "commits": [
+             {
+             "sha": "498d34faa5543692d17d04389b48bce7b758bbe6",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/recipes/commits/498d34faa5543692d17d04389b48bce7b758bbe6"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-03-13T12:36:00Z"
+ },
+ {
+ "id": "2646741334",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 32152366,
+ "name": "rwenderlich/recipes",
+ "url": "https://api.github.com/repos/rwenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 601036863,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "744b930791f33565b527f4692eed5ad64ab39c11",
+ "before": "06131f61510f6343332666de6ac111087454f991",
+ "commits": [
+             {
+             "sha": "744b930791f33565b527f4692eed5ad64ab39c11",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/recipes/commits/744b930791f33565b527f4692eed5ad64ab39c11"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-03-13T12:32:46Z"
+ },
+ {
+ "id": "2646621166",
+ "type": "ForkEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27727698,
+ "name": "raywenderlich/recipes",
+ "url": "https://api.github.com/repos/raywenderlich/recipes"
+ },
+ "payload": {
+ "forkee": {
+ "id": 32152366,
+ "name": "recipes",
+ "full_name": "rwenderlich/recipes",
+ "owner": {
+ "login": "rwenderlich",
+ "id": 438377,
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?v=3",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "html_url": "https://github.com/rwenderlich",
+ "followers_url": "https://api.github.com/users/rwenderlich/followers",
+ "following_url": "https://api.github.com/users/rwenderlich/following{/other_user}",
+ "gists_url": "https://api.github.com/users/rwenderlich/gists{/gist_id}",
+ "starred_url": "https://api.github.com/users/rwenderlich/starred{/owner}{/repo}",
+ "subscriptions_url": "https://api.github.com/users/rwenderlich/subscriptions",
+ "organizations_url": "https://api.github.com/users/rwenderlich/orgs",
+ "repos_url": "https://api.github.com/users/rwenderlich/repos",
+ "events_url": "https://api.github.com/users/rwenderlich/events{/privacy}",
+ "received_events_url": "https://api.github.com/users/rwenderlich/received_events",
+ "type": "User",
+ "site_admin": false
+ },
+ "private": false,
+ "html_url": "https://github.com/rwenderlich/recipes",
+ "description": "",
+ "fork": true,
+ "url": "https://api.github.com/repos/rwenderlich/recipes",
+ "forks_url": "https://api.github.com/repos/rwenderlich/recipes/forks",
+ "keys_url": "https://api.github.com/repos/rwenderlich/recipes/keys{/key_id}",
+ "collaborators_url": "https://api.github.com/repos/rwenderlich/recipes/collaborators{/collaborator}",
+ "teams_url": "https://api.github.com/repos/rwenderlich/recipes/teams",
+ "hooks_url": "https://api.github.com/repos/rwenderlich/recipes/hooks",
+ "issue_events_url": "https://api.github.com/repos/rwenderlich/recipes/issues/events{/number}",
+ "events_url": "https://api.github.com/repos/rwenderlich/recipes/events",
+ "assignees_url": "https://api.github.com/repos/rwenderlich/recipes/assignees{/user}",
+ "branches_url": "https://api.github.com/repos/rwenderlich/recipes/branches{/branch}",
+ "tags_url": "https://api.github.com/repos/rwenderlich/recipes/tags",
+ "blobs_url": "https://api.github.com/repos/rwenderlich/recipes/git/blobs{/sha}",
+ "git_tags_url": "https://api.github.com/repos/rwenderlich/recipes/git/tags{/sha}",
+ "git_refs_url": "https://api.github.com/repos/rwenderlich/recipes/git/refs{/sha}",
+ "trees_url": "https://api.github.com/repos/rwenderlich/recipes/git/trees{/sha}",
+ "statuses_url": "https://api.github.com/repos/rwenderlich/recipes/statuses/{sha}",
+ "languages_url": "https://api.github.com/repos/rwenderlich/recipes/languages",
+ "stargazers_url": "https://api.github.com/repos/rwenderlich/recipes/stargazers",
+ "contributors_url": "https://api.github.com/repos/rwenderlich/recipes/contributors",
+ "subscribers_url": "https://api.github.com/repos/rwenderlich/recipes/subscribers",
+ "subscription_url": "https://api.github.com/repos/rwenderlich/recipes/subscription",
+ "commits_url": "https://api.github.com/repos/rwenderlich/recipes/commits{/sha}",
+ "git_commits_url": "https://api.github.com/repos/rwenderlich/recipes/git/commits{/sha}",
+ "comments_url": "https://api.github.com/repos/rwenderlich/recipes/comments{/number}",
+ "issue_comment_url": "https://api.github.com/repos/rwenderlich/recipes/issues/comments{/number}",
+ "contents_url": "https://api.github.com/repos/rwenderlich/recipes/contents/{+path}",
+ "compare_url": "https://api.github.com/repos/rwenderlich/recipes/compare/{base}...{head}",
+ "merges_url": "https://api.github.com/repos/rwenderlich/recipes/merges",
+ "archive_url": "https://api.github.com/repos/rwenderlich/recipes/{archive_format}{/ref}",
+ "downloads_url": "https://api.github.com/repos/rwenderlich/recipes/downloads",
+ "issues_url": "https://api.github.com/repos/rwenderlich/recipes/issues{/number}",
+ "pulls_url": "https://api.github.com/repos/rwenderlich/recipes/pulls{/number}",
+ "milestones_url": "https://api.github.com/repos/rwenderlich/recipes/milestones{/number}",
+ "notifications_url": "https://api.github.com/repos/rwenderlich/recipes/notifications{?since,all,participating}",
+ "labels_url": "https://api.github.com/repos/rwenderlich/recipes/labels{/name}",
+ "releases_url": "https://api.github.com/repos/rwenderlich/recipes/releases{/id}",
+ "created_at": "2015-03-13T11:30:24Z",
+ "updated_at": "2015-01-28T18:10:21Z",
+ "pushed_at": "2015-03-10T15:58:35Z",
+ "git_url": "git://github.com/rwenderlich/recipes.git",
+ "ssh_url": "git@github.com:rwenderlich/recipes.git",
+ "clone_url": "https://github.com/rwenderlich/recipes.git",
+ "svn_url": "https://github.com/rwenderlich/recipes",
+ "homepage": null,
+ "size": 222,
+ "stargazers_count": 0,
+ "watchers_count": 0,
+ "language": null,
+ "has_issues": false,
+ "has_downloads": true,
+ "has_wiki": true,
+ "has_pages": false,
+ "forks_count": 0,
+ "mirror_url": null,
+ "open_issues_count": 0,
+ "forks": 0,
+ "open_issues": 0,
+ "watchers": 0,
+ "default_branch": "master",
+ "public": true
+ }
+ },
+ "public": true,
+ "created_at": "2015-03-13T11:30:24Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2612461770",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 30152493,
+ "name": "rwenderlich/inspiration-identity",
+ "url": "https://api.github.com/repos/rwenderlich/inspiration-identity"
+ },
+ "payload": {
+ "push_id": 587067738,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "9ccbf255104ff4fcdd8ffa2423a87ad1c9e182ee",
+ "before": "bd79015dff25e074ab770813f37f4e8260043e9d",
+ "commits": [
+             {
+             "sha": "9ccbf255104ff4fcdd8ffa2423a87ad1c9e182ee",
+             "author": {
+             "email": "rwenderlich@Rays-MacBook-Pro.local",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Final changes from RWDevCon.",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/inspiration-identity/commits/9ccbf255104ff4fcdd8ffa2423a87ad1c9e182ee"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-02-27T14:44:14Z"
+ },
+ {
+ "id": "2610364655",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27727698,
+ "name": "raywenderlich/recipes",
+ "url": "https://api.github.com/repos/raywenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 586234042,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "22599832667de55a5a917c2af1b8689877e4aceb",
+ "before": "32b3b21c7c91d9ec7642e12ef839acfe30a229d3",
+ "commits": [
+             {
+             "sha": "22599832667de55a5a917c2af1b8689877e4aceb",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/recipes/commits/22599832667de55a5a917c2af1b8689877e4aceb"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-02-26T19:57:49Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2610360368",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27727698,
+ "name": "raywenderlich/recipes",
+ "url": "https://api.github.com/repos/raywenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 586232673,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "32b3b21c7c91d9ec7642e12ef839acfe30a229d3",
+ "before": "99e3f782ad699d5b76785d43fb5e8c2f84adf958",
+ "commits": [
+             {
+             "sha": "32b3b21c7c91d9ec7642e12ef839acfe30a229d3",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/recipes/commits/32b3b21c7c91d9ec7642e12ef839acfe30a229d3"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-02-26T19:56:37Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2610329921",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27727698,
+ "name": "raywenderlich/recipes",
+ "url": "https://api.github.com/repos/raywenderlich/recipes"
+ },
+ "payload": {
+ "push_id": 586221227,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "99e3f782ad699d5b76785d43fb5e8c2f84adf958",
+ "before": "adaca70eea7187ada3f168a806be4cc38a8af3df",
+ "commits": [
+             {
+             "sha": "99e3f782ad699d5b76785d43fb5e8c2f84adf958",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "rwenderlich"
+             },
+             "message": "Update Recipes.json",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/recipes/commits/99e3f782ad699d5b76785d43fb5e8c2f84adf958"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-02-26T19:46:18Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2600500341",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27655271,
+ "name": "rwenderlich/inspiration-teamwork",
+ "url": "https://api.github.com/repos/rwenderlich/inspiration-teamwork"
+ },
+ "payload": {
+ "push_id": 582350980,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "619608feaa8f3087ed59962644bc0a541ffc4d84",
+ "before": "eec5874e125711bc9e212e17f9443ee664aee62c",
+ "commits": [
+             {
+             "sha": "619608feaa8f3087ed59962644bc0a541ffc4d84",
+             "author": {
+             "email": "rwenderlich@Rays-MacBook-Pro.local",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added the final presenation we actually used for the conference",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/inspiration-teamwork/commits/619608feaa8f3087ed59962644bc0a541ffc4d84"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-02-23T16:40:36Z"
+ },
+ {
+ "id": "2550632349",
+ "type": "CreateEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27085488,
+ "name": "raywenderlich/rwdevcon-materials",
+ "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials"
+ },
+ "payload": {
+ "ref": "v1.0",
+ "ref_type": "tag",
+ "master_branch": "master",
+ "description": "Required materials for RWDevCon attendees.",
+ "pusher_type": "user"
+ },
+ "public": true,
+ "created_at": "2015-02-01T19:29:41Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2550631346",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27085488,
+ "name": "raywenderlich/rwdevcon-materials",
+ "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials"
+ },
+ "payload": {
+ "push_id": 562050718,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "c6d667fdcce091fc04ec8ad65b0414f1242021bb",
+ "before": "c74b619deda1f255820162154432c4be664c2f6d",
+ "commits": [
+             {
+             "sha": "c6d667fdcce091fc04ec8ad65b0414f1242021bb",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Updated submodules",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/c6d667fdcce091fc04ec8ad65b0414f1242021bb"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-02-01T19:28:16Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2550518050",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27085488,
+ "name": "raywenderlich/rwdevcon-materials",
+ "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials"
+ },
+ "payload": {
+ "push_id": 561999121,
+ "size": 6,
+ "distinct_size": 6,
+ "ref": "refs/heads/master",
+ "head": "c74b619deda1f255820162154432c4be664c2f6d",
+ "before": "f957261739fc0d51d4e7503f1e78564cda314f45",
+ "commits": [
+             {
+             "sha": "b606a6d0064e26570ebaf94fb1115ac6f34b717d",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added Alexis's inspiration talk",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/b606a6d0064e26570ebaf94fb1115ac6f34b717d"
+             },
+             {
+             "sha": "91c547d224a33d3afbd710bcff5082958e2049d3",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added Ellen's inspiration talk repo",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/91c547d224a33d3afbd710bcff5082958e2049d3"
+             },
+             {
+             "sha": "9b0d3a5310e48a39e45009999c605a41a30ce31c",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added Jake's inspiration talk repo",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/9b0d3a5310e48a39e45009999c605a41a30ce31c"
+             },
+             {
+             "sha": "50299c38150586d5c461adf83cbe852fcd89adb1",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Updated submodules",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/50299c38150586d5c461adf83cbe852fcd89adb1"
+             },
+             {
+             "sha": "9aca073572c3196e17f0305f346ace6c26538523",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added Vicki's inspiration talk repo",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/9aca073572c3196e17f0305f346ace6c26538523"
+             },
+             {
+             "sha": "c74b619deda1f255820162154432c4be664c2f6d",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Updated submodules",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/c74b619deda1f255820162154432c4be664c2f6d"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-02-01T17:01:50Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2550515815",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 30152493,
+ "name": "rwenderlich/inspiration-identity",
+ "url": "https://api.github.com/repos/rwenderlich/inspiration-identity"
+ },
+ "payload": {
+ "push_id": 561998028,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "bd79015dff25e074ab770813f37f4e8260043e9d",
+ "before": "59ef9a78e58f57de4f9c3728e85fa70bcbd5516a",
+ "commits": [
+             {
+             "sha": "bd79015dff25e074ab770813f37f4e8260043e9d",
+             "author": {
+             "email": "rwenderlich@Rays-MacBook-Pro-2.local",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added Vicki's inspiration talk",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/inspiration-identity/commits/bd79015dff25e074ab770813f37f4e8260043e9d"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-02-01T16:58:49Z"
+ },
+ {
+ "id": "2550515265",
+ "type": "CreateEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 30152493,
+ "name": "rwenderlich/inspiration-identity",
+ "url": "https://api.github.com/repos/rwenderlich/inspiration-identity"
+ },
+ "payload": {
+ "ref": "master",
+ "ref_type": "branch",
+ "master_branch": "master",
+ "description": "Vicki's inspiration speech on Identity for RWDevCon.",
+ "pusher_type": "user"
+ },
+ "public": true,
+ "created_at": "2015-02-01T16:58:00Z"
+ },
+ {
+ "id": "2550512812",
+ "type": "CreateEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 30152493,
+ "name": "rwenderlich/inspiration-identity",
+ "url": "https://api.github.com/repos/rwenderlich/inspiration-identity"
+ },
+ "payload": {
+ "ref": null,
+ "ref_type": "repository",
+ "master_branch": "master",
+ "description": "Vicki's inspiration speech on Identity for RWDevCon.",
+ "pusher_type": "user"
+ },
+ "public": true,
+ "created_at": "2015-02-01T16:56:09Z"
+ },
+ {
+ "id": "2550499576",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27655271,
+ "name": "rwenderlich/inspiration-teamwork",
+ "url": "https://api.github.com/repos/rwenderlich/inspiration-teamwork"
+ },
+ "payload": {
+ "push_id": 561992981,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "eec5874e125711bc9e212e17f9443ee664aee62c",
+ "before": "14401898b2e83c84a5bfcd1dd433348ea6c1c9c6",
+ "commits": [
+             {
+             "sha": "eec5874e125711bc9e212e17f9443ee664aee62c",
+             "author": {
+             "email": "rwenderlich@Rays-MacBook-Pro-2.local",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Changes per feedback from Toastmasters",
+             "distinct": true,
+             "url": "https://api.github.com/repos/rwenderlich/inspiration-teamwork/commits/eec5874e125711bc9e212e17f9443ee664aee62c"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-02-01T16:43:44Z"
+ },
+ {
+ "id": "2549646889",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27085488,
+ "name": "raywenderlich/rwdevcon-materials",
+ "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials"
+ },
+ "payload": {
+ "push_id": 561605979,
+ "size": 4,
+ "distinct_size": 4,
+ "ref": "refs/heads/master",
+ "head": "f957261739fc0d51d4e7503f1e78564cda314f45",
+ "before": "50477b6b2e7c3b2425fc5c199c1824ffd0374342",
+ "commits": [
+             {
+             "sha": "6c5f719e7d91be857c465644ed390e7e610dee3d",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Updated submodules",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/6c5f719e7d91be857c465644ed390e7e610dee3d"
+             },
+             {
+             "sha": "109283dbacffe726a4c4dfc7b91c9c61b2a08da3",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added Chris's inspiration talk",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/109283dbacffe726a4c4dfc7b91c9c61b2a08da3"
+             },
+             {
+             "sha": "1ffb684fed07dee7ff3fd5866be61cad91ee9426",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Updated submodules.",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/1ffb684fed07dee7ff3fd5866be61cad91ee9426"
+             },
+             {
+             "sha": "f957261739fc0d51d4e7503f1e78564cda314f45",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Fixed typo",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/f957261739fc0d51d4e7503f1e78564cda314f45"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-01-31T16:47:39Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2548257014",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27085488,
+ "name": "raywenderlich/rwdevcon-materials",
+ "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials"
+ },
+ "payload": {
+ "push_id": 561029481,
+ "size": 2,
+ "distinct_size": 2,
+ "ref": "refs/heads/master",
+ "head": "50477b6b2e7c3b2425fc5c199c1824ffd0374342",
+ "before": "91845a3d1942f61ffcdadfc21e87bcf030c0d62e",
+ "commits": [
+             {
+             "sha": "3f584a8e8c4232eeb7240f8d40fb5fc87f1609f2",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added Rene's repo",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/3f584a8e8c4232eeb7240f8d40fb5fc87f1609f2"
+             },
+             {
+             "sha": "50477b6b2e7c3b2425fc5c199c1824ffd0374342",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Updated submodules",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/50477b6b2e7c3b2425fc5c199c1824ffd0374342"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-01-30T18:01:54Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2543718762",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27085488,
+ "name": "raywenderlich/rwdevcon-materials",
+ "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials"
+ },
+ "payload": {
+ "push_id": 559170901,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "91845a3d1942f61ffcdadfc21e87bcf030c0d62e",
+ "before": "d00722f38199b840909a9cdd79e6af456992a6ca",
+ "commits": [
+             {
+             "sha": "91845a3d1942f61ffcdadfc21e87bcf030c0d62e",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added Kim's inspiration talk",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/91845a3d1942f61ffcdadfc21e87bcf030c0d62e"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-01-29T01:09:47Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2543663059",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27085488,
+ "name": "raywenderlich/rwdevcon-materials",
+ "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials"
+ },
+ "payload": {
+ "push_id": 559148673,
+ "size": 2,
+ "distinct_size": 2,
+ "ref": "refs/heads/master",
+ "head": "d00722f38199b840909a9cdd79e6af456992a6ca",
+ "before": "2f9f3167310a0ea9cc1e003a963ffbb185e2ce4e",
+ "commits": [
+             {
+             "sha": "27982c56ef864f267fbfab09d03bf9fe162f582c",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added Matthijs's inspiration talk",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/27982c56ef864f267fbfab09d03bf9fe162f582c"
+             },
+             {
+             "sha": "d00722f38199b840909a9cdd79e6af456992a6ca",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Updated submodules",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/d00722f38199b840909a9cdd79e6af456992a6ca"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-01-29T00:36:07Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ },
+ {
+ "id": "2540613124",
+ "type": "PushEvent",
+ "actor": {
+ "id": 438377,
+ "login": "rwenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/users/rwenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/438377?"
+ },
+ "repo": {
+ "id": 27085488,
+ "name": "raywenderlich/rwdevcon-materials",
+ "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials"
+ },
+ "payload": {
+ "push_id": 557905976,
+ "size": 1,
+ "distinct_size": 1,
+ "ref": "refs/heads/master",
+ "head": "2f9f3167310a0ea9cc1e003a963ffbb185e2ce4e",
+ "before": "209351615cb436d60983bce2ed79ab42338174e3",
+ "commits": [
+             {
+             "sha": "2f9f3167310a0ea9cc1e003a963ffbb185e2ce4e",
+             "author": {
+             "email": "ray.wenderlich@gmail.com",
+             "name": "Ray Wenderlich"
+             },
+             "message": "Added Marin's inspiration talk",
+             "distinct": true,
+             "url": "https://api.github.com/repos/raywenderlich/rwdevcon-materials/commits/2f9f3167310a0ea9cc1e003a963ffbb185e2ce4e"
+             }
+             ]
+ },
+ "public": true,
+ "created_at": "2015-01-27T23:00:13Z",
+ "org": {
+ "id": 4722515,
+ "login": "raywenderlich",
+ "gravatar_id": "",
+ "url": "https://api.github.com/orgs/raywenderlich",
+ "avatar_url": "https://avatars.githubusercontent.com/u/4722515?"
+ }
+ }
+ ]
