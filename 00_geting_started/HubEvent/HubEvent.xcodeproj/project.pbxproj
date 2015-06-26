@@ -10,10 +10,7 @@
 		220C91021AFA1A12004048CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C91011AFA1A12004048CD /* AppDelegate.swift */; };
 		220C91061AFA1A12004048CD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220C91051AFA1A12004048CD /* Images.xcassets */; };
 		220C91091AFA1A12004048CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220C91071AFA1A12004048CD /* Main.storyboard */; };
-		220C91151AFA1A12004048CD /* HubEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C91141AFA1A12004048CD /* HubEventTests.swift */; };
 		220C91281AFA1DDB004048CD /* GitHubData.h in Headers */ = {isa = PBXBuildFile; fileRef = 220C91271AFA1DDB004048CD /* GitHubData.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		220C912E1AFA1DDB004048CD /* GitHubData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220C91231AFA1DDB004048CD /* GitHubData.framework */; };
-		220C91371AFA1DDB004048CD /* GitHubDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C91361AFA1DDB004048CD /* GitHubDataTests.swift */; };
 		220C913A1AFA1DDB004048CD /* GitHubData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220C91231AFA1DDB004048CD /* GitHubData.framework */; };
 		220C913B1AFA1DDB004048CD /* GitHubData.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 220C91231AFA1DDB004048CD /* GitHubData.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		220C91441AFA1E43004048CD /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C91431AFA1E43004048CD /* SwiftyJSON.swift */; };
@@ -30,27 +27,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		220C910F1AFA1A12004048CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 220C90F41AFA1A12004048CD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 220C90FB1AFA1A12004048CD;
-			remoteInfo = HubEvent;
-		};
-		220C912F1AFA1DDB004048CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 220C90F41AFA1A12004048CD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 220C91221AFA1DDB004048CD;
-			remoteInfo = GitHubData;
-		};
-		220C91311AFA1DDB004048CD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 220C90F41AFA1A12004048CD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 220C90FB1AFA1A12004048CD;
-			remoteInfo = HubEvent;
-		};
 		220C91381AFA1DDB004048CD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 220C90F41AFA1A12004048CD /* Project object */;
@@ -91,15 +67,9 @@
 		220C91011AFA1A12004048CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		220C91051AFA1A12004048CD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		220C91081AFA1A12004048CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		220C910E1AFA1A12004048CD /* HubEventTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HubEventTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		220C91131AFA1A12004048CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		220C91141AFA1A12004048CD /* HubEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HubEventTests.swift; sourceTree = "<group>"; };
 		220C91231AFA1DDB004048CD /* GitHubData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GitHubData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		220C91261AFA1DDB004048CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		220C91271AFA1DDB004048CD /* GitHubData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GitHubData.h; sourceTree = "<group>"; };
-		220C912D1AFA1DDB004048CD /* GitHubDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GitHubDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		220C91351AFA1DDB004048CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		220C91361AFA1DDB004048CD /* GitHubDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubDataTests.swift; sourceTree = "<group>"; };
 		220C91431AFA1E43004048CD /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		220C91451AFA1F14004048CD /* sampleData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleData.json; sourceTree = "<group>"; };
 		220C91491AFA1F63004048CD /* GitHubEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubEvent.swift; sourceTree = "<group>"; };
@@ -122,25 +92,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		220C910B1AFA1A12004048CD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		220C911F1AFA1DDB004048CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		220C912A1AFA1DDB004048CD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				220C912E1AFA1DDB004048CD /* GitHubData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,9 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				220C90FE1AFA1A12004048CD /* HubEvent */,
-				220C91111AFA1A12004048CD /* HubEventTests */,
 				220C91241AFA1DDB004048CD /* GitHubData */,
-				220C91331AFA1DDB004048CD /* GitHubDataTests */,
 				220C90FD1AFA1A12004048CD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -162,9 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				220C90FC1AFA1A12004048CD /* HubEvent.app */,
-				220C910E1AFA1A12004048CD /* HubEventTests.xctest */,
 				220C91231AFA1DDB004048CD /* GitHubData.framework */,
-				220C912D1AFA1DDB004048CD /* GitHubDataTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,23 +143,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		220C91111AFA1A12004048CD /* HubEventTests */ = {
-			isa = PBXGroup;
-			children = (
-				220C91141AFA1A12004048CD /* HubEventTests.swift */,
-				220C91121AFA1A12004048CD /* Supporting Files */,
-			);
-			path = HubEventTests;
-			sourceTree = "<group>";
-		};
-		220C91121AFA1A12004048CD /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				220C91131AFA1A12004048CD /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		220C91241AFA1DDB004048CD /* GitHubData */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,23 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				220C91261AFA1DDB004048CD /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		220C91331AFA1DDB004048CD /* GitHubDataTests */ = {
-			isa = PBXGroup;
-			children = (
-				220C91361AFA1DDB004048CD /* GitHubDataTests.swift */,
-				220C91341AFA1DDB004048CD /* Supporting Files */,
-			);
-			path = GitHubDataTests;
-			sourceTree = "<group>";
-		};
-		220C91341AFA1DDB004048CD /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				220C91351AFA1DDB004048CD /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -332,24 +249,6 @@
 			productReference = 220C90FC1AFA1A12004048CD /* HubEvent.app */;
 			productType = "com.apple.product-type.application";
 		};
-		220C910D1AFA1A12004048CD /* HubEventTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 220C911B1AFA1A12004048CD /* Build configuration list for PBXNativeTarget "HubEventTests" */;
-			buildPhases = (
-				220C910A1AFA1A12004048CD /* Sources */,
-				220C910B1AFA1A12004048CD /* Frameworks */,
-				220C910C1AFA1A12004048CD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				220C91101AFA1A12004048CD /* PBXTargetDependency */,
-			);
-			name = HubEventTests;
-			productName = HubEventTests;
-			productReference = 220C910E1AFA1A12004048CD /* HubEventTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 		220C91221AFA1DDB004048CD /* GitHubData */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 220C913C1AFA1DDB004048CD /* Build configuration list for PBXNativeTarget "GitHubData" */;
@@ -368,25 +267,6 @@
 			productReference = 220C91231AFA1DDB004048CD /* GitHubData.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		220C912C1AFA1DDB004048CD /* GitHubDataTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 220C91401AFA1DDB004048CD /* Build configuration list for PBXNativeTarget "GitHubDataTests" */;
-			buildPhases = (
-				220C91291AFA1DDB004048CD /* Sources */,
-				220C912A1AFA1DDB004048CD /* Frameworks */,
-				220C912B1AFA1DDB004048CD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				220C91301AFA1DDB004048CD /* PBXTargetDependency */,
-				220C91321AFA1DDB004048CD /* PBXTargetDependency */,
-			);
-			name = GitHubDataTests;
-			productName = GitHubDataTests;
-			productReference = 220C912D1AFA1DDB004048CD /* GitHubDataTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -400,16 +280,8 @@
 					220C90FB1AFA1A12004048CD = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
-					220C910D1AFA1A12004048CD = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 220C90FB1AFA1A12004048CD;
-					};
 					220C91221AFA1DDB004048CD = {
 						CreatedOnToolsVersion = 6.3.1;
-					};
-					220C912C1AFA1DDB004048CD = {
-						CreatedOnToolsVersion = 6.3.1;
-						TestTargetID = 220C90FB1AFA1A12004048CD;
 					};
 				};
 			};
@@ -427,9 +299,7 @@
 			projectRoot = "";
 			targets = (
 				220C90FB1AFA1A12004048CD /* HubEvent */,
-				220C910D1AFA1A12004048CD /* HubEventTests */,
 				220C91221AFA1DDB004048CD /* GitHubData */,
-				220C912C1AFA1DDB004048CD /* GitHubDataTests */,
 			);
 		};
 /* End PBXProject section */
@@ -444,25 +314,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		220C910C1AFA1A12004048CD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		220C91211AFA1DDB004048CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				220C91461AFA1F14004048CD /* sampleData.json in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		220C912B1AFA1DDB004048CD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,14 +339,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		220C910A1AFA1A12004048CD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				220C91151AFA1A12004048CD /* HubEventTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		220C911E1AFA1DDB004048CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -501,32 +349,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		220C91291AFA1DDB004048CD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				220C91371AFA1DDB004048CD /* GitHubDataTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		220C91101AFA1A12004048CD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 220C90FB1AFA1A12004048CD /* HubEvent */;
-			targetProxy = 220C910F1AFA1A12004048CD /* PBXContainerItemProxy */;
-		};
-		220C91301AFA1DDB004048CD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 220C91221AFA1DDB004048CD /* GitHubData */;
-			targetProxy = 220C912F1AFA1DDB004048CD /* PBXContainerItemProxy */;
-		};
-		220C91321AFA1DDB004048CD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 220C90FB1AFA1A12004048CD /* HubEvent */;
-			targetProxy = 220C91311AFA1DDB004048CD /* PBXContainerItemProxy */;
-		};
 		220C91391AFA1DDB004048CD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 220C91221AFA1DDB004048CD /* GitHubData */;
@@ -651,44 +476,6 @@
 			};
 			name = Release;
 		};
-		220C911C1AFA1A12004048CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HubEventTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HubEvent.app/Contents/MacOS/HubEvent";
-			};
-			name = Debug;
-		};
-		220C911D1AFA1A12004048CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = HubEventTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HubEvent.app/Contents/MacOS/HubEvent";
-			};
-			name = Release;
-		};
 		220C913D1AFA1DDB004048CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -738,42 +525,6 @@
 			};
 			name = Release;
 		};
-		220C91411AFA1DDB004048CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GitHubDataTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HubEvent.app/Contents/MacOS/HubEvent";
-			};
-			name = Debug;
-		};
-		220C91421AFA1DDB004048CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GitHubDataTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HubEvent.app/Contents/MacOS/HubEvent";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -795,29 +546,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		220C911B1AFA1A12004048CD /* Build configuration list for PBXNativeTarget "HubEventTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				220C911C1AFA1A12004048CD /* Debug */,
-				220C911D1AFA1A12004048CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		220C913C1AFA1DDB004048CD /* Build configuration list for PBXNativeTarget "GitHubData" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				220C913D1AFA1DDB004048CD /* Debug */,
 				220C913E1AFA1DDB004048CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		220C91401AFA1DDB004048CD /* Build configuration list for PBXNativeTarget "GitHubDataTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				220C91411AFA1DDB004048CD /* Debug */,
-				220C91421AFA1DDB004048CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
