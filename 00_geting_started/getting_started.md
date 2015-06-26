@@ -48,28 +48,119 @@ The download is a DMG, so you can install by dragging the Xcode app across into 
 
 ## Xcode
 
-- IDE - actually a collection of different tools all lumped together
-- How to open a downloaded example
+Xcode is an Integrated Development Environment (IDE) which means that it is a collection of all the tools you need, from source code editing, compilation through to debugging and UI design.
+
+When you open Xcode it allows you to create a new project, or open an existing one. You can also open an existing project by double clicking on an Xcode project or workspace in Finder:
+
+![Open from Finder](img/open_finder.png)
+
+Download the __HubEvent__ sample project, unzip it and __double click__ on __HubEvent.xcodeproj__ in Finder to open it in Xcode.
 
 ### Creating a new app
 
-- Different app types
-- Walkthrough creating your first app
+In this tutorial you'll tour Xcode via a sample app, but when you want to create you own projects you can select __Create a new Xcode project__ from the Xcode welcome screen:
+
+![Xcode Welcome](img/xcode_welcome.png)
+
+The template chooser allows you to decide how Xcode will configure your new project. In the __OS X \ Application__ section you can see the three different core OS X app types:
+
+![New Xcode Project](img/new_project.png)
+
+The three different app types are as follows:
+
+- __Cocoa Application__ An OS X desktop app - with a window-based UI. Cocoa is the name of the framework upon which all OS X applications are built.
+- __Game__ Games built using Apple's SpriteKit or SceneKit frameworks.
+- __Command Line Tool__ A utility that runs in a shell, and has a text-based UI.
+
+There are many other project types you can create, but these cover the most popular. You can explore the other templates in the template chooser.
 
 ### Running your app
 
-- Using the play button
+Whether you've opened an existing app or created a new one, the most important thing you'll want to do is to build and run it.
+
+This involves compiling all of the code you've written into machine code, bundling up the resources required by the app and then executing it. This process is complex, but luckily Xcode has your back. To build and run your project simply press the __play__ button on the toolbar:
+
+![Play button](img/play_button.png)
+
+You can also build and run your app with the __⌘R__ keyboard shortcut. Do this with the __HubEvent__ sample project and you'll see it compile and then launch:
+
+![HubEvent](img/hubevent.png)
+
+HubEvent uses the public GitHub API to pull down all the events for a user, and displays a summary of them in a table. As you select each row of the table, the raw JSON associated with that event is displayed in the panel below.
+
+Now that you've seen how to get an app to run, you're probably desperate to find out how it works. That's coming up next!
 
 ### Code Editor
 
-- Integrate some really simple code
-- Build and run to show the difference
+Apps are built primarily from code, written in the Swift programming language. You can also use Objective-C to write apps for OS X, but Apple introduced Swift in 2014, and was very clear that it is the langauge of the future. __HubEvent__ is written in Swift.
+
+One of the views available in Xcode is the __Code Editor__, which is activated whenever you open a source code file. To see it, select __WindowController.swift__ from the __Controllers__ group in the __Project navigator__.
+
+![Code Editor](img/source_editor.png)
+
+> __Note:__ You might need to show the __Navigator pane__ on the left hand side using the buttons in the toolbar, and choose the __Project navigator__ within the navigator pane. The buttons are shown the above screenshot.
+
+In the main section of the Xcode window, you can now see the source code associated with the Window Controller. Find the following line:
+
+```swift
+// The shared data model
+let sharedDataStore = DataStore(username: "rwenderlich", type: .Network)
+```
+
+This line is selecting the source of the GitHub event data - here choosing Ray's username (`rwenderlich`).
+
+Try changing `rwenderlich` to a different GitHub username - for example `sammyd`. Then, build and run your app as you did before. You'll see the new user's events listed in the app:
+
+![HubEvent sammyd](img/hubevent_sammyd.png)
+
+Well done! You've changed your first code in an OS X app!
+
+The code editor includes many powerful features to assist you as your write code, including autocompletion and QuickLook documentation.
+
 
 ### Interface Builder
 
-- Mention storyboards.
-- Make a simple change - see it work
-- Throw forward to the Building UI tutorial
+Although it is possible to build the user interface of an OS X app entirely in code, since UI is inherently visual, proceeding in this manner isn't very intuitive.
+
+Xcode includes a tool called Interface Builder (IB), which is a fully-featured visual design tool that allows you to build your UI from reusable components.
+
+The files which make up these visual interfaces are called Storyboards - a name inspired by the film industry. In the same way that a storyboard is used to depict scenes in a film, and the progression through it, a storyboard in an app depicts the scenes and the flow between them.
+
+To see a storyboard in Interface Builder, select __Main.storyboard__ in the __Project navigator__:
+
+![Storyboard](img/storyboard.png)
+
+This storyboard includes the layout for the entire app. You can see how the table at the top of the app is split out as a separate entity from the JSON viewer at the bottom.
+
+To get a really quick feel for interface builder, you're going to change the color of the icon in the left hand column.
+
+Although being zoomed out allows you to get a good view of the entire storyboard, you can't edit a zoomed out storyboard. Zoom in to the __EventList VC__ scene using __⌘+__. This is the scene that contains the table:
+
+![EventList VC](img/eventlist.png)
+
+Use the button in the bottom left corner to __Show Document Outline__. This is a panel along the left hand side of Interface Builder which shows you the hierarchy of components that make up the current scene.
+
+![Document Outline](img/select_icon.png)
+
+If you click on the purple __⌘__ symbol in the table view, you'll highlight the corresponding __Table Cell View__ row in the __Document Outline__. Since you want to access the text field _inside_ this cell, click on the __⌘__ again. Now you'll have the row selected as in the previous image.
+
+Once you've selected this text field, you can configure various attributes associated with it, which determine its appearance.
+
+If the __Utilities__ panel is not visible down the right hand side of Xcode, use the button in the toolbar to show it:
+
+![Utilities Icon](img/utilities_icon.png)
+
+This panel can display many different inspectors, but the one you want now is the __Atrributes Inspector__. Select it now and you'll find the __Text Color__ attribute:
+
+![Attributes Inspector](img/attributes_inspector.png)
+
+Tap on the purple color bar, and you'll see a colors panel. Use this to select a different color - e.g. yellow:
+
+![Color Panel](img/color_panel.png)
+
+Now you can build and run __HubEvent__ again to see the effect your change has had:
+
+![Color Change](img/hubevent_yellow.png)
 
 ### Asset Catalog
 
