@@ -56,36 +56,11 @@
 - Continue
 - Nothing more advanced
 
-### Instruments
-
-- Important part of preparing an app for production
-- Demonstrate how to start it
-- List some of the more useful instruments
-- Demonstrate example (e.g. time profiler)
-- Don't go into any detail
-
-### Testing
-
-- Another important part of the software engineering process
-- Once again baked into Xcode
-- Demonstrate where tests live & how to run them
-
 ### Documentation
 
 - Built in tooltip for code view
 - Documentation browser
 - How to download docs
-
-### Playgrounds
-
-- Recent addition
-- Standalone, or within a project
-- Show one in
-
-### Distribution
-
-- Mention that it's build into Xcode
-- Give tips about how to begin
 
 ## Where to go from here?
 - Next tutorial will be "Anatomy of an app"
