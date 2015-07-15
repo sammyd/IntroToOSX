@@ -1,0 +1,355 @@
+
+<h1>Introduction to developing for OS X: Getting Started</h1>
+
+<h2>Introduction</h2>
+
+OS X is one of the world’s most advanced desktop operating systems, and is home to some of the best crafted software products. For developers it offers an extremely powerful and versatile framework upon which they can build amazing software products.
+
+Apple makes developing for OS X incredibly easy - providing an excellent development environment in Xcode, and a complete distribution channel in the Mac App Store.
+
+This tutorial is the first of a series of three tutorials covering an introduction to developing for OS X. In this instalment you'll first learn about how to obtain the tools you need to develop for OS X. Then, using an app you've downloaded as an example, you'll take a tour of Xcode, discovering how to run an app, edit code, design the UI and debug it.
+
+By the end of this tutorial you will have your computer set up to develop OS X apps, and you'll be familiar with Xcode. In part two of this series you'll learn about the anatomy of an OS X app, before finally creating your first app in part three.
+
+So what are you waiting for? The world of desktop apps awaits!
+
+<h2>Prerequisites</h2>
+
+To become an expert OS X developer, you will need a few things:
+
+<ul>
+<li>
+<em>Mac running OS X</em> The OS X operating system only runs on Apple computers, so you need a Mac both to develop and run OS X apps.
+</li>
+
+<li>
+<em>An AppleID</em> In order to download the tools from the App Store, you'll need an AppleID.
+</li>
+
+<li>
+<em>Xcode</em> This is the IDE and toolchain used to create OS X apps. You'll learn how to install this in the next section.
+</li>
+</ul>
+
+Once you've built your app, and you want to upload it to the App Store to be distributed, you'll also need to pay for an Apple developer account. But this is not a requirement until you are ready to send your app out to the world.
+
+<h2>Obtaining Tools</h2>
+
+Unlike some other platforms, developing for OS X requires the installation of one tool - known as Xcode. Xcode is an IDE that includes everything you need to develop iOS, watchOS and OS X apps.
+
+You can download the currently released stable version of Xcode from the Mac App Store:
+
+
+<img src="img/xcode_mas.png" alt="Optional("Download Xcode")" title="nil" />
+
+
+Once it has downloaded and installed, you can go ahead an open it. The first time you open Xcode it'll ask to install some additional components. Go ahead and let it, entering your password if required.
+
+You'll then be presented with the Xcode welcome screen:
+
+
+<img src="img/xcode_welcome.png" alt="Optional("Xcode Welcome screen")" title="nil" />
+
+
+Congratulations, you've successfully installed Xcode! Read on to learn all about what it can do.
+
+<h3>Beta versions of Xcode</h3>
+
+Before moving on to describing the power of Xcode, it's worth taking a few minutes learning about beta versions of Xcode. When Apple releases new updates to Xcode (often to support new features in OS X, iOS and watchOS) they go through an agressive cycle of beta releases. These releases include the new features, but consequently many bugs. If you are interested in developing an app which leverages these new features, you'll need to download the latest beta from Apple.
+
+Apple releases betas of its developer software at <a href="https://developer.apple.com/">developer.apple.com</a>. You can install a beta version of Xcode alongside the stable version, so there's no problem with continuing work on projects that aren't ready for upgrade.
+
+
+<img src="img/xcode_download_beta.png" alt="Optional("Download Xcode Beta")" title="nil" />
+
+
+The download is a DMG, so you can install by dragging the Xcode app across into <em>Applications</em> in the usual way. You'll then have two versions of Xcode available in Launchpad:
+
+
+<img src="img/double_xcode.png" alt="Optional("Double Xcode")" title="nil" />
+
+
+<div class="note">
+<em>Note:</em> At the time of writing Xcode 7 is still in beta. The sample project used in this tutorial has been upgraded to use the Swift 2.0 programming language, and therefore requires Xcode 7. If you wish to follow along you will need to download a beta of Xcode 7, as described in this section.
+</div>
+
+<h2>Xcode</h2>
+
+Xcode is an Integrated Development Environment (IDE) which means that it is a collection of all the tools you need, from source code editing, compilation through to debugging and UI design.
+
+When you open Xcode it allows you to create a new project, or open an existing one. You can also open an existing project by double clicking on an Xcode project or workspace in Finder:
+
+
+<img src="img/open_finder.png" alt="Optional("Open from Finder")" title="nil" />
+
+
+Download the <em>HubEvent</em> sample project, unzip it and <em>double click</em> on <em>HubEvent.xcodeproj</em> in Finder to open it in Xcode.
+
+<h3>Creating a new app</h3>
+
+In this tutorial you'll tour Xcode via a sample app, but when you want to create you own projects you can select <em>Create a new Xcode project</em> from the Xcode welcome screen:
+
+
+<img src="img/xcode_welcome.png" alt="Optional("Xcode Welcome")" title="nil" />
+
+
+The template chooser allows you to decide how Xcode will configure your new project. In the <em>OS X </em><em>\</em><em> Application</em> section you can see the three different core OS X app types:
+
+
+<img src="img/new_project.png" alt="Optional("New Xcode Project")" title="nil" />
+
+
+The three different app types are as follows:
+
+<ul>
+<li>
+<em>Cocoa Application</em> An OS X desktop app - with a window-based UI. Cocoa is the name of the framework upon which all OS X applications are built.
+</li>
+
+<li>
+<em>Game</em> Games built using Apple's SpriteKit or SceneKit frameworks.
+</li>
+
+<li>
+<em>Command Line Tool</em> A utility that runs in a shell, and has a text-based UI.
+</li>
+</ul>
+
+There are many other project types you can create, but these cover the most popular. You can explore the other templates in the template chooser.
+
+<h3>Running your app</h3>
+
+Whether you've opened an existing app or created a new one, the most important thing you'll want to do is to build and run it.
+
+This involves compiling all of the code you've written into machine code, bundling up the resources required by the app and then executing it. This process is complex, but luckily Xcode has your back. To build and run your project simply press the <em>play</em> button on the toolbar:
+
+
+<img src="img/play_button.png" alt="Optional("Play button")" title="nil" />
+
+
+You can also build and run your app with the <em>⌘R</em> keyboard shortcut. Do this with the <em>HubEvent</em> sample project and you'll see it compile and then launch:
+
+
+<img src="img/hubevent.png" alt="Optional("HubEvent")" title="nil" />
+
+
+HubEvent uses the public GitHub API to pull down all the events for a user, and displays a summary of them in a table. As you select each row of the table, the raw JSON associated with that event is displayed in the panel below.
+
+Now that you've seen how to get an app to run, you're probably desperate to find out how it works. That's coming up next!
+
+<h3>Code Editor</h3>
+
+Apps are built primarily from code, written in the Swift programming language. You can also use Objective-C to write apps for OS X, but Apple introduced Swift in 2014, and was very clear that it is the langauge of the future. <em>HubEvent</em> is written in Swift.
+
+One of the views available in Xcode is the <em>Code Editor</em>, which is activated whenever you open a source code file. To see it, select <em>WindowController.swift</em> from the <em>Controllers</em> group in the <em>Project navigator</em>.
+
+
+<img src="img/source_editor.png" alt="Optional("Code Editor")" title="nil" />
+
+
+<div class="note">
+<em>Note:</em> You might need to show the <em>Navigator pane</em> on the left hand side using the buttons in the toolbar, and choose the <em>Project navigator</em> within the navigator pane. The buttons are shown the above screenshot.
+</div>
+
+In the main section of the Xcode window, you can now see the source code associated with the Window Controller. Find the following line:
+
+<pre lang="swift">
+// The shared data model
+let sharedDataStore = DataStore(username: "rwenderlich", type: .Network)
+</pre>
+
+This line is selecting the source of the GitHub event data - here choosing Ray's username (<code>rwenderlich</code>).
+
+Try changing <code>rwenderlich</code> to a different GitHub username - for example <code>sammyd</code>. Then, build and run your app as you did before. You'll see the new user's events listed in the app:
+
+
+<img src="img/hubevent_sammyd.png" alt="Optional("HubEvent sammyd")" title="nil" />
+
+
+Well done! You've changed your first code in an OS X app!
+
+The code editor includes many powerful features to assist you as your write code, including autocompletion and QuickLook documentation.
+
+<h3>Interface Builder</h3>
+
+Although it is possible to build the user interface of an OS X app entirely in code, since UI is inherently visual, proceeding in this manner isn't very intuitive.
+
+Xcode includes a tool called Interface Builder (IB), which is a fully-featured visual design tool that allows you to build your UI from reusable components.
+
+The files which make up these visual interfaces are called Storyboards - a name inspired by the film industry. In the same way that a storyboard is used to depict scenes in a film, and the progression through it, a storyboard in an app depicts the scenes and the flow between them.
+
+To see a storyboard in Interface Builder, select <em>Main.storyboard</em> in the <em>Project navigator</em>:
+
+
+<img src="img/storyboard.png" alt="Optional("Storyboard")" title="nil" />
+
+
+This storyboard includes the layout for the entire app. You can see how the table at the top of the app is split out as a separate entity from the JSON viewer at the bottom.
+
+To get a really quick feel for interface builder, you're going to change the color of the icon in the left hand column.
+
+Although being zoomed out allows you to get a good view of the entire storyboard, you can't edit a zoomed out storyboard. Zoom in to the <em>EventList VC</em> scene using __⌘+__. This is the scene that contains the table:
+
+
+<img src="img/eventlist.png" alt="Optional("EventList VC")" title="nil" />
+
+
+Use the button in the bottom left corner to <em>Show Document Outline</em>. This is a panel along the left hand side of Interface Builder which shows you the hierarchy of components that make up the current scene.
+
+
+<img src="img/select_icon.png" alt="Optional("Document Outline")" title="nil" />
+
+
+If you click on the purple <em>⌘</em> symbol in the table view, you'll highlight the corresponding <em>Table Cell View</em> row in the <em>Document Outline</em>. Since you want to access the text field <i>inside</i> this cell, click on the <em>⌘</em> again. Now you'll have the row selected as in the previous image.
+
+Once you've selected this text field, you can configure various attributes associated with it, which determine its appearance.
+
+If the <em>Utilities</em> panel is not visible down the right hand side of Xcode, use the button in the toolbar to show it:
+
+
+<img src="img/utilities_icon.png" alt="Optional("Utilities Icon")" title="nil" />
+
+
+This panel can display many different inspectors, but the one you want now is the <em>Atrributes Inspector</em>. Select it now and you'll find the <em>Text Color</em> attribute:
+
+
+<img src="img/attributes_inspector.png" alt="Optional("Attributes Inspector")" title="nil" />
+
+
+Tap on the purple color bar, and you'll see a colors panel. Use this to select a different color - e.g. yellow:
+
+
+<img src="img/color_panel.png" alt="Optional("Color Panel")" title="nil" />
+
+
+Now you can build and run <em>HubEvent</em> again to see the effect your change has had:
+
+
+<img src="img/hubevent_yellow.png" alt="Optional("Color Change")" title="nil" />
+
+
+<h3>Asset Catalog</h3>
+
+In addition to code and user interfaces, your app will also need some assets such as artwork. Due to the different screen types (e.g. retina and non-retina), you often need to provide multiple versions of each asset. To simplify this process, Xcode uses <em>Asset Libraries</em> to store and organize the assets that accompany the app.
+
+<em>HubEvent</em> already has the default asset library, called <em>Images.xcassets</em>. Select it in the <em>Project navigator</em> to reveal its content:
+
+
+<img src="img/asset_library.png" alt="Optional("Asset Library")" title="nil" />
+
+
+When you create a new app, the template includes an asset library, with just one entry - the app logo. This is exactly the state of the asset library in <em>HubEvent</em>. You can see the different asset types you can create by right clicking in the left pane of the library:
+
+
+<img src="img/asset_types.png" alt="Optional("Asset types")" title="nil" />
+
+
+Currently the app icon for <em>HubEvent</em> is the default OS X icon:
+
+
+<img src="img/original_icon.png" alt="Optional("Original Icon")" title="nil" />
+
+
+Since the app icon is provided by the asset catalog, you're going to replace it with something more appropriate. Click on the <em>AppIcon</em> asset:
+
+
+<img src="img/appicon.png" alt="Optional("App Icon")" title="nil" />
+
+
+When you provide an app icon for an app, you have to provide it in many different sizes and densities for use around the system. As a demonstration, you're going to add one of these sizes to see the app icon change.
+
+Use Finder to locate <em>rw</em><em>_</em><em>icon.png</em> in the unzipped directory you downloaded. Then drag this from Finder into the <em>Mac 512pt 2x</em> cell in the <em>AppIcon</em> asset:
+
+
+<img src="img/appicon_updated.png" alt="Optional("App Icon")" title="nil" />
+
+
+<div class="note">
+<em>Note:</em> Providing a single image in this manner is not generally appropriate. In a real application you should provide all ten versions of the icon.
+</div>
+
+Now build and run the app again and you'll see the updated icon in the dock:
+
+
+<img src="img/new_icon.png" alt="Optional("New Icon")" title="nil" />
+
+
+<h3>Debugging</h3>
+
+Nobody is capable of writing code that works perfectly every time, and therefore you're likely to spend time trying to fix problems in your code. You'll soon find that it'd be really helpful to be able to stop your app at a particular line of code and investigate the values of variables. This is precisely the functionality provided by a debugger.
+
+Once again, Xcode is here to help. It has an integrated debugger that makes runtime investigation of your code really easy. To demonstrate some of its functionality, you're going to use it.
+
+Open <em>CodeStringFormattingTransformer.swift</em> by selecting it in the <em>Project navigator</em>. Find the following line in the code:
+
+<pre lang="swift">
+return NSAttributedString(string: unescaped, attributes: attributes)
+</pre>
+
+<em>Click</em> in the gutter to the left of this line to insert a <em>breakpoint</em>:
+
+
+<img src="img/breakpoint.png" alt="Optional("breakpoint")" title="nil" />
+
+
+A breakpoint marks the line in your code at which point execution will stop. Your app will pause at this point to allow you to investigate the state.
+
+<em>Build and run</em> the app. You'll see the app start, before Xcode comes back to the foreground. You'll see the line you added the breakpoint to highlighted:
+
+
+<img src="img/highlighted_line.png" alt="Optional("Highlighted Line")" title="nil" />
+
+
+This means that your app has started running, and then reached this line of code. It has paused here to allow you to investigate.
+
+The bottom pane in Xcode shows you the state of the variables at the current point of execution, including their variables.
+
+
+<img src="img/debug_pane.png" alt="Optional("Debug Pane")" title="nil" />
+
+
+This particular method is removing escaped characters from the JSON downloaded from the GitHub API. You can see the input string <code>s</code> and the resultant string <code>unescaped</code>.
+
+You can progress to the next line of execution with the <em>stepover</em> button:
+
+
+<img src="img/stepover.png" alt="Optional("Stepover")" title="nil" />
+
+
+Or to continue the program execution, use the <em>continue</em> button:
+
+
+<img src="img/continue.png" alt="Optional("Continue")" title="nil" />
+
+
+Note that continuing will then run the program until it comes across another breakpoint.
+
+To remove a breakpoint, you can drag it out of the gutter until the pointer changes to a <em>x</em>.
+
+This gives you a really brief introduction to the debugger in Xcode. There is loads of powerful functionality for you to discover.
+
+<h3>Documentation</h3>
+
+Xcode has a couple of integrated ways to get access to documentation for system frameworks. The first is the ability to show a tooltip containing the most salient information about a class or method.
+
+
+<img src="img/tooltip.png" alt="Optional("Tooltip")" title="nil" />
+
+
+To access this, simply <em>Option-Click</em> on a class or method name within the code editor.
+
+The second method of accessing documentation shows you the full documentation in a dedicated browser. To access this you can either click on the <em>Reference</em> link at the bottom of the tooltip, or use the <em>Window </em><em>\</em><em> Documentation and Reference</em> menu:
+
+
+<img src="img/doc_browser.png" alt="Optional("Documentation Browser")" title="nil" />
+
+
+<h2>Where to go from here?</h2>
+
+You can download <em>HubEvent</em>, the sample project which accompanies this tutorial here.
+
+If you're completely new to OS X programming, then this tutorial has covered a lot of ground. However, you'll be forgiven for thinking that you still don't really know where to start with creating your own app. In the next article you'll learn about the anatomy of an app, before then moving on to creating your first OS X app.
+
+Apple has a huge amount of documentation for OS X - all available on the <a href="https://developer.apple.com/library/mac/navigation/">Developer Portal</a>.
+
+If you have any questions or comments then please join in below or on the forums.

@@ -1,14 +1,16 @@
 # Introduction to developing for OS X: Anatomy of an OS X App
 
 ## Introduction
-- Summary of why from last article
-- Outline of what you'll learn
+
+In the previous article you discovered how to install Xcode, before running through a brief tour of its major features. In this tutorial you'll turn your attention to OS X apps themselves - specifically how they are architected.
+
+By the end of this article you'll have a good grounding in how the different parts of an OS X app fit together, although not necessarily a wide-ranging understanding of how each of them works.
+
+
 
 ## Prerequisites
-- Mac
-- OS X
-- Xcode
-- Link back to previous article about tooling
+
+To build apps for OS X, you need a computer running OS X, which means an Apple Mac. You'll also need Xcode installed - if you haven't done this yet, you should take a look at the previous tutorial to learn how to get set up.
 
 ## How does an app start?
 - Storyboard entry point
@@ -63,6 +65,3 @@
 ## Where to go from here?
 - Next article will introduce UI concepts
 - Links to Apple documentation
-
-
-
