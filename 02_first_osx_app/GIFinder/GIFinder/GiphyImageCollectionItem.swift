@@ -32,6 +32,7 @@ class GiphyImageCollectionItem: NSCollectionViewItem {
   }
   
   private var imageDownloadTask : NSURLSessionDataTask?
+  private static let imageCache = NSCache()
   
   var giphyItem : GiphyItem? {
     didSet {
@@ -40,11 +41,19 @@ class GiphyImageCollectionItem: NSCollectionViewItem {
       loadingIndicator.hidden = false
       loadingIndicator.startAnimation(self)
       if let giphyItem = giphyItem {
-        loadImageAysnc(giphyItem.url) {
-          image in
+        // Check the cache
+        if let image = GiphyImageCollectionItem.imageCache.objectForKey(giphyItem.id) as? NSImage {
           self.gifImageView.image = image
           self.loadingIndicator.stopAnimation(self)
           self.loadingIndicator.hidden = true
+        } else {
+          loadImageAysnc(giphyItem.url) {
+            image in
+            self.gifImageView.image = image
+            self.loadingIndicator.stopAnimation(self)
+            self.loadingIndicator.hidden = true
+            GiphyImageCollectionItem.imageCache.setObject(image, forKey: giphyItem.id)
+          }
         }
       }
     }
