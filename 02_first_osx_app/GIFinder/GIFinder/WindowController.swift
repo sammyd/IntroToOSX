@@ -34,7 +34,6 @@ class WindowController: NSWindowController {
         case .Error(let error):
           print(error.localizedDescription)
         case .Result(let giphyItems):
-          print(giphyItems)
           dispatch_async(dispatch_get_main_queue()) {
             vc.giphyItems = giphyItems
           }
