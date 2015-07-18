@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		22ABAB081B5A48E3001FCE55 /* GiphyCollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22ABAB071B5A48E3001FCE55 /* GiphyCollectionItem.xib */; };
-		22ABAB0A1B5A4C52001FCE55 /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 22ABAB091B5A4C52001FCE55 /* giphy.gif */; };
 		22E7BE711B5915F7007A8401 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7BE701B5915F7007A8401 /* AppDelegate.swift */; };
 		22E7BE731B5915F7007A8401 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7BE721B5915F7007A8401 /* ViewController.swift */; };
 		22E7BE751B5915F7007A8401 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E7BE741B5915F7007A8401 /* Assets.xcassets */; };
@@ -20,7 +19,6 @@
 
 /* Begin PBXFileReference section */
 		22ABAB071B5A48E3001FCE55 /* GiphyCollectionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GiphyCollectionItem.xib; sourceTree = "<group>"; };
-		22ABAB091B5A4C52001FCE55 /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
 		22E7BE6D1B5915F7007A8401 /* GIFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GIFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E7BE701B5915F7007A8401 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E7BE721B5915F7007A8401 /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
@@ -46,7 +44,6 @@
 		22ABAB0B1B5A517D001FCE55 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				22ABAB091B5A4C52001FCE55 /* giphy.gif */,
 				22E7BE761B5915F7007A8401 /* Main.storyboard */,
 				22ABAB071B5A48E3001FCE55 /* GiphyCollectionItem.xib */,
 			);
@@ -159,7 +156,6 @@
 			files = (
 				22E7BE751B5915F7007A8401 /* Assets.xcassets in Resources */,
 				22ABAB081B5A48E3001FCE55 /* GiphyCollectionItem.xib in Resources */,
-				22ABAB0A1B5A4C52001FCE55 /* giphy.gif in Resources */,
 				22E7BE781B5915F7007A8401 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
