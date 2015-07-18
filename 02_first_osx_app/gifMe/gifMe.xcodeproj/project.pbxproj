@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,7 @@
 /* Begin PBXFileReference section */
 		22ABAB071B5A48E3001FCE55 /* GiphyCollectionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GiphyCollectionItem.xib; sourceTree = "<group>"; };
 		22ABAB0D1B5AC884001FCE55 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		22E7BE6D1B5915F7007A8401 /* GIFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GIFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22E7BE6D1B5915F7007A8401 /* gifMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gifMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E7BE701B5915F7007A8401 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E7BE721B5915F7007A8401 /* ViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		22E7BE741B5915F7007A8401 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		22E7BE641B5915F7007A8401 = {
 			isa = PBXGroup;
 			children = (
-				22E7BE6F1B5915F7007A8401 /* GIFinder */,
+				22E7BE6F1B5915F7007A8401 /* gifMe */,
 				22E7BE6E1B5915F7007A8401 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,12 +74,12 @@
 		22E7BE6E1B5915F7007A8401 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22E7BE6D1B5915F7007A8401 /* GIFinder.app */,
+				22E7BE6D1B5915F7007A8401 /* gifMe.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		22E7BE6F1B5915F7007A8401 /* GIFinder */ = {
+		22E7BE6F1B5915F7007A8401 /* gifMe */ = {
 			isa = PBXGroup;
 			children = (
 				22ABAB0C1B5A5195001FCE55 /* Controllers */,
@@ -88,7 +88,7 @@
 				22E7BE741B5915F7007A8401 /* Assets.xcassets */,
 				22E7BE791B5915F7007A8401 /* Info.plist */,
 			);
-			path = GIFinder;
+			path = gifMe;
 			sourceTree = "<group>";
 		};
 		22E7BE7F1B596321007A8401 /* Data Layer */ = {
@@ -103,9 +103,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		22E7BE6C1B5915F7007A8401 /* GIFinder */ = {
+		22E7BE6C1B5915F7007A8401 /* gifMe */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22E7BE7C1B5915F7007A8401 /* Build configuration list for PBXNativeTarget "GIFinder" */;
+			buildConfigurationList = 22E7BE7C1B5915F7007A8401 /* Build configuration list for PBXNativeTarget "gifMe" */;
 			buildPhases = (
 				22E7BE691B5915F7007A8401 /* Sources */,
 				22E7BE6A1B5915F7007A8401 /* Frameworks */,
@@ -115,9 +115,9 @@
 			);
 			dependencies = (
 			);
-			name = GIFinder;
+			name = gifMe;
 			productName = GIFinder;
-			productReference = 22E7BE6D1B5915F7007A8401 /* GIFinder.app */;
+			productReference = 22E7BE6D1B5915F7007A8401 /* gifMe.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -134,8 +134,8 @@
 					};
 				};
 			};
-			buildConfigurationList = 22E7BE681B5915F7007A8401 /* Build configuration list for PBXProject "GIFinder" */;
-			compatibilityVersion = "Xcode 3.2";
+			buildConfigurationList = 22E7BE681B5915F7007A8401 /* Build configuration list for PBXProject "gifMe" */;
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -147,7 +147,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				22E7BE6C1B5915F7007A8401 /* GIFinder */,
+				22E7BE6C1B5915F7007A8401 /* gifMe */,
 			);
 		};
 /* End PBXProject section */
@@ -278,10 +278,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = GIFinder/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/gifMe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.GIFinder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.gifMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -291,10 +291,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = GIFinder/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/gifMe/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.GIFinder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.gifMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -302,7 +302,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		22E7BE681B5915F7007A8401 /* Build configuration list for PBXProject "GIFinder" */ = {
+		22E7BE681B5915F7007A8401 /* Build configuration list for PBXProject "gifMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22E7BE7A1B5915F7007A8401 /* Debug */,
@@ -311,7 +311,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		22E7BE7C1B5915F7007A8401 /* Build configuration list for PBXNativeTarget "GIFinder" */ = {
+		22E7BE7C1B5915F7007A8401 /* Build configuration list for PBXNativeTarget "gifMe" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22E7BE7D1B5915F7007A8401 /* Debug */,
