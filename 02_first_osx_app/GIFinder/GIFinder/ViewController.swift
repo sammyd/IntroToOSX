@@ -26,12 +26,7 @@ class ViewController: NSViewController {
 
     // Do any additional setup after loading the view.
     collectionView.dataSource = self
-    //collectionView.itemPrototype = NSCollectionViewItem()
-    //collectionView.registerClass(NSCollectionViewItem.self, forItemWithIdentifier: "GiphyCollectionItem")
-    //collectionView.registerClass(GiphyImageCollectionViewItem.self, forItemWithIdentifier: "GiphyCollectionItem")
-    //if let giphyCollectionItem = storyboard?.instantiateControllerWithIdentifier("GiphyCollectionItem") as? NSCollectionViewItem {
-    //  collectionView.itemPrototype = giphyCollectionItem
-    //}
+    collectionView.minItemSize = NSSize(width: 200, height: 200)
     
     searchGiphy("clever dog") {
       result in
