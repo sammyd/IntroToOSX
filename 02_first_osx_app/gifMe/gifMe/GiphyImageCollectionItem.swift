@@ -36,34 +36,39 @@ class GiphyImageCollectionItem: NSCollectionViewItem {
   
   var giphyItem : GiphyItem? {
     didSet {
-      gifImageView.animates = false
-      gifImageView.image = nil
-      loadingIndicator.hidden = false
-      loadingIndicator.startAnimation(self)
       if let giphyItem = giphyItem {
-        // Check the cache
-        if let image = GiphyImageCollectionItem.imageCache.objectForKey(giphyItem.id) as? NSImage {
-          self.gifImageView.image = image
-          self.loadingIndicator.stopAnimation(self)
-          self.loadingIndicator.hidden = true
-        } else {
-          loadImageAysnc(giphyItem.url) {
-            image in
-            self.gifImageView.image = image
-            self.loadingIndicator.stopAnimation(self)
-            self.loadingIndicator.hidden = true
-            GiphyImageCollectionItem.imageCache.setObject(image, forKey: giphyItem.id)
-          }
-        }
+        updateImageForGiphyItem(giphyItem)
       }
     }
   }
   
-  private func loadImageAysnc(url: NSURL, callback: (NSImage) -> ()) {
-    if let imageDownloadTask = imageDownloadTask {
-      imageDownloadTask.cancel()
+  private func updateImageForGiphyItem(item: GiphyItem) {
+    imageDownloadTask?.cancel()
+    updateUIWhilstLoading(true)
+    // Check the cache
+    if let image = GiphyImageCollectionItem.imageCache.objectForKey(item.id) as? NSImage {
+      self.gifImageView.image = image
+      updateUIWhilstLoading(false)
+    } else {
+      loadImageAysnc(item.url) {
+        image in
+        self.gifImageView.image = image
+        GiphyImageCollectionItem.imageCache.setObject(image, forKey: item.id)
+        self.updateUIWhilstLoading(false)
+      }
     }
-    
+  }
+  
+  private func updateUIWhilstLoading(loading: Bool) {
+    loadingIndicator.hidden = !loading
+    loading ? loadingIndicator.stopAnimation(self) : loadingIndicator.startAnimation(self)
+    if loading {
+      gifImageView.image = nil
+      gifImageView.animates = false
+    }
+  }
+  
+  private func loadImageAysnc(url: NSURL, callback: (NSImage) -> ()) {
     imageDownloadTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
       (data, _, _) in
       if let data = data {
