@@ -26,7 +26,6 @@ class WindowController: NSWindowController {
   
   @IBOutlet weak var searchField: NSSearchField!
   @IBAction func handleSearchValue(sender: AnyObject) {
-    print("Search: \(searchField.stringValue)")
     if let vc = contentViewController as? ViewController {
       searchGiphy(searchField.stringValue) {
         result in
