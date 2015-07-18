@@ -14,14 +14,29 @@ class GiphyImageCollectionItem: NSCollectionViewItem {
   
   var giphyItem : GiphyItem? {
     didSet {
-      if let giphyItem = giphyItem {
-        if let gif = giphyItem.image {
+      if let giphyItemUnwrapped = giphyItem {
+        if let gif = giphyItemUnwrapped.image {
           gifImageView.image = gif
         } else {
           // Need to load the image
+          loadImageAysnc(giphyItemUnwrapped.url) {
+            image in
+            self.gifImageView.image = image
+            self.giphyItem?.image = image
+          }
         }
       }
     }
+  }
+  
+  private func loadImageAysnc(url: NSURL, callback: (NSImage) -> ()) {
+    NSURLSession.sharedSession().dataTaskWithURL(url) {
+      (data, _, _) in
+      let image = NSImage(data: data!)
+      dispatch_async(dispatch_get_main_queue()) {
+        callback(image!)
+      }
+    }?.resume()
   }
   
 }

@@ -26,3 +26,8 @@ xcuserdata
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
+
+# Stuff that should be in the global
+.DS_Store
+~*
+*.swp

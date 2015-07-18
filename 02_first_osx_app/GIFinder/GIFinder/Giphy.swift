@@ -38,7 +38,7 @@ extension GiphyItem {
       let url = NSURL(string: urlString) else {
         return nil
     }
-    self.init(id: id, caption: caption, url: url, image: NSImage(named: "giphy.gif"))
+    self.init(id: id, caption: caption, url: url, image: nil)
   }
 }
 
