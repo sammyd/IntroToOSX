@@ -14,21 +14,35 @@
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yuc-Kp-Ejz">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                    <gestureRecognizers>
+                        <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="Bp3-oH-SP6">
+                            <connections>
+                                <action selector="handleImageClicked:" target="B5o-dc-eTm" id="tQ0-tX-4lk"/>
+                            </connections>
+                        </clickGestureRecognizer>
+                    </gestureRecognizers>
                     <animations/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ZQM-ar-7vF"/>
                 </imageView>
+                <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="jvH-lb-1Ar">
+                    <rect key="frame" x="232" y="128" width="16" height="16"/>
+                    <animations/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="yuc-Kp-Ejz" secondAttribute="trailing" id="38H-dm-Psp"/>
                 <constraint firstItem="yuc-Kp-Ejz" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="6VU-HH-tES"/>
+                <constraint firstItem="jvH-lb-1Ar" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="CEm-Lg-dfs"/>
                 <constraint firstAttribute="bottom" secondItem="yuc-Kp-Ejz" secondAttribute="bottom" id="CaD-ge-aeY"/>
                 <constraint firstItem="yuc-Kp-Ejz" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="UKz-F2-PSw"/>
+                <constraint firstItem="jvH-lb-1Ar" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="ji7-T5-8lQ"/>
             </constraints>
             <animations/>
         </customView>
         <collectionViewItem id="B5o-dc-eTm" customClass="GiphyImageCollectionItem" customModule="GIFinder" customModuleProvider="target">
             <connections>
                 <outlet property="gifImageView" destination="yuc-Kp-Ejz" id="6cL-VN-OuW"/>
+                <outlet property="loadingIndicator" destination="jvH-lb-1Ar" id="X4S-Xz-KhZ"/>
                 <outlet property="view" destination="c22-O7-iKe" id="MAE-4l-NNT"/>
             </connections>
         </collectionViewItem>

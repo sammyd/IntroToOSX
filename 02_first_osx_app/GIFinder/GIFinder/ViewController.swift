@@ -12,12 +12,9 @@ class ViewController: NSViewController {
   
   @IBOutlet weak var collectionView: NSCollectionView!
   
-  
   private var giphyItems : [GiphyItem]? {
     didSet {
-      if let _ = giphyItems {
-        collectionView.reloadData()
-      }
+      collectionView.reloadData()
     }
   }
 

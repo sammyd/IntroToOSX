@@ -27,7 +27,6 @@ struct GiphyItem {
   let id: String
   let caption: String
   let url: NSURL
-  var image: NSImage?
 }
 
 extension GiphyItem {
@@ -38,7 +37,7 @@ extension GiphyItem {
       let url = NSURL(string: urlString) else {
         return nil
     }
-    self.init(id: id, caption: caption, url: url, image: nil)
+    self.init(id: id, caption: caption, url: url)
   }
 }
 

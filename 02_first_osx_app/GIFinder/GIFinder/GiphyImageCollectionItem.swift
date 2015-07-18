@@ -11,32 +11,46 @@ import Cocoa
 class GiphyImageCollectionItem: NSCollectionViewItem {
   
   @IBOutlet weak var gifImageView: NSImageView!
+  @IBOutlet weak var loadingIndicator: NSProgressIndicator!
+  
+  @IBAction func handleImageClicked(sender: AnyObject) {
+    gifImageView.animates = !gifImageView.animates
+  }
+  
+  private var imageDownloadTask : NSURLSessionDataTask?
   
   var giphyItem : GiphyItem? {
     didSet {
-      if let giphyItemUnwrapped = giphyItem {
-        if let gif = giphyItemUnwrapped.image {
-          gifImageView.image = gif
-        } else {
-          // Need to load the image
-          loadImageAysnc(giphyItemUnwrapped.url) {
-            image in
-            self.gifImageView.image = image
-            self.giphyItem?.image = image
-          }
+      gifImageView.animates = false
+      gifImageView.image = nil
+      loadingIndicator.hidden = false
+      loadingIndicator.startAnimation(self)
+      if let giphyItem = giphyItem {
+        loadImageAysnc(giphyItem.url) {
+          image in
+          self.gifImageView.image = image
+          self.loadingIndicator.stopAnimation(self)
+          self.loadingIndicator.hidden = true
         }
       }
     }
   }
   
   private func loadImageAysnc(url: NSURL, callback: (NSImage) -> ()) {
-    NSURLSession.sharedSession().dataTaskWithURL(url) {
+    if let imageDownloadTask = imageDownloadTask {
+      imageDownloadTask.cancel()
+    }
+    
+    imageDownloadTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
       (data, _, _) in
-      let image = NSImage(data: data!)
-      dispatch_async(dispatch_get_main_queue()) {
-        callback(image!)
+      if let data = data {
+        let image = NSImage(data: data)
+        dispatch_async(dispatch_get_main_queue()) {
+          callback(image!)
+          self.imageDownloadTask = nil
+        }
       }
-    }?.resume()
+    }
+    imageDownloadTask?.resume()
   }
-  
 }
