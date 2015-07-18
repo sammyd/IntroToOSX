@@ -9,6 +9,17 @@
 import Cocoa
 
 class ViewController: NSViewController {
+  
+  @IBOutlet weak var collectionView: NSCollectionView!
+  
+  
+  private var giphyItems : [GiphyItem]? {
+    didSet {
+      if let giphyItems = giphyItems {
+        collectionView.reloadData()
+      }
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,3 +36,13 @@ class ViewController: NSViewController {
 
 }
 
+
+extension ViewController : NSCollectionViewDataSource {
+  func numberOfSectionsInCollectionView(collectionView: NSCollectionView) -> Int {
+    return 1
+  }
+  
+  func collectionView(collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+    <#code#>
+  }
+}

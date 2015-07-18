@@ -13,6 +13,7 @@
 		22E7BE781B5915F7007A8401 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E7BE761B5915F7007A8401 /* Main.storyboard */; };
 		22E7BE811B5964F7007A8401 /* Giphy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7BE801B5964F7007A8401 /* Giphy.swift */; };
 		22E7BE831B59A28D007A8401 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7BE821B59A28D007A8401 /* SwiftyJSON.swift */; };
+		22E7BE851B59B5BA007A8401 /* GiphyImageCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7BE841B59B5BA007A8401 /* GiphyImageCollectionViewItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		22E7BE791B5915F7007A8401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22E7BE801B5964F7007A8401 /* Giphy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Giphy.swift; sourceTree = "<group>"; };
 		22E7BE821B59A28D007A8401 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		22E7BE841B59B5BA007A8401 /* GiphyImageCollectionViewItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyImageCollectionViewItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				22E7BE741B5915F7007A8401 /* Assets.xcassets */,
 				22E7BE761B5915F7007A8401 /* Main.storyboard */,
 				22E7BE791B5915F7007A8401 /* Info.plist */,
+				22E7BE841B59B5BA007A8401 /* GiphyImageCollectionViewItem.swift */,
 			);
 			path = GIFinder;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22E7BE851B59B5BA007A8401 /* GiphyImageCollectionViewItem.swift in Sources */,
 				22E7BE811B5964F7007A8401 /* Giphy.swift in Sources */,
 				22E7BE731B5915F7007A8401 /* ViewController.swift in Sources */,
 				22E7BE711B5915F7007A8401 /* AppDelegate.swift in Sources */,
