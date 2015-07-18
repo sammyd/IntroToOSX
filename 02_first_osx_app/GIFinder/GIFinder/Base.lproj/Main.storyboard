@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="15A216g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8152.3"/>
     </dependencies>
     <scenes>
@@ -664,6 +665,7 @@
                                     <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="leG-pT-uWN">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <animations/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="snF-EM-fg9">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -695,71 +697,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCF-14-Dhl">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="kiw-ox-w8u">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                <clipView key="contentView" id="aNn-9C-Jkn">
+                                <clipView key="contentView" id="AIB-fA-DNl">
                                     <rect key="frame" x="1" y="1" width="478" height="268"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <collectionView id="SkU-9H-fJl">
+                                        <collectionView id="83d-rO-mhn">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <animations/>
                                             <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </collectionView>
                                     </subviews>
+                                    <animations/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="TYC-AF-iRa">
+                                <animations/>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Zz3-I3-jcx">
                                     <rect key="frame" x="1" y="144" width="233" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ZXC-qs-wAU">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="qDQ-vx-u8T">
                                     <rect key="frame" x="234" y="1" width="15" height="143"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
                                 </scroller>
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="qCF-14-Dhl" secondAttribute="trailing" id="SI9-0k-CBj"/>
-                            <constraint firstItem="qCF-14-Dhl" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="eBj-h9-oz5"/>
-                            <constraint firstAttribute="bottom" secondItem="qCF-14-Dhl" secondAttribute="bottom" id="gZh-Aj-GQ8"/>
-                            <constraint firstItem="qCF-14-Dhl" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="geo-8w-MGn"/>
+                            <constraint firstAttribute="bottom" secondItem="kiw-ox-w8u" secondAttribute="bottom" id="9Gn-Yn-hcr"/>
+                            <constraint firstItem="kiw-ox-w8u" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="LQJ-q4-UgV"/>
+                            <constraint firstItem="kiw-ox-w8u" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Psw-Wy-vVy"/>
+                            <constraint firstAttribute="trailing" secondItem="kiw-ox-w8u" secondAttribute="trailing" id="pz0-aJ-zED"/>
                         </constraints>
+                        <animations/>
                     </view>
                     <connections>
-                        <outlet property="collectionView" destination="SkU-9H-fJl" id="ShT-WK-dgR"/>
+                        <outlet property="collectionView" destination="83d-rO-mhn" id="HWS-Kb-bbz"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
-        </scene>
-        <!--Giphy Image Collection View Item-->
-        <scene sceneID="k1K-gq-Cqo">
-            <objects>
-                <collectionViewItem storyboardIdentifier="GiphyImageVC" id="LZt-Hs-9cF" customClass="GiphyImageCollectionViewItem" customModule="GIFinder" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="gbC-39-cOO">
-                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ydU-3S-otw">
-                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="nw7-2l-LMF"/>
-                            </imageView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ydU-3S-otw" secondAttribute="trailing" id="7fp-So-fkt"/>
-                            <constraint firstItem="ydU-3S-otw" firstAttribute="top" secondItem="gbC-39-cOO" secondAttribute="top" id="f9K-wM-gX2"/>
-                            <constraint firstAttribute="bottom" secondItem="ydU-3S-otw" secondAttribute="bottom" id="j9I-ZL-Equ"/>
-                            <constraint firstItem="ydU-3S-otw" firstAttribute="leading" secondItem="gbC-39-cOO" secondAttribute="leading" id="vPT-6h-z4f"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="gifImageView" destination="ydU-3S-otw" id="jpw-B9-7JX"/>
-                    </connections>
-                </collectionViewItem>
-                <customObject id="05q-12-WHd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="494" y="655"/>
         </scene>
     </scenes>
 </document>

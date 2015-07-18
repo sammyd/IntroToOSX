@@ -15,7 +15,7 @@ class ViewController: NSViewController {
   
   private var giphyItems : [GiphyItem]? {
     didSet {
-      if let giphyItems = giphyItems {
+      if let _ = giphyItems {
         collectionView.reloadData()
       }
     }
@@ -25,6 +25,26 @@ class ViewController: NSViewController {
     super.viewDidLoad()
 
     // Do any additional setup after loading the view.
+    collectionView.dataSource = self
+    //collectionView.itemPrototype = NSCollectionViewItem()
+    //collectionView.registerClass(NSCollectionViewItem.self, forItemWithIdentifier: "GiphyCollectionItem")
+    //collectionView.registerClass(GiphyImageCollectionViewItem.self, forItemWithIdentifier: "GiphyCollectionItem")
+    //if let giphyCollectionItem = storyboard?.instantiateControllerWithIdentifier("GiphyCollectionItem") as? NSCollectionViewItem {
+    //  collectionView.itemPrototype = giphyCollectionItem
+    //}
+    
+    searchGiphy("clever dog") {
+      result in
+      switch result {
+      case .Error(let error):
+        print(error.localizedDescription)
+      case .Result(let giphyItems):
+        print(giphyItems)
+        dispatch_async(dispatch_get_main_queue()) {
+          self.giphyItems = giphyItems
+        }
+      }
+    }
   }
 
   override var representedObject: AnyObject? {
@@ -32,8 +52,6 @@ class ViewController: NSViewController {
     // Update the view, if already loaded.
     }
   }
-
-
 }
 
 
@@ -43,6 +61,16 @@ extension ViewController : NSCollectionViewDataSource {
   }
   
   func collectionView(collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-    <#code#>
+    return giphyItems?.count ?? 0
+  }
+  
+  func collectionView(collectionView: NSCollectionView, itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath) -> NSCollectionViewItem {
+    let item  = collectionView.makeItemWithIdentifier("GiphyCollectionItem", forIndexPath: indexPath)
+    
+    if let item = item as? GiphyImageCollectionItem {
+      item.giphyItem = giphyItems?[indexPath.item]
+    }
+    
+    return item
   }
 }

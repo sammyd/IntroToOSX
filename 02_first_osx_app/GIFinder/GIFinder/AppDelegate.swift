@@ -15,16 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   func applicationDidFinishLaunching(aNotification: NSNotification) {
     // Insert code here to initialize your application
-    
-    searchGiphy("dog collar") {
-      result in
-      switch result {
-      case .Error(let error):
-        print(error.localizedDescription)
-      case .Result(let giphyItems):
-        print(giphyItems)
-      }
-    }
   }
 
   func applicationWillTerminate(aNotification: NSNotification) {

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class GiphyImageCollectionViewItem: NSCollectionViewItem {
+class GiphyImageCollectionItem: NSCollectionViewItem {
   
   @IBOutlet weak var gifImageView: NSImageView!
   
@@ -22,11 +22,6 @@ class GiphyImageCollectionViewItem: NSCollectionViewItem {
         }
       }
     }
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do view setup here.
   }
   
 }
