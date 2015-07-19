@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		222318061B5C0A670081C8F1 /* GiphyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222318051B5C0A670081C8F1 /* GiphyUtils.swift */; };
 		22ABAB081B5A48E3001FCE55 /* GiphyCollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22ABAB071B5A48E3001FCE55 /* GiphyCollectionItem.xib */; };
 		22ABAB0E1B5AC884001FCE55 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22ABAB0D1B5AC884001FCE55 /* WindowController.swift */; };
 		22E7BE711B5915F7007A8401 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E7BE701B5915F7007A8401 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		222318051B5C0A670081C8F1 /* GiphyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GiphyUtils.swift; sourceTree = "<group>"; };
 		22ABAB071B5A48E3001FCE55 /* GiphyCollectionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GiphyCollectionItem.xib; sourceTree = "<group>"; };
 		22ABAB0D1B5AC884001FCE55 /* WindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		22E7BE6D1B5915F7007A8401 /* gifMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gifMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +98,7 @@
 			children = (
 				22E7BE801B5964F7007A8401 /* Giphy.swift */,
 				22E7BE821B59A28D007A8401 /* SwiftyJSON.swift */,
+				222318051B5C0A670081C8F1 /* GiphyUtils.swift */,
 			);
 			name = "Data Layer";
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				22E7BE811B5964F7007A8401 /* Giphy.swift in Sources */,
 				22E7BE731B5915F7007A8401 /* ViewController.swift in Sources */,
 				22E7BE711B5915F7007A8401 /* AppDelegate.swift in Sources */,
+				222318061B5C0A670081C8F1 /* GiphyUtils.swift in Sources */,
 				22E7BE831B59A28D007A8401 /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
