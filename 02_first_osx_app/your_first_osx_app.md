@@ -13,7 +13,7 @@
 
 ## Creating the Project
 
-Open Xcode and click __Create a new Xcode project__ to start your new app. Choose __OS X \ Application \ Cocoa Appliction__:
+Open Xcode and click __Create a new Xcode project__ to start your new app. Choose __OS X \ Application \ Cocoa Application__:
 
 ![Project Template](img/project_template.png)
 
@@ -138,7 +138,73 @@ You've now created a model to represent the search results, and a function that 
 
 ## User Interface
 
+The user interface of gifMe is made up of two parts - the results view, and the search interface. You're going to start by creating the results display, before moving on to adding the search functionality.
 
+
+### Results UI
+
+The results will be shown in a collection view, which is a way to display a set of elements - by default in a grid-like fashion. As the size of the collection view changes, it'll re-arrange the items automatically.
+
+Collection views in OS X are represented by the `NSCollectionView` class. You are going to build the UI in Interface Builder, and then configure it in code.
+
+Open __Main.storyboard__ and find the __View Controller__ scene. In the current configuration, this view controller represents the entire content of the view. You're going to add a collection view to this scene, which will show the images from the search results.
+
+Use the search box at the bottom of the __object library__ to find the __Collection View__:
+
+![Collection View](img/collection_view.png)
+
+__Drag__ a collection view from the __object library__ on to the __View controller__ scene:
+
+![Drag Collection View](img/drag_collection_view.png)
+
+This will add a collection view to the scene, and also a new scene scene which represents the layout for each of the items in the collection view:
+
+![Collection view added](img/collection_view_added.png)
+
+Due to a bug in the current version of Xcode, you will have to provide the layout for the collection view item in a separate XIB file. Select the __Collection View Item__ scene and press __delete__ to remove it.
+
+You want to specify that the collection view should fill the entirety of the view controller. You will do this using a system called Auto Layout. This is a layout engine that can determine the sizes and positions of view elements at runtime, as dictated by a set of relationships that you provide at design time. You want to specify that the collection view should fill the entire scene, so you'll provide constraints that specify that its edges should be pinned to the edges of its containing view.
+
+Select the collection view, and then use the __Pin__ menu in the bottom bar to specify that there should be a distance of __0__ around each of the edges. Ensure that __Update frames__ is set to __Items of New Constraints__ before adding the constraints.
+
+![Collection View Constraints](img/collection_constraints.png)
+
+That's all you need to do with the layout of the collection view itself.
+
+Currently, there is no way to access the collection view from code - which you'll need to be able to do to configure it. Xcode has a system whereby you can create an outlet in code which will attach to the object in the storyboard at run time. You're going to do that now for the collection view.
+
+Open the assistant editor in Xcode by selecting it in the menu bar:
+
+![Assistant Editor](img/assistant_editor.png)
+
+Use the jump bar in the assistant editor to select __Automatic \ ViewController.swift__.
+
+![Jump bar](img/jump_bar.png)
+
+Back in IB, locate the collection view in the __Document Outline__:
+
+![Collection View Document Outline](img/collection_document_outline.png)
+
+__Ctrl-Drag__ from the __Collection View__ over to __View Controller.swift__:
+
+![Collection View Drag](img/cv_drag.png)
+
+Name the new outlet `collectionView`:
+
+![Collection View Outlet](img/cv_outlet.png)
+
+You'll see that this adds the following property to __ViewController.swift__:
+
+```swift
+@IBOutlet weak var collectionView: NSCollectionView!
+```
+
+You'll use this item later - but first you need to provide the design for each item in the collection view.
+
+
+### Collection View Item
+
+Each search result will be represented by a collection view item. You can use Interface Builder to provide the design for these items, 
 
 
 ## Where to go from here
