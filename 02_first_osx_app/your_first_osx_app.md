@@ -293,6 +293,23 @@ private func loadImageAysnc(url: NSURL, callback: (NSImage) -> ()) {
 5. This image download succeeded, so remove the reference to it.
 6. Once you've create the task, you have to call `resume()` to actually start it.
 
+#### App Transport Security
+
+Before OS X 10.11, this would have been enough, but El Capitan introduced __App Transport Security__, which forces all network connections to be properly secured. Unfortunately the image servers on giphy.com don't support a feature that OS X requires, so you need to make an exception to allow these network connections to work.
+
+Open __Info.plist__ and use the __+__ button next to the root __Information Property List__ to create a new entry. Call this entry __NSAppTransportSecurity__ and set its type to __Dictionary__:
+
+![ATS Root](img/ats_root.png)
+
+Use the __+__ next to this new entry to create a new __Dictionary__ called __NSExceptionDomains__. Make a __Dictionary__ within this new element called __giphy.com__.
+
+Click the __+__ next to this __giphy.com__ entry to create two new entries. Ensure that they both have __Boolean__ types. Name the first __NSExceptionRequiresForwardSecrecy__ with a value of __NO__, and the second __NSIncludesSubdomains__ with a value of __YES__.
+
+Once you've done all this, the __NSAppTransportSecurity__ entry in __Info.plist__ should look like this:
+
+![ATS Complete](img/ats_complete.png)
+
+#### Image Display
 
 Now that you've created a helper function to actually download the image, you can use this to grab the image for a specific `GiphyItem`. Add the following function to the same class:
 
