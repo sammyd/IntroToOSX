@@ -133,6 +133,27 @@ func searchGiphy(searchTerm: String, resultHandler: (GiphySearchResult) -> ()) {
 
 Note that this method doesn't return any values. This is because the network request is an asynchronous process, so instead you provide a `resultHandler` closure that gets called once the request has completed (see step 5).
 
+Without any UI, it's difficult to demonstrate what you've done is working - but you can turn to logging. You're going to use this new search function to perform a search, and print the results out to the console.
+
+Open __ViewController.swift__ and add the following code to the end of the `viewDidLoad()` function:
+
+```swift
+searchGiphy("excited") {
+  giphyResult in
+  switch giphyResult {
+  case .Error(let error):
+    print(error)
+  case .Result(let items):
+    print(items)
+  }
+}
+```
+
+This uses your new search method, and prints out the results. Build and run your app and then check the console. You'll see a load of text detailing the array of `GiphyItem` objects returned by the search:
+
+![BAR 2](img/bar_02.png)
+
+
 You've now created a model to represent the search results, and a function that will query the giphy API with a search term. That's it for the data layer - time to move your attention to the UI!
 
 
@@ -385,10 +406,10 @@ collectionView.registerClass(GiphyCollectionItem.self, forItemWithIdentifier: "G
 
 In addition to configure the data source for the collection view, this also sets the minimum size, and registers your custom `GiphyCollectionItem` class so that the collection view can use it.
 
-You've actually now finished implementing the results display. It'd be nice to test it though right? Add the following code to the end of the same `viewDidLoad()` method:
+You've actually now finished implementing the results display. It'd be nice to test it though right? Update the search call at the end of `viewDidLoad()` to match the following:
 
 ```swift
-searchGiphy("it works") {
+searchGiphy("excited") {
   giphyResult in
   switch giphyResult {
   case .Error(let error):
@@ -399,7 +420,7 @@ searchGiphy("it works") {
 }
 ```
 
-This calls the `searchGiphy()` function that you created back in the data layer, and then sets the `giphyItems` property on `ViewController` to the results.
+Rather than logging the search results, you're now setting them as the `giphyItems` property on `ViewController`.
 
 Build and run gifMe to see the results of all the UI work you've been doing:
 
