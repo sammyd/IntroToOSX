@@ -449,10 +449,76 @@ Build and run gifMe and try clicking on the different images. You'll see the ani
 
 ## Find Me a GIF
 
+gifMe isn't very useful yet - each time you want to search for a different term you have to recompile the app. You're going to fix that with the addition of a search field in the tool bar.
+
+Open __Main.storyboard__, find a __Toolbar__ in the __Object Library__ and drag it onto the __Window Controller_ scene. __Double click__ on this to bring up the toolbar configuration:
+
+![Toolbar config](img/toolbar_config.png)
+
+You only need the __Flexible Space__ item in the __Allowed Toolbar Items__ so select each of the others in turn and press __delete__ to remove them. Then find a __Search Field__ in the __Object Library__ and drag it onto the toolbar config. Then drag it from the __Allowed Toolbar Items__ down into the __Default Toolbar Items__. Your toolbar config will now look like this:
+
+![Completed Toolbar Config](img/completed_toolbar_config.png)
+
+Select the __Custom View__ in the __Document Outline__ and use the __Attributes Inspector__ to remove the __Label__. Then select the __Search Field__, and check the __Sends Whole Search String__ property in the __Attributes Inspector__:
+
+![Search Field Config](img/search_field_config.png)
+
+Hit done to complete your work on the toolbar. Unfortunately there seems to be a bug in the current beta of Xcode whereby the search field is not rendered correctly in Interface Builder. At this stage you can build and run to check that it looks correct in the actual app:
+
+![Search Render](img/search_render.png)
+
+The search field doesn't actually do anything yet - you need to wire it up to some code first. To do that you'll need a custom subclass of `NSWindowController`.
+
+Select __File \ New \ File...__ from the menu, and then locate __OS X \ Source \ Cocoa Class__. Name the class `WindowController` and make it a subclass of `NSWindowController. Ensure that __Also create XIB file for user interface__ is __not checked__.
+
+Back in __Main.storyboard__, select the __Window Controller_ scene, and use the __Identity Inspector__ to set the class to the newly created __WindowController__:
+
+![Window Identity](img/window_identity.png)
+
+Now that you've got a custom class backing the window controller, you can wire up the search field.
+
+Open the __Assistant Editor__ and ensure that it's displaying __WindowController.swift__. __Ctrl-drag__ from the __Search Field__ in the __Document Outline__ to `Window Controller`. Create first an __Outlet__ named __searchField__:
+
+![Search Outlet](img/search_outlet.png)
+
+Then, repeat the __ctrl-drag__, this time creating an __Action__, naming it __handleSearch__:
+
+![Search Action](img/search_action.png)
+
+This new action will be called whenever the user presses the enter key after entering content into the search field. You need to add some code to perform the giphy search.
+
+Add the following code to the `handleSearch` method:
+
+```swift
+if let vc = contentViewController as? ViewController {
+  searchGiphy(searchField.stringValue) {
+    result in
+    switch result {
+    case .Error(let error):
+      print(error.localizedDescription)
+    case .Result(let giphyItems):
+      dispatch_async(dispatch_get_main_queue()) {
+        vc.giphyItems = giphyItems
+      }
+    }
+  }
+}
+```
+
+You've seen most of this code before - just using the `searchGiphy` function you created to perform the search. There are a couple of differences:
+- Before performing the search, you first check that the view controller that this window is displaying is of the correct type - i.e. the custom `ViewController` you made to display the results in a collection view.
+- The search is then seeded not with a fixed string, but instead the content of the search field.
+- When the results are returned, they're passed to the content view controller via its `giphyItems` property.
+
+One final thing to do - and that's to remove the call to `searchGiphy` in __ViewController.swift__. Find the call (inside `viewDidLoad()`) and delete it. Remember that it is 9 lines long.
 
 
+Now, build and run to test out your completed app:
+
+![Completed App](img/bar_04.png)
 
 
+Try using the search box to search for some GIFs, and then clicking on them to play them. That's a pretty amazing app for your first ever OS X app!
 
 
 ## Where to go from here
