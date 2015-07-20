@@ -277,6 +277,7 @@ Now that you've created a helper function to actually download the image, you ca
 
 ```swift
 private func updateImageForGiphyItem(item: GiphyItem) {
+  imageView?.image = nil
   // 1:
   imageDownloadTask?.cancel()
   // 2:
@@ -409,9 +410,45 @@ Wow! That's pretty cool right? You've already managed to create a fairly cool ap
 Something will probably stick out at you though... The search is returning GIFs, but they aren't animating. You're going to fix that next.
 
 
-## Adding Animation
+## Animating those GIFs
 
 `NSImageView` supports animating images out of the box - you just need to toggle a property. You could do this by default for the collection view item, but having a screen full of animating GIFs isn't a great UX. Instead you're going to toggle the animation property when the user clicks on the image view.
+
+OS X has a system of gesture recognizers that are the easiest way to link up complex touch-based user interaction to your code. You're going to add the simplest of these, the __Click Gesture Recognizer__ to gifMe.
+
+Open __GiphyCollectionItem.xib__, find a __Click Gesture Recognizer__ in the __Object library__ and drag it onto the __Image View__. You'll see this appear in the __Document Outline__:
+
+![Click Recognizer](img/click_recognizer.png)
+
+When a gesture recognizer is triggered, it fires an action - you need to wire that up now.
+
+Open the assistant editor, and ensure that __GiphyCollectionItem__ is visible. __Ctrl-drag__ from the __Click Gesture Recognizer__ in the __Document Outline__ to the `GiphyCollectionItem` class. Change the __Connection__ to __Action__ and name the action __handleClick__:
+
+![Wire Up Recognizer](img/wire_up_recognizer.png)
+
+Update the created method to match the following:
+
+```swift
+@IBAction func handleClick(sender: AnyObject) {
+  if let imageView = imageView {
+    imageView.animates = !imageView.animates
+  }
+}
+```
+
+When the user clicks on the image, this method will be called, and the `animates` property will be toggled.
+
+The last thing to do is to reset this property when a new image is provided. Add the following line to the beginning of `updateImageForGiphyItem(_:)`:
+
+```swift
+imageView?.animates = false
+```
+
+Build and run gifMe and try clicking on the different images. You'll see the animation toggle on and off - pretty cool, huh?
+
+
+## Find Me a GIF
+
 
 
 
