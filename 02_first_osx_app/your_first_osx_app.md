@@ -204,7 +204,218 @@ You'll use this item later - but first you need to provide the design for each i
 
 ### Collection View Item
 
-Each search result will be represented by a collection view item. You can use Interface Builder to provide the design for these items, 
+Each search result will be represented by a collection view item - which is a subclass of `NSViewController`. You'll need a custom subclass so you can write code to display your `GiphyItem` model object correctly.
+
+Use the menu to select __File \ New \ File...__ and find __OS X \ Source \ Cocoa Class__ in the template chooser. Name the class __GiphyCollectionItem__, and make it a subclass of __NSCollectionViewItem__. Ensure that __Also create XIB file for user interface is checked__:
+
+![Creating Collection View Item](img/create_cvi.png)
+
+You can use Interface Builder to provide the design for these items, in a cut-down version of a storyboard, called a XIB. Whereas storyboards support multiple scenes, a XIB has no concept of flow between scenes - instead just providing layout for a view.
+
+
+Open the newly-created __GiphyCollectionItem.xib__ - you can see a blank custom view. Find an __Image View__ in the __Object library__ and drag it onto the blank view:
+
+![Image View](img/image_view.png)
+
+As before, use the __Pin__ menu to create the Auto Layout constraints to set sizes of the 4 margins to be __0__.
+
+You now need to wire this new image view up to the collection view item class. Since the Xcode knew you were going to use this XIB with the `GiphyCollectionItem` class you created, it has already linked the __File's Owner__ property to the class - you just need to link the image view.
+
+In the __Document Outline__, __Ctrl-Drag__ from the __File's Owner__ to the __Image View__ inside the __Custom View__. Select __imageView__ in the popup box.
+
+![Link Image View](img/cvi_link_imageview.png)
+
+That's all you need to do for the design of the collection view item - time to move your attention to writing its code.
+
+
+### Loading Images
+
+Remember back to the `GiphyItem` data model - it doesn't provide an image, but a URL where the image can be found. Therefore, the collection view item will be responsible for downloading the GIF.
+
+Add the following properties to the `GiphyCollectionItem` class in __GiphyCollectionItem.swift__:
+
+```swift
+private var imageDownloadTask : NSURLSessionDataTask?
+private static let imageCache = NSCache()
+```
+
+`imageDownloadTask` is the network request that you'll create to download an image. You need to keep a reference to it so that you can cancel it if you need to. GIFs are very large files, so rather than re-downloading them repeatedly, you're going to cache them in `imageCache`.
+
+Add the following function to `GiphyCollectionItem`:
+
+```swift
+private func loadImageAysnc(url: NSURL, callback: (NSImage) -> ()) {
+  // 1:
+  imageDownloadTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
+    (data, _, _) in
+    if let data = data {
+      // 2:
+      let image = NSImage(data: data)
+      // 3:
+      dispatch_async(dispatch_get_main_queue()) {
+        // 4:
+        callback(image!)
+        // 5:
+        self.imageDownloadTask = nil
+      }
+    }
+  }
+  // 6:
+  imageDownloadTask?.resume()
+}
+```
+
+1. As you did with the API request - create a download task to grab the GIF.
+2. Once the data has arrived, convert it into an `NSImage`.
+3. Download tasks can run on an arbitrary background queue. Since you're going to be calling back to the UI, marshal the callback onto the main queue.
+4. Provide the image back to the caller via the `callback` closure.
+5. This image download succeeded, so remove the reference to it.
+6. Once you've create the task, you have to call `resume()` to actually start it.
+
+
+Now that you've created a helper function to actually download the image, you can use this to grab the image for a specific `GiphyItem`. Add the following function to the same class:
+
+```swift
+private func updateImageForGiphyItem(item: GiphyItem) {
+  // 1:
+  imageDownloadTask?.cancel()
+  // 2:
+  if let image = GiphyCollectionItem.imageCache.objectForKey(item.id) as? NSImage {
+    self.imageView?.image = image
+  } else {
+    // 3:
+    loadImageAysnc(item.url) {
+      image in
+      // 4:
+      self.imageView?.image = image
+      GiphyCollectionItem.imageCache.setObject(image, forKey: item.id)
+    }
+  }
+}
+```
+
+1. Before attempting to download a new image, cancel an existing download task, if there is one.
+2. Check to see whether the image you're trying to download is already present in the cache. `NSCache` is essentially a clever mutable dictionary - you're using the `id` property of the `GiphyItem` to index the cached images. If the image is in the cache, update the `imageView` to display it.
+3. The image isn't cached, so use the function you just created to download it asynchronously.
+4. Once the image has successfully downloaded, update the `imageView` with the new image, and cache the image so it won't be downloaded next time it's needed.
+
+You're almost there with the collection view item - the final piece of the puzzle is to call this image update code when the collection view item is provided with a new `GiphyItem` model object. Add the following property to the class:
+
+```swift
+  var giphyItem : GiphyItem? {
+    didSet {
+      if let giphyItem = giphyItem {
+        updateImageForGiphyItem(giphyItem)
+      }
+    }
+  }
+```
+
+This checks that the new value isn't `nil` before calling the function you just created to download the image and update the view.
+
+That's everything you need to do in the collection view item. You now just need to add some code to make the collection view use your custom item.
+
+
+### Collection View
+
+You've already created an outlet property for the collection view in __ViewController.swift__, but now you need to configure it. There are two ways to tell a collection view what content it should display - either via data-binding or via a data source. In this introductory tutorial, you're going to use the data source method.
+
+`NSCollectionView` has a `datasource` property. This can be set to any object that adopts the `NSCollectionViewDataSource` protocol. This protocol defines three methods which you must implement to tell the collection view what content it should display.
+
+
+First, add the following to `ViewController`:
+
+```swift
+var giphyItems : [GiphyItem]? {
+  didSet {
+    collectionView.reloadData()
+  }
+}
+```
+
+This defines a property - an array of `GiphyItem` objects, which, when updated, will cause the collection view to update itself to reflect the new data.
+
+Add the following class extension to the bottom of __ViewController.swift__:
+
+
+```swift
+extension ViewController : NSCollectionViewDataSource {
+  // 1:
+  func numberOfSectionsInCollectionView(collectionView: NSCollectionView) -> Int {
+    return 1
+  }
+  
+  // 2:
+  func collectionView(collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+    return giphyItems?.count ?? 0
+  }
+  
+  // 3:
+  func collectionView(collectionView: NSCollectionView, itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath) -> NSCollectionViewItem {
+    // 4:
+    let item  = collectionView.makeItemWithIdentifier("GiphyCollectionItem", forIndexPath: indexPath)
+    
+    // 5:
+    if let item = item as? GiphyCollectionItem {
+      item.giphyItem = giphyItems?[indexPath.item]
+    }
+    
+    return item
+  }
+}
+```
+
+1. A collection view is made up of 1 or more sections - each of which can contain its own set of items. Here, you only need one section.
+2. The collection view needs to know how many items there will be in each section. Since there's only one section in your collection view, the number of items is simply the total number of items in the `giphyItems` array.
+3. The collection view will call this method once for each item in the collection view - requiring you to provide it with the item you want to display.
+4. The `makeWithIdentifier(_:, forIndexPath:)` method will create a collection view item using the XIB specified by the name. It also implements recycling - once an item has scrolled off screen it'll be recycled to represent a different model object in a different location. This has great memory benefits, but can make code associated with the item more complicated (hence canceling any currently running download tasks).
+5. If the created item is of the correct type, provide it with the appropriate model object so that it can display it.
+
+
+You've now made the `ViewController` class adopt the `NSCollectionViewDataSource` protocol - you just need to tell the collection view where to look for its data.
+
+Add the following two lines to the end of the `viewDidLoad()` method:
+
+```swift
+collectionView.dataSource = self
+collectionView.minItemSize = NSSize(width: 200, height: 200)
+collectionView.registerClass(GiphyCollectionItem.self, forItemWithIdentifier: "GiphyCollectionItem")
+```
+
+In addition to configure the data source for the collection view, this also sets the minimum size, and registers your custom `GiphyCollectionItem` class so that the collection view can use it.
+
+You've actually now finished implementing the results display. It'd be nice to test it though right? Add the following code to the end of the same `viewDidLoad()` method:
+
+```swift
+searchGiphy("it works") {
+  giphyResult in
+  switch giphyResult {
+  case .Error(let error):
+    print(error)
+  case .Result(let items):
+    self.giphyItems = items
+  }
+}
+```
+
+This calls the `searchGiphy()` function that you created back in the data layer, and then sets the `giphyItems` property on `ViewController` to the results.
+
+Build and run gifMe to see the results of all the UI work you've been doing:
+
+![BAR 3](img/bar_03.png)
+
+Wow! That's pretty cool right? You've already managed to create a fairly cool app, without too much difficulty.
+
+Something will probably stick out at you though... The search is returning GIFs, but they aren't animating. You're going to fix that next.
+
+
+## Adding Animation
+
+`NSImageView` supports animating images out of the box - you just need to toggle a property. You could do this by default for the collection view item, but having a screen full of animating GIFs isn't a great UX. Instead you're going to toggle the animation property when the user clicks on the image view.
+
+
+
+
 
 
 ## Where to go from here
