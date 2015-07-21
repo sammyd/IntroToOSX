@@ -234,7 +234,7 @@ You'll see that this adds the following property to __ViewController.swift__:
 You'll use this item later - but first you need to provide the design for each item in the collection view.
 
 
-### Collection View Item
+### Collection View Item
 
 Each search result will be represented by a collection view item - which is a subclass of `NSViewController`. You'll need a custom subclass so you can write code to display your `GiphyItem` model object correctly.
 
