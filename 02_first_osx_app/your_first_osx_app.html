@@ -1,0 +1,722 @@
+
+<h1>Introduction to developing for OS X: Your First App</h1>
+
+<h2>Introduction</h2>
+
+This introductory series about building apps on OS X has covered a lot of ground. If you haven't already read them, go and take a look now so that you have a grounding from which to build in this tutorial. This is what you've already learned:
+
+<ul>
+<li>
+<em>Tooling</em> In part one you learned about the many facets of Xcode - and had a glimpse of how you could use it to start developing for OS X.
+</li>
+
+<li>
+<em>App Anatomy</em> The second part covered a lot of the theory behind how OS X app are constructed - from the data layer, through the binary assets, to designing the UI.
+</li>
+</ul>
+
+In this final part, you're going to dive deep into the world of OS X development, by creating your first ever app!
+
+Rather than creating some toy project, your going to jump feet-first into building an app which searches and displays animated GIFs. As you might guess, this isn't a trivial app, but a realistic, fully-functional app. There's a lot to do, so there will be bits of theory that you'll have to catch up on in later tutorials.
+
+<h2>gifMe</h2>
+
+The app you're going to build from scratch it called <em>gifMe</em> - it's a search app for animated GIFs. When the user enters a search term, gifMe queries the <a href="https://giphy.com">giphy.com</a> API, and then displays the results in a collection view. The images are animated when the user clicks on them.
+
+
+<img src="img/ba4_04.png" alt="Optional("gifMe")" title="nil" />
+
+
+<div class="note">
+<em>Note:</em> This app requires OS X El Capitan, so if you don't have it - make sure you upgrade to it before trying to follow the tutorial.
+</div>
+
+That's enough introduction - time to get coding!
+
+<h2>Creating the Project</h2>
+
+Open Xcode and click <em>Create a new Xcode project</em> to start your new app. Choose <em>OS X </em><em>\</em><em> Application </em><em>\</em><em> Cocoa Application</em>:
+
+
+<img src="img/project_template.png" alt="Optional("Project Template")" title="nil" />
+
+
+Set the product name <em>gifMe</em>, the language to <em>Swift</em> and ensure that the <em>Use Storyboards</em>  is checked:
+
+
+<img src="img/project_options.png" alt="Optional("Project Options")" title="nil" />
+
+
+Choose a location on disk to save your project and then click <em>Create</em> to open your empty project.
+
+Build and run <em>gifMe</em> to check that everything is working:
+
+
+<img src="img/bar_01.png" alt="Optional("1st Build and Run")" title="nil" />
+
+
+Great - so the app runs, but it does <i>absolutely nothing</i> yet. In the next section you're going to build the data layer that will perform the GIF searches.
+
+<h2>Data Layer</h2>
+
+The data layer is responsible for querying the giphy API with a search term, and then returning the results in a useful form.
+
+To start, you're going to create a Swift struct that will model each search result.
+
+<em>Right click</em> on the yellow <em>gifMe</em> group, and use the menu to create a new group:
+
+
+<img src="img/create_group.png" alt="Optional("Create Group")" title="nil" />
+
+
+Call this group <em>Data Layer</em>. Right click on this new group, and select __New File...__:
+
+
+<img src="img/new_file.png" alt="Optional("New File")" title="nil" />
+
+
+Choose <em>OS X </em><em>\</em><em> Source </em><em>\</em><em> Swift File</em> and call the new file <em>Giphy.swift</em>:
+
+
+<img src="img/create_file_giphy.png" alt="Optional("Create Giphy.swift")" title="nil" />
+
+
+Add the following code to this new file:
+
+<pre lang="swift">
+struct GiphyItem {
+  let id: String
+  let caption: String
+  let url: NSURL
+}
+</pre>
+
+This defines a struct with three different properties - <code>id</code> is a unique string returned by giphy, the caption is string associated with the item and <code>url</code> is the location the GIF can be downloaded from. For an app as simple as <em>gifMe</em>, this is all you need in your data model - sweet, huh?
+
+<h3>JSON Parsing</h3>
+
+The giphy API returns JSON, and you need to convert this into your new <code>GiphyItem</code> structs. Rather than write all the guts of this code yourself, you're going to use a simple library called <em>SwiftyJSON</em> to do the heavy lifting.
+
+Download <em>SwiftyJSON.swift</em> and drag it from Finder into the <em>Data Layer</em> group in your Xcode project. When asked, ensure that <em>Copy items if needed</em> is checked:
+
+
+<img src="img/adding_swifty.png" alt="Optional("Adding SwiftyJSON")" title="nil" />
+
+
+This adds the <em>SwiftyJSON</em> functionality, which will make parsing the giphy JSON a lot easier.
+
+You can now add an initializer for <code>GiphyItem</code> that accepts a <code>JSON</code> object. Copy the following into <em>Giphy.swift</em>:
+
+<pre lang="swift">
+extension GiphyItem {
+  init?(json: JSON) {
+    guard let id = json["id"].string,
+      let caption = json["caption"].string,
+      let urlString = json["images"]["fixed_height"]["url"].string,
+      let url = NSURL(string: urlString) else {
+        return nil
+    }
+    self.init(id: id, caption: caption, url: url)
+  }
+}
+</pre>
+
+This code creates a new initializer for <code>GiphyItem</code> that extracts the relevant fields from a <code>JSON</code> object. <em>SwiftyJSON</em> provides the functionality that allows you to use subscripting to extract data from a JSON object.
+
+Next you need to create a function that will perform the search - querying the giphy API and returning an array of <code>GiphyItem</code> results. In order to assist with this, you need to add another file to your project. This file contains helper functions to construct the giphy API URL for a given search term, and to convert the returned JSON into an array of <code>GiphyItem</code> objects.
+
+Download <em>GiphyUtils.swift</em>, and drag it from the finder into the <em>Data Layer</em> group. Once again, ensure that <em>Copy items if needed</em> is checked.
+
+You can now construct a function that will perform the API query.
+
+Add the following code to <em>Giphy.swift</em>:
+
+<pre lang="swift">
+func searchGiphy(searchTerm: String, resultHandler: (GiphySearchResult) -> ()) {
+  // 1:
+  guard let url = urlForSearchTerm(searchTerm) else {
+    print("Error creating the search URL")
+    return
+  }
+  // 2:
+  let task = NSURLSession.sharedSession().dataTaskWithURL(url, completionHandler: {
+    (data, response, error) in
+    if let error = error {
+      print("Error: \(error.localizedDescription)")
+      resultHandler(GiphySearchResult.Error(error))
+      return
+    }
+    // 3:
+    let json = JSON(data: data!)
+    // 4:
+    let giphyItems = convertJSONToGiphyItems(json)
+    // 5:
+    resultHandler(GiphySearchResult.Result(giphyItems))
+    
+  })
+  // 6:
+  task?.resume()
+}
+</pre>
+
+<ol start="1">
+<li>
+<code>urlForSearchTerm(_:)</code> is a function provided by <em>GiphyUtils.swift</em>. It generates the correct URL for the given search term. The <code>guard</code> statement ensures that a URL was successfully returned.
+</li>
+
+<li>
+Requesting data from the network involves creating an asynchronous task, using the URL and a closure that defines what happens when the task completes.
+</li>
+
+<li>
+<em>JSON</em> is the main type within <em>SwiftyJSON</em>. It's initialized with the data received from the giphy API.
+</li>
+
+<li>
+<code>convertJSONToGiphyItems(_:)</code> is another function provided by <em>GiphyUtils.swift</em>. It uses the custom initializer for <code>GiphyItem</code> you created earlier to generate an array of <code>GiphyItem</code> structs.
+</li>
+
+<li>
+Since this is an asynchronous function, rather than returning the result, you provide it via a callback function.
+</li>
+
+<li>
+Once you've created the task, calling <code>resume()</code> will start the network request.
+</li>
+</ol>
+
+Note that this method doesn't return any values. This is because the network request is an asynchronous process, so instead you provide a <code>resultHandler</code> closure that gets called once the request has completed (see step 5).
+
+Without any UI, it's difficult to demonstrate what you've done is working - but you can turn to logging. You're going to use this new search function to perform a search, and print the results out to the console.
+
+Open <em>ViewController.swift</em> and add the following code to the end of the <code>viewDidLoad()</code> function:
+
+<pre lang="swift">
+searchGiphy("excited") {
+  giphyResult in
+  switch giphyResult {
+  case .Error(let error):
+    print(error)
+  case .Result(let items):
+    print(items)
+  }
+}
+</pre>
+
+This uses your new search method, and prints out the results. Build and run your app and then check the console. You'll see a load of text detailing the array of <code>GiphyItem</code> objects returned by the search:
+
+
+<img src="img/bar_02.png" alt="Optional("BAR 2")" title="nil" />
+
+
+You've now created a model to represent the search results, and a function that will query the giphy API with a search term. That's it for the data layer - time to move your attention to the UI!
+
+<h2>User Interface</h2>
+
+The user interface of gifMe is made up of two parts - the results view, and the search interface. You're going to start by creating the results display, before moving on to adding the search functionality.
+
+<h3>Results UI</h3>
+
+The results will be shown in a collection view, which is a way to display a set of elements - by default in a grid-like fashion. As the size of the collection view changes, it'll re-arrange the items automatically.
+
+Collection views in OS X are represented by the <code>NSCollectionView</code> class. You are going to build the UI in Interface Builder, and then configure it in code.
+
+Open <em>Main.storyboard</em> and find the <em>View Controller</em> scene. In the current configuration, this view controller represents the entire content of the view. You're going to add a collection view to this scene, which will show the images from the search results.
+
+Use the search box at the bottom of the <em>object library</em> to find the <em>Collection View</em>:
+
+
+<img src="img/collection_view.png" alt="Optional("Collection View")" title="nil" />
+
+
+<em>Drag</em> a collection view from the <em>object library</em> on to the <em>View controller</em> scene:
+
+
+<img src="img/drag_collection_view.png" alt="Optional("Drag Collection View")" title="nil" />
+
+
+This will add a collection view to the scene, and also a new scene scene which represents the layout for each of the items in the collection view:
+
+
+<img src="img/collection_view_added.png" alt="Optional("Collection view added")" title="nil" />
+
+
+Due to a bug in the current version of Xcode, you will have to provide the layout for the collection view item in a separate XIB file. Select the <em>Collection View Item</em> scene and press <em>delete</em> to remove it.
+
+You want to specify that the collection view should fill the entirety of the view controller. You will do this using a system called Auto Layout. This is a layout engine that can determine the sizes and positions of view elements at runtime, as dictated by a set of relationships that you provide at design time. You want to specify that the collection view should fill the entire scene, so you'll provide constraints that specify that its edges should be pinned to the edges of its containing view.
+
+Select the collection view, and then use the <em>Pin</em> menu in the bottom bar to specify that there should be a distance of <em>0</em> around each of the edges. Ensure that <em>Update frames</em> is set to <em>Items of New Constraints</em> before adding the constraints.
+
+
+<img src="img/collection_constraints.png" alt="Optional("Collection View Constraints")" title="nil" />
+
+
+That's all you need to do with the layout of the collection view itself.
+
+Currently, there is no way to access the collection view from code - which you'll need to be able to do to configure it. Xcode has a system whereby you can create an outlet in code which will attach to the object in the storyboard at run time. You're going to do that now for the collection view.
+
+Open the assistant editor in Xcode by selecting it in the menu bar:
+
+
+<img src="img/assistant_editor.png" alt="Optional("Assistant Editor")" title="nil" />
+
+
+Use the jump bar in the assistant editor to select <em>Automatic </em><em>\</em><em> ViewController.swift</em>.
+
+
+<img src="img/jump_bar.png" alt="Optional("Jump bar")" title="nil" />
+
+
+Back in IB, locate the collection view in the <em>Document Outline</em>:
+
+
+<img src="img/collection_document_outline.png" alt="Optional("Collection View Document Outline")" title="nil" />
+
+
+<em>Ctrl-Drag</em> from the <em>Collection View</em> over to <em>View Controller.swift</em>:
+
+
+<img src="img/cv_drag.png" alt="Optional("Collection View Drag")" title="nil" />
+
+
+Name the new outlet <code>collectionView</code>:
+
+
+<img src="img/cv_outlet.png" alt="Optional("Collection View Outlet")" title="nil" />
+
+
+You'll see that this adds the following property to <em>ViewController.swift</em>:
+
+<pre lang="swift">
+@IBOutlet weak var collectionView: NSCollectionView!
+</pre>
+
+You'll use this item later - but first you need to provide the design for each item in the collection view.
+
+### Collection View Item
+
+Each search result will be represented by a collection view item - which is a subclass of <code>NSViewController</code>. You'll need a custom subclass so you can write code to display your <code>GiphyItem</code> model object correctly.
+
+Use the menu to select <em>File </em><em>\</em><em> New </em><em>\</em><em> File...</em> and find <em>OS X </em><em>\</em><em> Source </em><em>\</em><em> Cocoa Class</em> in the template chooser. Name the class <em>GiphyCollectionItem</em>, and make it a subclass of <em>NSCollectionViewItem</em>. Ensure that <em>Also create XIB file for user interface is checked</em>:
+
+
+<img src="img/create_cvi.png" alt="Optional("Creating Collection View Item")" title="nil" />
+
+
+You can use Interface Builder to provide the design for these items, in a cut-down version of a storyboard, called a XIB. Whereas storyboards support multiple scenes, a XIB has no concept of flow between scenes - instead just providing layout for a view.
+
+Open the newly-created <em>GiphyCollectionItem.xib</em> - you can see a blank custom view. Find an <em>Image View</em> in the <em>Object library</em> and drag it onto the blank view:
+
+
+<img src="img/image_view.png" alt="Optional("Image View")" title="nil" />
+
+
+As before, use the <em>Pin</em> menu to create the Auto Layout constraints to set sizes of the 4 margins to be <em>0</em>.
+
+You now need to wire this new image view up to the collection view item class. Since the Xcode knew you were going to use this XIB with the <code>GiphyCollectionItem</code> class you created, it has already linked the <em>File's Owner</em> property to the class - you just need to link the image view.
+
+In the <em>Document Outline</em>, <em>Ctrl-Drag</em> from the <em>File's Owner</em> to the <em>Image View</em> inside the <em>Custom View</em>. Select <em>imageView</em> in the popup box.
+
+
+<img src="img/cvi_link_imageview.png" alt="Optional("Link Image View")" title="nil" />
+
+
+That's all you need to do for the design of the collection view item - time to move your attention to writing its code.
+
+<h3>Loading Images</h3>
+
+Remember back to the <code>GiphyItem</code> data model - it doesn't provide an image, but a URL where the image can be found. Therefore, the collection view item will be responsible for downloading the GIF.
+
+Add the following properties to the <code>GiphyCollectionItem</code> class in <em>GiphyCollectionItem.swift</em>:
+
+<pre lang="swift">
+private var imageDownloadTask : NSURLSessionDataTask?
+private static let imageCache = NSCache()
+</pre>
+
+<code>imageDownloadTask</code> is the network request that you'll create to download an image. You need to keep a reference to it so that you can cancel it if you need to. GIFs are very large files, so rather than re-downloading them repeatedly, you're going to cache them in <code>imageCache</code>.
+
+Add the following function to <code>GiphyCollectionItem</code>:
+
+<pre lang="swift">
+private func loadImageAysnc(url: NSURL, callback: (NSImage) -> ()) {
+  // 1:
+  imageDownloadTask = NSURLSession.sharedSession().dataTaskWithURL(url) {
+    (data, _, _) in
+    if let data = data {
+      // 2:
+      let image = NSImage(data: data)
+      // 3:
+      dispatch_async(dispatch_get_main_queue()) {
+        // 4:
+        callback(image!)
+        // 5:
+        self.imageDownloadTask = nil
+      }
+    }
+  }
+  // 6:
+  imageDownloadTask?.resume()
+}
+</pre>
+
+<ol start="1">
+<li>
+As you did with the API request - create a download task to grab the GIF.
+</li>
+
+<li>
+Once the data has arrived, convert it into an <code>NSImage</code>.
+</li>
+
+<li>
+Download tasks can run on an arbitrary background queue. Since you're going to be calling back to the UI, marshal the callback onto the main queue.
+</li>
+
+<li>
+Provide the image back to the caller via the <code>callback</code> closure.
+</li>
+
+<li>
+This image download succeeded, so remove the reference to it.
+</li>
+
+<li>
+Once you've create the task, you have to call <code>resume()</code> to actually start it.
+</li>
+</ol>
+
+<h4>App Transport Security</h4>
+
+Before OS X 10.11, this would have been enough, but El Capitan introduced <em>App Transport Security</em>, which forces all network connections to be properly secured. Unfortunately the image servers on giphy.com don't support a feature that OS X requires, so you need to make an exception to allow these network connections to work.
+
+Open <em>Info.plist</em> and use the <em>+</em> button next to the root <em>Information Property List</em> to create a new entry. Call this entry <em>NSAppTransportSecurity</em> and set its type to <em>Dictionary</em>:
+
+
+<img src="img/ats_root.png" alt="Optional("ATS Root")" title="nil" />
+
+
+Use the <em>+</em> next to this new entry to create a new <em>Dictionary</em> called <em>NSExceptionDomains</em>. Make a <em>Dictionary</em> within this new element called <em>giphy.com</em>.
+
+Click the <em>+</em> next to this <em>giphy.com</em> entry to create two new entries. Ensure that they both have <em>Boolean</em> types. Name the first <em>NSExceptionRequiresForwardSecrecy</em> with a value of <em>NO</em>, and the second <em>NSIncludesSubdomains</em> with a value of <em>YES</em>.
+
+Once you've done all this, the <em>NSAppTransportSecurity</em> entry in <em>Info.plist</em> should look like this:
+
+
+<img src="img/ats_complete.png" alt="Optional("ATS Complete")" title="nil" />
+
+
+<h4>Image Display</h4>
+
+Now that you've created a helper function to actually download the image, you can use this to grab the image for a specific <code>GiphyItem</code>. Add the following function to the same class:
+
+<pre lang="swift">
+private func updateImageForGiphyItem(item: GiphyItem) {
+  imageView?.image = nil
+  // 1:
+  imageDownloadTask?.cancel()
+  // 2:
+  if let image = GiphyCollectionItem.imageCache.objectForKey(item.id) as? NSImage {
+    self.imageView?.image = image
+  } else {
+    // 3:
+    loadImageAysnc(item.url) {
+      image in
+      // 4:
+      self.imageView?.image = image
+      GiphyCollectionItem.imageCache.setObject(image, forKey: item.id)
+    }
+  }
+}
+</pre>
+
+<ol start="1">
+<li>
+Before attempting to download a new image, cancel an existing download task, if there is one.
+</li>
+
+<li>
+Check to see whether the image you're trying to download is already present in the cache. <code>NSCache</code> is essentially a clever mutable dictionary - you're using the <code>id</code> property of the <code>GiphyItem</code> to index the cached images. If the image is in the cache, update the <code>imageView</code> to display it.
+</li>
+
+<li>
+The image isn't cached, so use the function you just created to download it asynchronously.
+</li>
+
+<li>
+Once the image has successfully downloaded, update the <code>imageView</code> with the new image, and cache the image so it won't be downloaded next time it's needed.
+</li>
+</ol>
+
+You're almost there with the collection view item - the final piece of the puzzle is to call this image update code when the collection view item is provided with a new <code>GiphyItem</code> model object. Add the following property to the class:
+
+<pre lang="swift">
+  var giphyItem : GiphyItem? {
+    didSet {
+      if let giphyItem = giphyItem {
+        updateImageForGiphyItem(giphyItem)
+      }
+    }
+  }
+</pre>
+
+This checks that the new value isn't <code>nil</code> before calling the function you just created to download the image and update the view.
+
+That's everything you need to do in the collection view item. You now just need to add some code to make the collection view use your custom item.
+
+### Collection View
+
+You've already created an outlet property for the collection view in <em>ViewController.swift</em>, but now you need to configure it. There are two ways to tell a collection view what content it should display - either via data-binding or via a data source. In this introductory tutorial, you're going to use the data source method.
+
+<code>NSCollectionView</code> has a <code>datasource</code> property. This can be set to any object that adopts the <code>NSCollectionViewDataSource</code> protocol. This protocol defines three methods which you must implement to tell the collection view what content it should display.
+
+First, add the following to <code>ViewController</code>:
+
+<pre lang="swift">
+var giphyItems : [GiphyItem]? {
+  didSet {
+    collectionView.reloadData()
+  }
+}
+</pre>
+
+This defines a property - an array of <code>GiphyItem</code> objects, which, when updated, will cause the collection view to update itself to reflect the new data.
+
+Add the following class extension to the bottom of <em>ViewController.swift</em>:
+
+<pre lang="swift">
+extension ViewController : NSCollectionViewDataSource {
+  // 1:
+  func numberOfSectionsInCollectionView(collectionView: NSCollectionView) -> Int {
+    return 1
+  }
+  
+  // 2:
+  func collectionView(collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+    return giphyItems?.count ?? 0
+  }
+  
+  // 3:
+  func collectionView(collectionView: NSCollectionView, itemForRepresentedObjectAtIndexPath indexPath: NSIndexPath) -> NSCollectionViewItem {
+    // 4:
+    let item  = collectionView.makeItemWithIdentifier("GiphyCollectionItem", forIndexPath: indexPath)
+    
+    // 5:
+    if let item = item as? GiphyCollectionItem {
+      item.giphyItem = giphyItems?[indexPath.item]
+    }
+    
+    return item
+  }
+}
+</pre>
+
+<ol start="1">
+<li>
+A collection view is made up of 1 or more sections - each of which can contain its own set of items. Here, you only need one section.
+</li>
+
+<li>
+The collection view needs to know how many items there will be in each section. Since there's only one section in your collection view, the number of items is simply the total number of items in the <code>giphyItems</code> array.
+</li>
+
+<li>
+The collection view will call this method once for each item in the collection view - requiring you to provide it with the item you want to display.
+</li>
+
+<li>
+The <code>makeWithIdentifier(_:, forIndexPath:)</code> method will create a collection view item using the XIB specified by the name. It also implements recycling - once an item has scrolled off screen it'll be recycled to represent a different model object in a different location. This has great memory benefits, but can make code associated with the item more complicated (hence canceling any currently running download tasks).
+</li>
+
+<li>
+If the created item is of the correct type, provide it with the appropriate model object so that it can display it.
+</li>
+</ol>
+
+You've now made the <code>ViewController</code> class adopt the <code>NSCollectionViewDataSource</code> protocol - you just need to tell the collection view where to look for its data.
+
+Add the following two lines to the end of the <code>viewDidLoad()</code> method:
+
+<pre lang="swift">
+collectionView.dataSource = self
+collectionView.minItemSize = NSSize(width: 200, height: 200)
+collectionView.registerClass(GiphyCollectionItem.self, forItemWithIdentifier: "GiphyCollectionItem")
+</pre>
+
+In addition to configure the data source for the collection view, this also sets the minimum size, and registers your custom <code>GiphyCollectionItem</code> class so that the collection view can use it.
+
+You've actually now finished implementing the results display. It'd be nice to test it though right? Update the search call at the end of <code>viewDidLoad()</code> to match the following:
+
+<pre lang="swift">
+searchGiphy("excited") {
+  giphyResult in
+  switch giphyResult {
+  case .Error(let error):
+    print(error)
+  case .Result(let items):
+    self.giphyItems = items
+  }
+}
+</pre>
+
+Rather than logging the search results, you're now setting them as the <code>giphyItems</code> property on <code>ViewController</code>.
+
+Build and run gifMe to see the results of all the UI work you've been doing:
+
+
+<img src="img/bar_03.png" alt="Optional("BAR 3")" title="nil" />
+
+
+Wow! That's pretty cool right? You've already managed to create a fairly cool app, without too much difficulty.
+
+Something will probably stick out at you though... The search is returning GIFs, but they aren't animating. You're going to fix that next.
+
+<h2>Animating those GIFs</h2>
+
+<code>NSImageView</code> supports animating images out of the box - you just need to toggle a property. You could do this by default for the collection view item, but having a screen full of animating GIFs isn't a great UX. Instead you're going to toggle the animation property when the user clicks on the image view.
+
+OS X has a system of gesture recognizers that are the easiest way to link up complex touch-based user interaction to your code. You're going to add the simplest of these, the <em>Click Gesture Recognizer</em> to gifMe.
+
+Open <em>GiphyCollectionItem.xib</em>, find a <em>Click Gesture Recognizer</em> in the <em>Object library</em> and drag it onto the <em>Image View</em>. You'll see this appear in the <em>Document Outline</em>:
+
+
+<img src="img/click_recognizer.png" alt="Optional("Click Recognizer")" title="nil" />
+
+
+When a gesture recognizer is triggered, it fires an action - you need to wire that up now.
+
+Open the assistant editor, and ensure that <em>GiphyCollectionItem</em> is visible. <em>Ctrl-drag</em> from the <em>Click Gesture Recognizer</em> in the <em>Document Outline</em> to the <code>GiphyCollectionItem</code> class. Change the <em>Connection</em> to <em>Action</em> and name the action <em>handleClick</em>:
+
+
+<img src="img/wire_up_recognizer.png" alt="Optional("Wire Up Recognizer")" title="nil" />
+
+
+Update the created method to match the following:
+
+<pre lang="swift">
+@IBAction func handleClick(sender: AnyObject) {
+  if let imageView = imageView {
+    imageView.animates = !imageView.animates
+  }
+}
+</pre>
+
+When the user clicks on the image, this method will be called, and the <code>animates</code> property will be toggled.
+
+The last thing to do is to reset this property when a new image is provided. Add the following line to the beginning of <code>updateImageForGiphyItem(_:)</code>:
+
+<pre lang="swift">
+imageView?.animates = false
+</pre>
+
+Build and run gifMe and try clicking on the different images. You'll see the animation toggle on and off - pretty cool, huh?
+
+<h2>Find Me a GIF</h2>
+
+gifMe isn't very useful yet - each time you want to search for a different term you have to recompile the app. You're going to fix that with the addition of a search field in the tool bar.
+
+Open <em>Main.storyboard</em>, find a <em>Toolbar</em> in the <em>Object Library</em> and drag it onto the _<i>Window Controller</i> scene. <em>Double click</em> on this to bring up the toolbar configuration:
+
+
+<img src="img/toolbar_config.png" alt="Optional("Toolbar config")" title="nil" />
+
+
+You only need the <em>Flexible Space</em> item in the <em>Allowed Toolbar Items</em> so select each of the others in turn and press <em>delete</em> to remove them. Then find a <em>Search Field</em> in the <em>Object Library</em> and drag it onto the toolbar config. Then drag it from the <em>Allowed Toolbar Items</em> down into the <em>Default Toolbar Items</em>. Your toolbar config will now look like this:
+
+
+<img src="img/completed_toolbar_config.png" alt="Optional("Completed Toolbar Config")" title="nil" />
+
+
+Select the <em>Custom View</em> in the <em>Document Outline</em> and use the <em>Attributes Inspector</em> to remove the <em>Label</em>. Then select the <em>Search Field</em>, and check the <em>Sends Whole Search String</em> property in the <em>Attributes Inspector</em>:
+
+
+<img src="img/search_field_config.png" alt="Optional("Search Field Config")" title="nil" />
+
+
+Hit done to complete your work on the toolbar. Unfortunately there seems to be a bug in the current beta of Xcode whereby the search field is not rendered correctly in Interface Builder. At this stage you can build and run to check that it looks correct in the actual app:
+
+
+<img src="img/search_render.png" alt="Optional("Search Render")" title="nil" />
+
+
+The search field doesn't actually do anything yet - you need to wire it up to some code first. To do that you'll need a custom subclass of <code>NSWindowController</code>.
+
+Select <em>File </em><em>\</em><em> New </em><em>\</em><em> File...</em> from the menu, and then locate <em>OS X </em><em>\</em><em> Source </em><em>\</em><em> Cocoa Class</em>. Name the class <code>WindowController</code> and make it a subclass of `NSWindowController. Ensure that <em>Also create XIB file for user interface</em> is <em>not checked</em>.
+
+Back in <em>Main.storyboard</em>, select the _<i>Window Controller</i> scene, and use the <em>Identity Inspector</em> to set the class to the newly created <em>WindowController</em>:
+
+
+<img src="img/window_identity.png" alt="Optional("Window Identity")" title="nil" />
+
+
+Now that you've got a custom class backing the window controller, you can wire up the search field.
+
+Open the <em>Assistant Editor</em> and ensure that it's displaying <em>WindowController.swift</em>. <em>Ctrl-drag</em> from the <em>Search Field</em> in the <em>Document Outline</em> to <code>Window Controller</code>. Create first an <em>Outlet</em> named <em>searchField</em>:
+
+
+<img src="img/search_outlet.png" alt="Optional("Search Outlet")" title="nil" />
+
+
+Then, repeat the <em>ctrl-drag</em>, this time creating an <em>Action</em>, naming it <em>handleSearch</em>:
+
+
+<img src="img/search_action.png" alt="Optional("Search Action")" title="nil" />
+
+
+This new action will be called whenever the user presses the enter key after entering content into the search field. You need to add some code to perform the giphy search.
+
+Add the following code to the <code>handleSearch</code> method:
+
+<pre lang="swift">
+if let vc = contentViewController as? ViewController {
+  searchGiphy(searchField.stringValue) {
+    result in
+    switch result {
+    case .Error(let error):
+      print(error.localizedDescription)
+    case .Result(let giphyItems):
+      dispatch_async(dispatch_get_main_queue()) {
+        vc.giphyItems = giphyItems
+      }
+    }
+  }
+}
+</pre>
+
+You've seen most of this code before - just using the <code>searchGiphy</code> function you created to perform the search. There are a couple of differences:
+
+<ul>
+<li>
+Before performing the search, you first check that the view controller that this window is displaying is of the correct type - i.e. the custom <code>ViewController</code> you made to display the results in a collection view.
+</li>
+
+<li>
+The search is then seeded not with a fixed string, but instead the content of the search field.
+</li>
+
+<li>
+When the results are returned, they're passed to the content view controller via its <code>giphyItems</code> property.
+</li>
+</ul>
+
+One final thing to do - and that's to remove the call to <code>searchGiphy</code> in <em>ViewController.swift</em>. Find the call (inside <code>viewDidLoad()</code>) and delete it. Remember that it is 9 lines long.
+
+Now, build and run to test out your completed app:
+
+
+<img src="img/bar_04.png" alt="Optional("Completed App")" title="nil" />
+
+
+Try using the search box to search for some GIFs, and then clicking on them to play them. That's a pretty amazing app for your first ever OS X app!
+
+<h2>Where to go from here</h2>
+
+You can download the completed version of gifMe here. If you've enjoyed building this app, maybe you'd like to have a go at adding loading indicators to the collection view items, so that you know when a GIF is being downloaded.
+
+Or maybe you have your own ideas of OS X apps you'd like to create? This introductory series has given you a basic level of knowledge to get started with OS X apps - but there's so much more to learn!
+
+Apple has some great documentation covering all aspects of OS X development - head on over to https://developer.apple.com/library/mac/navigation/
+
+You should also stick around on raywenderlich.com - we've got some awesome OS X tutorials lined up for the coming months!
+
+If you have any comments or questions feel free to reach out on twitter, or in the comments section below!
