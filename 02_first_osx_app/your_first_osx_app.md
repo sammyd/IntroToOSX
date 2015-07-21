@@ -1,15 +1,26 @@
 # Introduction to developing for OS X: Your First App
 
 ## Introduction
-- UI very important
-- Should build as much as possible in Storyboards
-- Outline
 
-## Prerequisites
-- Mac
-- OS X
-- Xcode
-- Link to tooling
+This introductory series about building apps on OS X has covered a lot of ground. If you haven't already read them, go and take a look now so that you have a grounding from which to build in this tutorial. This is what you've already learned:
+
+- __Tooling__ In part one you learned about the many facets of Xcode - and had a glimpse of how you could use it to start developing for OS X.
+- __App Anatomy__ The second part covered a lot of the theory behind how OS X app are constructed - from the data layer, through the binary assets, to designing the UI.
+
+In this final part, you're going to dive deep into the world of OS X development, by creating your first ever app!
+
+Rather than creating some toy project, your going to jump feet-first into building an app which searches and displays animated GIFs. As you might guess, this isn't a trivial app, but a realistic, fully-functional app. There's a lot to do, so there will be bits of theory that you'll have to catch up on in later tutorials.
+
+
+## gifMe
+
+The app you're going to build from scratch it called __gifMe__ - it's a search app for animated GIFs. When the user enters a search term, gifMe queries the [giphy.com](https://giphy.com) API, and then displays the results in a collection view. The images are animated when the user clicks on them.
+
+![gifMe](img/ba4_04.png)
+
+> __Note:__ This app requires OS X El Capitan, so if you don't have it - make sure you upgrade to it before trying to follow the tutorial.
+
+That's enough introduction - time to get coding!
 
 ## Creating the Project
 
@@ -560,6 +571,14 @@ Try using the search box to search for some GIFs, and then clicking on them to p
 
 
 ## Where to go from here
-- Summarise what you've learnt in these tutorials
-- Mention that we'll have loads of new content as part of the OS X team
-- Link to Apple's documentation
+
+You can download the completed version of gifMe here. If you've enjoyed building this app, maybe you'd like to have a go at adding loading indicators to the collection view items, so that you know when a GIF is being downloaded.
+
+Or maybe you have your own ideas of OS X apps you'd like to create? This introductory series has given you a basic level of knowledge to get started with OS X apps - but there's so much more to learn!
+
+Apple has some great documentation covering all aspects of OS X development - head on over to https://developer.apple.com/library/mac/navigation/
+
+You should also stick around on raywenderlich.com - we've got some awesome OS X tutorials lined up for the coming months!
+
+If you have any comments or questions feel free to reach out on twitter, or in the comments section below!
+
