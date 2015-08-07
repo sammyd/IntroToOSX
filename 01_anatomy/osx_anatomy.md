@@ -185,5 +185,9 @@ Some highlights of other parts of Cocoa that are extremely useful when building 
 - __WebKit__ Safari is one of the top web browsers, and you can integrate the powerful rendering engine into your own app via WebKit. It also includes the ability to interact with the content, and to render HTML content from a selection of sources.
 
 ## Where to go from here?
-- Next article will introduce UI concepts
-- Links to Apple documentation
+
+This article has given you an overview of how Cocoa apps for OS X fit together, but it hasn't given you a great idea of how you can actually use this to get started creating apps. Fear not - for that is the purpose of the next article in this introductory series.
+
+If you'd like to learn more about the theoretical side of building OS X apps then Apple has provided a good guide to Cocoa apps as part of the documentation guides. It's not especially helpful at the practical aspects of building apps, but if you read it in its entirety then you'll know an awful lot about Cocoa!
+
+As ever, if you have any questions or comments feel free to get involved on the forums or leave a comment below.
