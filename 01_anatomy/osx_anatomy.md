@@ -175,11 +175,14 @@ Core Data has great support for Cocoa Bindings, meaning that it's really easy to
 
 
 ## Other useful Cocoa functionality
-- Just a couple of sentences about where to look:
-  + Networking
-  + MapKit & CoreLocation
-  + Contacts
-  + WebKit
+
+This article has given you a very brief overview of some of the Cocoa concepts that are likely to be used in every single OS X app. This barely scrapes the surface of what is a very rich platform.
+
+Some highlights of other parts of Cocoa that are extremely useful when building powerful OS X apps:
+
+- __Networking__ In addition to access to the very lowest level of networking functionality, OS X provides a much higher-level API for handling HTTP requests. The networking model is built around an asynchronous session - seamlessly handling uploads and downloads as a list of tasks.
+- __Location__ You might associate location-based services primarily with mobile devices, but you have full access to a lot of powerful functionality both about location through Core Location, and for mapping using MapKit.
+- __WebKit__ Safari is one of the top web browsers, and you can integrate the powerful rendering engine into your own app via WebKit. It also includes the ability to interact with the content, and to render HTML content from a selection of sources.
 
 ## Where to go from here?
 - Next article will introduce UI concepts
