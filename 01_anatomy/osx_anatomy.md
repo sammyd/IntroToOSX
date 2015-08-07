@@ -34,7 +34,7 @@ Starting an app is _slightly_ more complicated than this, but these three places
 
 You're already aware of the fact that the UI can be provided by a storyboard, but what does this actually mean? In this section you'll cover the different UI components - what they represent and how they fit together.
 
-TK: DIAGRAM
+![App Components](img/app_components.png)
 
 ### Window
 
@@ -64,11 +64,15 @@ In the same way that windows are managed by a window controller in storyboards, 
 
 In a typical application, a view controller is a reusable component that, when provided a model object of a particular type, would update all of its constituent views to represent the values of its associated model object.
 
-TK: For example....
+For example, in the previous tutorial you poked around the __HubEvent__ app. 
 
-View controllers are represented by `UIViewController`, which provides a full range of lifecycle events - allowing you to perform custom actions at different times. For example you can fire animation as the view is about to appear on the screen with `viewWillAppear()`, or populate relevant views with data once the view hierarchy has correctly loaded with `viewDidLoad()`.
+![View Controllers](img/view_controllers.png)
 
-Your app is likely to be formed from a selection of custom subclasses of `UIViewController`, each responsible for a different section of a window. They're an incredibly important aspect of an app - forming the link that allows you to display the underlying data to the user.
+In the above screenshot, you can see that it is made up of two major view controllers - one managing the table view on the top, and the other the detail text view. When you select a row in the table view, it sets the model object on the lower detail view controller, which then updates the text view to display the correct JSON.
+
+View controllers are represented by `NSViewController`, which provides a full range of lifecycle events - allowing you to perform custom actions at different times. For example you can fire animation as the view is about to appear on the screen with `viewWillAppear()`, or populate relevant views with data once the view hierarchy has correctly loaded with `viewDidLoad()`.
+
+Your app is likely to be formed from a selection of custom subclasses of `NSViewController`, each responsible for a different section of a window. They're an incredibly important aspect of an app - forming the link that allows you to display the underlying data to the user.
 
 
 ### View components
