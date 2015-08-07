@@ -142,9 +142,20 @@ Gesture recognizers offer a much higher level of interpretation of mouse-like ev
 The event handling architecture in OS X is quite complicated, but the defaults go a long way to handling many common cases. The power of the responder chain makes it easy to handle events at the highest level possible.
 
 
-### Menu bar
-- What is it?
-- Menu controller
+### Menus
+
+Menus are collections of different actions that you can associate with your app. Menus can appear in different places, including:
+
+- __Menu Bar__ this is bar along the top of the screen
+![Menu Bar](img/menu_bar.png)
+- __Context Menus__ appear when the user right clicks
+![Context Menu](img/context_menu.png)
+- __Dock Menu__ when the user long-presses the dock icon
+![Dock Menu](img/dock_menu.pnh)
+
+All of these menus can be configured in Interface Builder, allowing you to configure their appearance, the hierarchy they appear in and to associate actions with each item.
+
+![IB Menu](img/ib_menu.png) 
 
 ## Data Layer
 - Needed to drive the UI
