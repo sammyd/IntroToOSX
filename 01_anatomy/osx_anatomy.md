@@ -122,8 +122,25 @@ Collection views have built in support for cell selection, animated re-ordering 
 
 
 ### Handling user interaction
-- Keyboard
-- Gestures
+
+A key part of any OS X is allowing user interaction through the mouse, trackpad, keyboard and any other of a number of input devices. To assist with designing user input to your app, OS X provides a unified event dispatch model, built around the concept of a responder chain.
+
+Events generated from a keyboard are known as __Key Events__, and these follow quite a complicated path to arrive at your app. Some key presses don't event make it to your app - as they are intercepted at the OS level (e.g. power button, screen brightness, volume).
+
+Key events can represents a single key, or a key combination - and when they arrive at your app, they are first checked to see whether they are a keyboard shortcut that's bound to a menu item.
+
+If not, they are checked to see whether the are used to navigate around the user interface of your app - e.g. tabbing between input fields. If this isn't the case, then the window works out which of its views is currently "active" (so-called first responder) before passing it the key events. These can either be interpreted as per-view commands or as characters to insert.
+
+Keyboard input is really quite complicated, since it can affect many levels of the system and app architecture, but OS X goes a long way to assist with this processing. In many cases, you'll find that it behaves as you would expect it out of the box.
+
+Mouse-like events are passed to your application, which establishes which window and hence view they were performed on, before passing them to your custom subclass to allow you to handle them appropriately. The responder class (which views inherit from) includes methods you can override which get called when a clicks and moves the mouse.
+
+Trackpads offer lots of additional gestures to a traditional mouse, so the concept of gesture recognizers has been borrowed from iOS. These can be use to interpret a sequence of multi-finger touches into a semantic action - such as a pan or rotation.
+
+Gesture recognizers offer a much higher level of interpretation of mouse-like events, and they're associated with views and can intercept all the mouse-like events associated with that view.
+
+The event handling architecture in OS X is quite complicated, but the defaults go a long way to handling many common cases. The power of the responder chain makes it easy to handle events at the highest level possible.
+
 
 ### Menu bar
 - What is it?
