@@ -106,7 +106,7 @@ OS X provides two different views that are designed to show collections of model
 
 As their name suggests, table views are used to show tabular data, with rows representing individual model objects, and the columns representing attributes on those objects.
 
-TABLE VIEW PICTURE
+![Table View](img/tableview.png)
 
 Table views are made up of cells that can be recycled as they scroll on and off screen. Data can be provided either via a data source protocol or using Cocoa Bindings.
 
@@ -114,7 +114,9 @@ Tables support sorting, editing and custom cells, giving you a very powerful vie
 
 The more generic collection view is also comprised of a collection of cells, but this time, each cell represents the entire model object. The layout of these cells is completely customizable.
 
-COLLECTION VIEW PICTURE
+![Collection View](img/collection_view.png)
+
+![Collection View Circle](img/collection_view_circle.png)
 
 Similarly to the table view, the data for a collection view can be provided either via a data source protocol, or through Cocoa Bindings. Cells are also recycled as they disappear out of the view, reducing the memory footprint.
 
