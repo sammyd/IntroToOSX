@@ -160,10 +160,18 @@ All of these menus can be configured in Interface Builder, allowing you to confi
 ![IB Menu](img/ib_menu.png) 
 
 ## Data Layer
-- Needed to drive the UI
-- Can build your own
-- Mention Core Data
-- OS X allows you to split it out into a separate framework
+
+The user interface is an enormously important part of your OS X app, but it's probably not the _entirety_ of your app. Most apps provide a user interface so that users can interact with an underlying data model.
+
+Data models depend heavily on the domain in which your app exists - there's no magical solution to building a data layer. In fact, it's often the case that you'll use the object oriented language features available in Swift to create a set of objects that model the domain of your app.
+
+It's extremely important that the data layer should be separated out from the user interface, making your software your software more maintainable and less error-prone. OS X supports this architecture through Cocoa Bindings - a technology that wires up model objects to the UI and ensures that they are automatically kept in sync with each other.
+
+You can create a completely separate dynamic framework to contain your data layer - completely separating it from the UI layer. This can allow the same data layer to be used in multiple apps - possibly even shared between an OS X and an iOS app, and increases testability.
+
+Although you can create your own data layer, Apple provides a framework called Core Data. This is a comprehensive framework for creating an object graph to completely model your entire data layer. It supports persistence to disk, data validation, undo and much more.
+
+Core Data has great support for Cocoa Bindings, meaning that it's really easy to integrate your model editing UI with a Core Data backend to build the bulk of your app really quickly.
 
 
 ## Other useful Cocoa functionality
