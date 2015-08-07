@@ -96,12 +96,30 @@ These are just a few of the different view subclasses available to you as you bu
 
 ![Object Library](img/object_library.png)
 
-The RayWenderlich.com OS X tutorial team will also be putting together a quick reference guide to different UI components over the coming months - so be sure to check back for that.
+The raywenderlich.com OS X tutorial team will also be putting together a quick reference guide to different UI components over the coming months - so be sure to check back for that.
 
 ### Viewing collections
-- What are they, how do they work?
-- Table view
-- Collection view
+
+Often you'll want your app to display UI for multiple model objects at the same time - for example showing a list of upcoming appointments, or a set of photos in an album.
+
+OS X provides two different views that are designed to show collections of model objects - in the form of table views and collection views. 
+
+As their name suggests, table views are used to show tabular data, with rows representing individual model objects, and the columns representing attributes on those objects.
+
+TABLE VIEW PICTURE
+
+Table views are made up of cells that can be recycled as they scroll on and off screen. Data can be provided either via a data source protocol or using Cocoa Bindings.
+
+Tables support sorting, editing and custom cells, giving you a very powerful view for displaying data.
+
+The more generic collection view is also comprised of a collection of cells, but this time, each cell represents the entire model object. The layout of these cells is completely customizable.
+
+COLLECTION VIEW PICTURE
+
+Similarly to the table view, the data for a collection view can be provided either via a data source protocol, or through Cocoa Bindings. Cells are also recycled as they disappear out of the view, reducing the memory footprint.
+
+Collection views have built in support for cell selection, animated re-ordering and grouping cells into sections.
+
 
 ### Handling user interaction
 - Keyboard
