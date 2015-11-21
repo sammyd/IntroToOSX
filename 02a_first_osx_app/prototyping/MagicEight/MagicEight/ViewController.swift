@@ -9,7 +9,23 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
+  
+  
+  @IBOutlet weak var helloLabel: NSTextField!
+  @IBOutlet weak var nameField: NSTextField!
+  
+  
+  @IBAction func handleNameUpdated(sender: AnyObject) {
+    var name = nameField.stringValue
+    if name == "" {
+      name = "World"
+    }
+    helloLabel.stringValue = "Hello \(name)!"
+  }
+  
+  
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 
