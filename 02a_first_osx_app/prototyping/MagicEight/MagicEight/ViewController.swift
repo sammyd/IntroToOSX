@@ -8,7 +8,27 @@
 
 import Cocoa
 
+extension Array {
+  var randomElement: Element? {
+    if count < 1 { return .None }
+    let randomIndex = arc4random_uniform(UInt32(count))
+    return self[Int(randomIndex)]
+  }
+}
+
+
 class ViewController: NSViewController {
+  
+  let adviceList = [
+    "Yes",
+    "No",
+    "Ray says 'do it!'",
+    "Maybe",
+    "Try again later",
+    "How can I know?",
+    "Totally",
+    "Never",
+  ]
   
   
   @IBOutlet weak var helloLabel: NSTextField!
@@ -27,9 +47,11 @@ class ViewController: NSViewController {
   
   @IBAction func ballAction(sender: AnyObject) {
     if(adviceLabel.hidden) {
-      adviceLabel.stringValue = "Another fortune"
-      adviceLabel.hidden = false
-      ballImageView.image = NSImage(named: "magic8ball")
+      if let advice = adviceList.randomElement {
+        adviceLabel.stringValue = advice
+        adviceLabel.hidden = false
+        ballImageView.image = NSImage(named: "magic8ball")
+      }
     } else {
       adviceLabel.hidden = true
       ballImageView.image = NSImage(named: "8ball")
