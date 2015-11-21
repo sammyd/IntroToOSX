@@ -111,9 +111,147 @@ Congratulations! Not very personal though is it? In the next section you'll disc
 
 ## Handling User Input
 
+In this section you're going to add a text field to allow the user to enter their name so that you can welcome them personally.
+
+Before you can jump in to some code, you need to add the new user interface elements and configure their layout.
+
+### Control Layout
+
+As you did before, use the object library to locate and then drag a __Text Field__ and a __Push Button__ onto the view controller. Position them above the "Hello World!" label:
+
+![Positioning](images/16_position_textfield.png)
+
+Remember that placing the controls on the canvas isn't enough for OS X to understand how you want them positioned as the window changes size. You need to add some constraints to convey your wishes.
+
+Select the text field, and then __Control-Click__ the button to select both simultaneously. Then click the __Stack__ icon on the Auto Layout toolbar at the bottom of the storyboard:
+
+![Stack](images/17_stack.png)
+
+This has created a new stack view containing the text field and the button. A stack view automatically generates the layout constraints required to position the contained views in a line. You can use the attributes inspector to configure many common properties of the stack view.
+
+> __NOTE:__ `NSStackView` has been in OS X since 10.9, but received a significant update in 10.11 (El Capitan)—in line with its introduction (`UIStackView`) in iOS. Stack views are similar on both platforms, so you can check out the iOS tutorial on stack views to get up to speed. Or hang tight—there's a tutorial on `NSStackView` on its way.
+
+Once you've started stacking it's difficult to stop. This time, you're going to stack your newly created stack view with the "Hello World!" label—in a vertical stack view.
+
+Use the button to the left of the lower toolbar to show the Document Outline and then locate the "Hello World" control and the existing stack view. __Command-click_ them to select both:
+
+![Document Outline](images/18_document_outline.png)
+
+As you did before, use the __Stack__ button on the bottom toolbar to create a new stack view:
+
+![Stack](images/19_stack.png)
+
+While this new stack view is selected, open the __Attributes Inspector__ and set the Alignment to __Center X__, and the spacing to __20__:
+
+![Stack Config](images/20_stack_config.png)
+
+This ensures that the label and the upper stack view are nicely centered and there's a gap of 20 points between them.
+
+A couple more bits of layout to complete before you can turn your attention to the task of handling user input.
+
+The stack view handles the positioning of its content relative to each other, but it needs to be positioned within the view controller's view. Select the outer stack view and use the __Align__ auto layout menu to center it vertically within its container:
+
+![Align](images/21_align.png)
+
+And use the __Pin__ menu to pin the stack view to the top, with a spacing of __30__:
+
+![Pin](images/22_pin.png)
+
+Finally, to ensure that the text field always has the space for the user's name, you will fix its width.
+
+Select the text field and use the __Pin__ menu in the bottom toolbar to specify a __Width__ of __100__. Click __Add 1 Constraint__ to save the new constraint:
+
+![Text field Width](images/23_textfield_width.png)
+
+With that your layout is pretty much complete—it should look like the following:
+
+![Layout](images/24_layout.png)
+
+Now you can turn your attention back to those new controls you added.
 
 
+### Outlets and Actions
 
+Select the text field and open the __Attributes Inspector__. In the Placeholder field type __Name__:
+
+![Name](images/25_name.png)
+
+This grayed out text will instruct the user what the field is for, and will disappear as soon as they start typing.
+
+Select the button, and again open the __Attributes Inspector__. Set the Title to __Welcome__:
+
+![Welcome](images/26_welcome.png)
+
+That's the cosmetic aspect done. Time to wire these two controls into code.
+
+OS X provides a way to interact with the UI designed in a storyboard from code using outlets and actions:
+
+- An outlet is a property in code that is connected to a component in the storyboard. This allows you to access the properties of controls within a storyboard from your code.
+- Actions are functions in code that are invoked when the user interacts with the components in the UI - e.g. by clicking on a button.
+
+You are going to add outlets for the text field and the label, and an action that will be called when the user clicks the welcome button.
+
+The view controller you've been working on already has a skeleton class associated with it in code—in __ViewController.swift__. This is where you'll add the outlets and action.
+
+Open the assistant editor using the button in the toolbar:
+
+![Assistant Editor](images/27_assistant_editor.png)
+
+This will split the screen and show a code file alongside the storyboard. It should be displaying __ViewController.swift__, but if it isn't use the jump bar to select __Automatic \ ViewController.swift__:
+
+![Jump Bar](images/28_jump_bar.png)
+
+__Right-click-drag__ (or __Control-drag__) from the text field in the storyboard over to the line above `override func viewDidLoad()` in __ViewController.swift__:
+
+![Drag](images/29_textfield_outlet.png)
+
+Ensure that __Outlet__ is selected and call the new outlet __nameTextField__:
+
+![Name text field](images/30_name_textfield.png)
+
+This will add the following line of code to the `ViewController` class and updates the storyboard to automatically connect the text field to this property when loading the view controller:
+
+```swift
+@IBOutlet weak var nameTextField: NSTextField!
+```
+
+Repeat exactly the same process for the "Hello World!" label, this time specifying that the outlet should be called __welcomeLabel__:
+
+![Welcome label](images/31_welcome_label.png)
+
+Now time to turn your attention to the button. Once again __Control-drag__ from the button in the storyboard over to the `ViewController` class:
+
+![Drag](images/32_button_action.png)
+
+Change the Connection to __Action__ and name it __handleWelcome__:
+
+![Action settings](images/33_action_settings.png)
+
+Click __Connect__ to make the connection and Xcode will add the following empty method definition to the `ViewController` class:
+
+```swift
+@IBAction func handleWelcome(sender: AnyObject) {
+}
+```
+
+This method will be called every time the user clicks the button, but it doesn't currently do anything.
+
+Add the following line to the `handleWelcome(_:)` method body:
+
+```swift
+welcomeLabel.stringValue = "Hello \(nameTextField.stringValue)!"
+```
+
+This updates the `stringValue` property of the `welcomeLabel` to a welcome message constructed using the `stringValue` of the `nameTextField`. As you might have guessed, `stringValue` represents the value currently displayed by a text-based control—be it user-entered or defined in the storyboard.
+
+That's all the code you need to get your personalized version of "Hello World" going! Build and run to give it a try. Once the app has started, try entering your name in the __Name__ box and clicking the __Welcome__ button. You'll see your very own version of "Hello world!":
+
+![Hello sam](images/34_hello_sam.png)
+
+Pretty cool eh? Well, the fun doesn't stop there. Next up you're going to learn about adding images to your app, to create an amazing magic-8 ball utility!
+
+
+## Assets
 
 
 

@@ -10,6 +10,14 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+  @IBOutlet weak var nameTextField: NSTextField!
+  @IBOutlet weak var welcomeLabel: NSTextField!
+  
+  @IBAction func handleWelcome(sender: AnyObject) {
+    welcomeLabel.stringValue = "Hello \(nameTextField.stringValue)!"
+  }
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,22 +674,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZKf-Kv-hVB">
-                                <rect key="frame" x="139" y="192" width="203" height="48"/>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YTG-wB-jQ0">
+                                <rect key="frame" x="141" y="150" width="199" height="90"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" misplaced="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vdn-yJ-2aK">
+                                        <rect key="frame" x="4" y="68" width="192" height="22"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mWL-Xr-nka">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="22"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="3ye-vy-Iur"/>
+                                                </constraints>
+                                                <animations/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Name" drawsBackground="YES" id="H0l-6n-YHD">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ShS-sS-uPn">
+                                                <rect key="frame" x="102" y="-6" width="96" height="32"/>
+                                                <animations/>
+                                                <buttonCell key="cell" type="push" title="Welcome" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="35S-1I-VSv">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="handleWelcome:" target="XfG-lQ-9wD" id="39j-rx-WdF"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <animations/>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZKf-Kv-hVB">
+                                        <rect key="frame" x="-2" y="0.0" width="203" height="48"/>
+                                        <animations/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hello World!" id="ayd-wT-WK7">
+                                            <font key="font" metaFont="systemThin" size="40"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
                                 <animations/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hello World!" id="ayd-wT-WK7">
-                                    <font key="font" metaFont="systemThin" size="40"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ZKf-Kv-hVB" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="FeZ-c0-1YP"/>
-                            <constraint firstItem="ZKf-Kv-hVB" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="Umw-yZ-BeA"/>
+                            <constraint firstItem="YTG-wB-jQ0" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="QxJ-XH-Xmr"/>
+                            <constraint firstItem="YTG-wB-jQ0" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="cQM-bm-yuy"/>
                         </constraints>
                         <animations/>
                     </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="mWL-Xr-nka" id="xkg-I5-Yaj"/>
+                        <outlet property="welcomeLabel" destination="ZKf-Kv-hVB" id="Mdt-cx-fNA"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
