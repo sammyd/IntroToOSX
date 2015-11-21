@@ -13,6 +13,8 @@ class ViewController: NSViewController {
   
   @IBOutlet weak var helloLabel: NSTextField!
   @IBOutlet weak var nameField: NSTextField!
+  @IBOutlet weak var ballImageView: NSImageView!
+  @IBOutlet weak var adviceLabel: NSTextField!
   
   
   @IBAction func handleNameUpdated(sender: AnyObject) {
@@ -23,12 +25,23 @@ class ViewController: NSViewController {
     helloLabel.stringValue = "Hello \(name)!"
   }
   
+  @IBAction func ballAction(sender: AnyObject) {
+    if(adviceLabel.hidden) {
+      adviceLabel.stringValue = "Another fortune"
+      adviceLabel.hidden = false
+      ballImageView.image = NSImage(named: "magic8ball")
+    } else {
+      adviceLabel.hidden = true
+      ballImageView.image = NSImage(named: "8ball")
+    }
+  }
   
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    adviceLabel.hidden = true
+    ballImageView.image = NSImage(named: "8ball")
     // Do any additional setup after loading the view.
   }
 
