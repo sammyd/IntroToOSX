@@ -671,14 +671,14 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="MagicEight" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="399"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ANA-OT-n91">
-                                <rect key="frame" x="141" y="160" width="199" height="90"/>
+                                <rect key="frame" x="100" y="-11" width="280" height="390"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Te-xB-kPZ">
-                                        <rect key="frame" x="9" y="68" width="181" height="22"/>
+                                        <rect key="frame" x="49.5" y="368" width="181" height="22"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vSu-Wt-LPM">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="22"/>
@@ -718,7 +718,7 @@
                                         </customSpacing>
                                     </stackView>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6yN-yy-nMM">
-                                        <rect key="frame" x="-2" y="0.0" width="203" height="48"/>
+                                        <rect key="frame" x="38.5" y="300" width="203" height="48"/>
                                         <animations/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hello World!" id="r5n-p9-260">
                                             <font key="font" metaFont="systemThin" size="40"/>
@@ -726,21 +726,42 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wCg-OQ-oWZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
+                                        <animations/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="magic8ball" id="B7V-zJ-UlD"/>
+                                    </imageView>
                                 </subviews>
                                 <animations/>
                                 <visibilityPriorities>
+                                    <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="IlU-He-1FI">
+                                <rect key="frame" x="210.5" y="112" width="59" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="2FT-os-CcU"/>
+                                </constraints>
+                                <animations/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Outlook is Good!" id="Tsu-fU-U6o">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstItem="ANA-OT-n91" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="OvV-pr-GQ4"/>
+                            <constraint firstItem="IlU-He-1FI" firstAttribute="centerX" secondItem="wCg-OQ-oWZ" secondAttribute="centerX" id="VdY-ox-w2Y"/>
                             <constraint firstItem="ANA-OT-n91" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="cZI-Vh-tpk"/>
+                            <constraint firstItem="IlU-He-1FI" firstAttribute="centerY" secondItem="wCg-OQ-oWZ" secondAttribute="centerY" id="yD2-oH-TLA"/>
                         </constraints>
                         <animations/>
                     </view>
@@ -751,7 +772,10 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="75" y="719.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="magic8ball" width="279.3599853515625" height="279.3599853515625"/>
+    </resources>
 </document>
