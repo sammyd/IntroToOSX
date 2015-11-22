@@ -253,5 +253,44 @@ Pretty cool eh? Well, the fun doesn't stop there. Next up you're going to learn 
 
 ## Assets
 
+You were promised a magic 8-ball app at the start of this tutorial, and so far you've seen no mention of a ball. Well, that's all about to change.
+
+An 8-ball is pretty distinctive, and it wouldn't be a very exciting 8-ball app without some visualization. [Download](TODO: URL) the images you'll need to make your app look swish. Uncompress the zip file and you'll find two images inside—representing the two sides of a magic 8-ball:
+
+![Assets](images/35_assets.png)
+
+Image assets are stored in an asset catalog within an OS X app. This catalog manages the different imagery and the different resolutions required for the app icons and the in-app images. 
+
+Open __Assets.xcassets__ by selecting it in the project navigator:
+
+![Asset catalog](images/36_asset_catalog.png)
+
+You can see that the catalog currently only contains one item - __AppIcon__. This is where you would put the artwork to give your app a cool icon.
+
+You need to add the downloaded images to the asset catalog. Locate the images in finder, and __drag__ them both into the asset catalog:
+
+![Drag to asset catalog](images/37_drag_asset_catalog.png)
+
+This will create two new entries in the asset catalog:
+
+![Added assets](images/38_added_assets.png)
+
+Notice that there are three "cells" for the images, and that they appear in the leftmost "1x" one. These cells represent the different screen scales - standard (1x), retina (2x) and retina-HD (3x). Normally you would provide assets for each of these cells, but in this simple project you will provide just one.
+
+The image you've been provided is actually designed to be used at retina resolutions (2x), so drag the image from the left-hand cell to the central (2x) cell:
+
+![Drag Retina](images/39_drag_retina.png)
+
+Repeat for both of the 8-balls assets, so that the asset catalog looks like this:
+
+![Finished Asset Catalog](images/40_finished_asset_catalog.png)
+
+Those images are now available to use in your app—both from code and inside the storyboard. Time to put them to use.
+
+
+### Displaying Images
+
+
+
 
 
