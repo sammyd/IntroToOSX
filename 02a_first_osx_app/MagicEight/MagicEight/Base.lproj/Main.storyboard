@@ -677,7 +677,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YTG-wB-jQ0">
-                                <rect key="frame" x="75.5" y="186" width="199" height="264"/>
+                                <rect key="frame" x="76" y="186" width="199" height="264"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vdn-yJ-2aK">
                                         <rect key="frame" x="3.5" y="242" width="192" height="22"/>
@@ -727,8 +727,11 @@
                                     </textField>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="juT-8L-ZIG">
                                         <rect key="frame" x="22.5" y="0.0" width="154" height="154"/>
+                                        <gestureRecognizers>
+                                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="uc3-rq-DQk"/>
+                                        </gestureRecognizers>
                                         <animations/>
-                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="8ball" id="fDJ-Sn-7uA"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="magic8ball" id="fDJ-Sn-7uA"/>
                                     </imageView>
                                 </subviews>
                                 <animations/>
@@ -743,14 +746,26 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="75" translatesAutoresizingMaskIntoConstraints="NO" id="AWh-eG-ZnL">
+                                <rect key="frame" x="140" y="227" width="70" height="72"/>
+                                <animations/>
+                                <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" title="Piece of Advice" id="VGi-Tt-A7q">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="juT-8L-ZIG" firstAttribute="centerX" secondItem="AWh-eG-ZnL" secondAttribute="centerX" id="IzV-a4-ypD"/>
                             <constraint firstItem="YTG-wB-jQ0" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="QxJ-XH-Xmr"/>
                             <constraint firstItem="YTG-wB-jQ0" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="30" id="cQM-bm-yuy"/>
+                            <constraint firstItem="juT-8L-ZIG" firstAttribute="centerY" secondItem="AWh-eG-ZnL" secondAttribute="centerY" id="pBE-fs-SZE"/>
                         </constraints>
                         <animations/>
                     </view>
                     <connections>
+                        <outlet property="adviceLabel" destination="AWh-eG-ZnL" id="5dn-Qe-bxx"/>
                         <outlet property="nameTextField" destination="mWL-Xr-nka" id="xkg-I5-Yaj"/>
                         <outlet property="welcomeLabel" destination="ZKf-Kv-hVB" id="Mdt-cx-fNA"/>
                     </connections>
@@ -761,6 +776,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="8ball" width="153.60000610351562" height="153.60000610351562"/>
+        <image name="magic8ball" width="153.60000610351562" height="153.60000610351562"/>
     </resources>
 </document>

@@ -12,10 +12,17 @@ class ViewController: NSViewController {
 
   @IBOutlet weak var nameTextField: NSTextField!
   @IBOutlet weak var welcomeLabel: NSTextField!
+  @IBOutlet weak var ballImageView: NSImageView!
+  @IBOutlet weak var adviceLabel: NSTextField!
+  
   
   @IBAction func handleWelcome(sender: AnyObject) {
     welcomeLabel.stringValue = "Hello \(nameTextField.stringValue)!"
   }
+  
+  @IBAction func handleBallClick(sender: AnyObject) {
+  }
+  
   
   
   override func viewDidLoad() {

@@ -359,8 +359,91 @@ You can now turn your attention back to the task in-hand—building the "magic" 
 
 ## Handling clicks
 
+When the user clicks on the 8-ball you will switch the image to the other side and display a small piece of advice. You need a new label to display this advice.
+
+Open __Main.storyboard__ and find the view controller scene. Use the __Object Library__ to locate a __wrapping label__ and drag it from the library beneath the stack view:
+
+![wrapping label](images/53_wrapping_label.png)
+
+You want this label to be positioned at the center of the magic-8 image, so you need to add some auto layout constraints to ensure that happens.
+
+__Control-drag__ from the __Multiline Label__ to the __Image View__ in the __Document Outline__:
+
+![Adding constraints](images/54_adding_constraints.png)
+
+Hold __shift_ and select __Center Vertically__ and __Center Horizontally__ before clicking __Add Constraints__:
+
+![Center Constraints](images/55_center_constraints.png)
+
+The label doesn't automatically reposition—but you've handled this before. Use the __Resolve Auto Layout Issues__ menu on the bottom auto layout toolbar to select __All View in View Controller \ Update Frames__:
+
+![Fix AL](images/56_fix_al.png)
+
+This repositions the label, and it is not immediately obvious that you need to do some work on the appearance.
+
+Select the multiline label, and use the __Attributes Inspector__ to set the following:
+
+- __Title__: __Piece of Advice__
+- __Alignment__: __Center__
+- __Text Color__: __Keyboard Focus Indicator__
+- __Font__: __System 20__
+
+![Label Config](images/57_label_config.png)
+
+Head over to the __Size Inspector__ and set the Preferred Width to __Explicit__ with a value of __75__:
+
+![Label size](images/58_label_size.png)
+
+To get an idea of what the end product might look like, select the image view, and use the __Attributes Inspector__ to set the Image to __magic8ball__:
+
+![Change Image](images/59_change_image.png)
+
+Once again, use the __Resolve Auto Layout Issues__ to update the layout:
+
+![Magic8 Layout](images/60_magic8_layout.png)
+
+This is looking pretty good. You need to respond each time the user clicks on the 8-ball—time to discover gesture recognizers.
 
 
+### Gesture Recognizers
+
+When you added the button you were able to create an action in code that would run every time the user clicks the button. That was possible because buttons are designed to handle clicks—but the same is not true of image views. Apple has provided a set of gesture recognizers that can be added to any view. These recognizers convert low-level mouse and trackpad input into semantic events—such as click, zoom and rotate.
+
+You will add a click gesture recognizer to the image view, and then create a corresponding action in the view controller's code.
+
+In __Main.storyboard__, head over to the __Object Library__ and search for __click gesture__. Drag the __Click Gesture Recognizer__ out of the library and onto the image view. It will appear like this in the document outline:
+
+![Gesture Recogniser](images/61_gesture_recogniser.png)
+
+This gesture recognizer will be activated whenever the user clicks on the image—exactly what you want. You now need to create some new connections, and then you'll be ready to switch over to code for the final sprint.
+
+### IB Connections
+
+In the same way you did before, open up the assistant editor and ensure that it is showing __ViewController.swift__. Then create two new outlets by __control-dragging__ from the storyboard to the code: one for the image view (call it __ballImageView__) and one for the multiline label (call it __adviceLabel__). This adds the following new outlets:
+
+```swift
+@IBOutlet weak var ballImageView: NSImageView!
+@IBOutlet weak var adviceLabel: NSTextField!
+```
+
+You also need an action to wire up the newly-created gesture recognizer. __Control-drag__ from the click gesture recognizer in the document outline, over to the code:
+
+![Gesture Action](images/62_gesture_action.png)
+
+Change the Connection to __Action__ and name it __handleBallClick__:
+
+![Action config](images/63_action_config.png)
+
+Click __Connect__ and Xcode will add the following function definition to the `ViewController` class:
+
+```swift
+@IBAction func handleBallClick(sender: AnyObject) {
+}
+```
+
+You've now finished all the work in Interface Builder, so you can switch back to the standard editor, and open __ViewController.swift__ using the project outline.
+
+## Changing the UI from code
 
 
 
