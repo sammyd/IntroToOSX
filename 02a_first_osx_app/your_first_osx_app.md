@@ -290,6 +290,77 @@ Those images are now available to use in your app—both from code and inside th
 
 ### Displaying Images
 
+You've already seen how to display text, buttons and text input fields in your app, but how about images? Enter `ImageView`.
+
+Open __Main.storyboard__ and use the object library to search for __image view__:
+
+![Image View](images/41_image_view.png)
+
+Drag an image view onto the view controller canvas, at the bottom of the stack view. Notice how a horizontal blue line will appear denoting where in the stack view that the new image view will appear:
+
+![Add to stack](images/42_add_to_stack.png)
+
+Open the __Attributes Inspector__ and set the Image property to __8ball__:
+
+![Set 8Ball](images/43_set_8ball.png)
+
+This will update the canvas with the image, read from the asset catalog:
+
+![VC with image](images/44_vc_with_image.png)
+
+Build and run the app to see how the image appears:
+
+![BAR 3](images/45_bar_03.png)
+
+Well, the image has appeared, but you can't see it all. You can drag to resize the window in the usual way, but it would be much better if the window was correctly sized when the app starts, and then keeps a fixed size.
+
+
+## Window Size
+
+The initial size of MagicEight's window is determined by the size of the view controller in the storyboard. Select the view controller's view in __Main.storyboard__ and open the __Size Inspector__. Set the Width to __350__ and the height to __480__:
+
+![VC Size](images/46_vc_size.png)
+
+Notice that the storyboard canvas now looks strange:
+
+![Strange VC](images/47_strange_vc.png)
+
+This is because the layout constraints need to be re-evaluated now that the view controller's view has changed size.
+
+Use the __Resolve Auto Layout Issues__ menu on the bottom auto layout menu bar and select __All View in View Controller \ Update Frames__:
+
+![Fix AL](images/48_fix_al.png)
+
+This will re-run the layout engine over the storyboard, and update the preview:
+
+![Fixed VC](images/49_fixed_vc.png)
+
+Now build and run to see how the app looks now:
+
+![BAR 4](images/50_bar_04.png)
+
+That looks much better. Try resizing the window—you'll see that you can still manually drag it to sizes and shapes that don't work for MagicEight's layout.
+
+You have a couple of options here—you can either update the layout so that it adapts nicely as the window changes size (e.g. to resize the image for small windows), or you can fix the window size. This is a simple app, so you're going to take the second, easier approach.
+
+### Window Sizing
+
+The window controller is responsible for managing the size of the window. Open __Main.storyboard__ and select the window inside the window controller:
+
+![Select Window](images/51_select_window.png)
+
+Open the __Size Inspector__ and set the Content Size to a Width of __350__ and a height of __480__. Then check __Minimum Content Size__ and __Maximum Content Size__ ensuring that the the sizes are the same as the content size you entered:
+
+![Content Size](images/52_content_size.png)
+
+Now build and run MagicEight again, and attempt to resize the window. You'll notice that you no longer have control over the window size—it's now fixed. Mega—just what you wanted.
+
+You can now turn your attention back to the task in-hand—building the "magic" of the magic 8-ball. Well, nearly—there's a bit more layout to do first.
+
+## Handling clicks
+
+
+
 
 
 
