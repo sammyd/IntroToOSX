@@ -537,3 +537,16 @@ Build and run, and click the 8-ball a few times to start benefiting from the bal
 
 ![Final BAR](images/64_final_bar.png)
 
+
+## Where to go from here
+
+You can download the completed version of MagicEight [here](TODO: URL).
+
+This introductory series has given you a basic level of knowledge to get started with OS X apps - but there's so much more to learn!
+
+Apple has some great documentation covering all aspects of OS X development - head on over to https://developer.apple.com/library/mac/navigation/
+
+You should also stick around on raywenderlich.com - we've got some awesome OS X tutorials lined up for the coming months!
+
+If you have any comments or questions feel free to reach out on twitter, or in the comments section below!
+
