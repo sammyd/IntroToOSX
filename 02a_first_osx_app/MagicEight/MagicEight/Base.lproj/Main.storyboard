@@ -728,7 +728,11 @@
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="juT-8L-ZIG">
                                         <rect key="frame" x="22.5" y="0.0" width="154" height="154"/>
                                         <gestureRecognizers>
-                                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="uc3-rq-DQk"/>
+                                            <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="uc3-rq-DQk">
+                                                <connections>
+                                                    <action selector="handleBallClick:" target="XfG-lQ-9wD" id="lpB-WP-SZv"/>
+                                                </connections>
+                                            </clickGestureRecognizer>
                                         </gestureRecognizers>
                                         <animations/>
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="magic8ball" id="fDJ-Sn-7uA"/>
@@ -766,6 +770,7 @@
                     </view>
                     <connections>
                         <outlet property="adviceLabel" destination="AWh-eG-ZnL" id="5dn-Qe-bxx"/>
+                        <outlet property="ballImageView" destination="juT-8L-ZIG" id="v6j-nL-BZW"/>
                         <outlet property="nameTextField" destination="mWL-Xr-nka" id="xkg-I5-Yaj"/>
                         <outlet property="welcomeLabel" destination="ZKf-Kv-hVB" id="Mdt-cx-fNA"/>
                     </connections>

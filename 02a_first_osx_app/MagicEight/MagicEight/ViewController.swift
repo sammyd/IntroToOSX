@@ -10,6 +10,17 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+  let adviceList = [
+    "Yes",
+    "No",
+    "Ray says 'do it!'",
+    "Maybe",
+    "Try again later",
+    "How can I know?",
+    "Totally",
+    "Never",
+  ]
+  
   @IBOutlet weak var nameTextField: NSTextField!
   @IBOutlet weak var welcomeLabel: NSTextField!
   @IBOutlet weak var ballImageView: NSImageView!
@@ -21,14 +32,29 @@ class ViewController: NSViewController {
   }
   
   @IBAction func handleBallClick(sender: AnyObject) {
+    // 1:
+    if(adviceLabel.hidden) {
+      // 2:
+      if let advice = adviceList.randomElement {
+        adviceLabel.stringValue = advice
+        adviceLabel.hidden = false
+        ballImageView.image = NSImage(named: "magic8ball")
+      }
+    } else {
+      // 3:
+      adviceLabel.hidden = true
+      ballImageView.image = NSImage(named: "8ball")
+    }
   }
   
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
     // Do any additional setup after loading the view.
+    
+    adviceLabel.hidden = true
+    ballImageView.image = NSImage(named: "8ball")
   }
 
   override var representedObject: AnyObject? {
@@ -38,5 +64,14 @@ class ViewController: NSViewController {
   }
 
 
+}
+
+
+extension Array {
+  var randomElement: Element? {
+    if count < 1 { return .None }
+    let randomIndex = arc4random_uniform(UInt32(count))
+    return self[Int(randomIndex)]
+  }
 }
 

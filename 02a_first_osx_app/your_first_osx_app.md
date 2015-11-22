@@ -443,8 +443,97 @@ Click __Connect__ and Xcode will add the following function definition to the `V
 
 You've now finished all the work in Interface Builder, so you can switch back to the standard editor, and open __ViewController.swift__ using the project outline.
 
-## Changing the UI from code
+## Manipulating the UI from code
+
+When the user clicks on the 8-ball you want to switch between showing some advice, or showing the "8". This means that the `handleBallClick(_:)` will manipulate both the image view and the advice label.
+
+Add the following code to `handleBallClick(_:)`:
+
+```swift
+// 1:
+if(adviceLabel.hidden) {
+  // 2:
+  adviceLabel.hidden = false
+  ballImageView.image = NSImage(named: "magic8ball")
+} else {
+  // 3:
+  adviceLabel.hidden = true
+  ballImageView.image = NSImage(named: "8ball")
+}
+```
+
+1. Check whether the `adviceLabel` is currently visible. `hidden` is a boolean property on `NSView` (and hence `NSTextField`) that allows you to specify whether the view should be visible or not.
+2. If the advice label is currently hidden then show it, and change the image to the magic-side. `NSImage(named:)` loads the image from the asset catalog, and the `image` property on `NSImageView` specifies the image to display.
+3. Conversely, if the advice label is currently visible then hide it and switch the ball back to the "8" side.
+
+Build and run and click around the ball to see it switching between showing the "8" and the piece of advice. Pretty neat right? Notice how when you first start the app the advice is already showing? That's not really what you want, but it's a simple fix.
+
+## Initial Setup
+
+When the app first starts you want to ensure that the advice label is hidden, and the 8-ball image is showing. View controllers have a perfect way of configuring this initial setup—in the form of `viewDidLoad()`.
+
+Once the view controller has finished loading all the view components from the storyboard, it calls the `viewDidLoad()` method to give you a chance to provide some final pieces of configuration.
+
+In __ViewController.swift__, find the `viewDidLoad()` method and add the following body:
+
+```swift
+adviceLabel.hidden = true
+ballImageView.image = NSImage(named: "8ball")
+```
+
+You'll recognize this code from the click handler action—it just hides the advice label and sets the image to __8ball__.
+
+Build and run to check that it worked as expected.
 
 
+## Advice Generator
 
+At the moment, no matter how many times you "shake" the ball, it always gives you the same advice. That's not especially helpful. Time to add a bit of randomness.
+
+Add the following code as a property inside `ViewController`—just below the class definition line:
+
+```swift
+let adviceList = [
+  "Yes",
+  "No",
+  "Ray says 'do it!'",
+  "Maybe",
+  "Try again later",
+  "How can I know?",
+  "Totally",
+  "Never",
+]
+```
+
+This is an array of strings the make up all the different options for advice that the ball can dispense.
+
+Head to the very bottom of the file (not within the `ViewController` class) and add the following extension:
+
+```swift
+extension Array {
+  var randomElement: Element? {
+    if count < 1 { return .None }
+    let randomIndex = arc4random_uniform(UInt32(count))
+    return self[Int(randomIndex)]
+  }
+}
+```
+
+This adds a new property to the standard library's `Array` type that will return a random element. If the array is empty it returns `nil`, otherwise it generates a random index using `arc4random_uniform()` before returning the corresponding element.
+
+Update the first branch (i.e. `adviceLabel.hidden == true`) of the `if` statement in `handleBallClick(_:)` to match the following:
+
+```swift
+if let advice = adviceList.randomElement {
+  adviceLabel.stringValue = advice
+  adviceLabel.hidden = false
+  ballImageView.image = NSImage(named: "magic8ball")
+}
+```
+
+This attempts to get a random piece of advice to display, and if successful updates the `stringValue` on `adviceLabel` to show it.
+
+Build and run, and click the 8-ball a few times to start benefiting from the ball's wisdom:
+
+![Final BAR](images/64_final_bar.png)
 
