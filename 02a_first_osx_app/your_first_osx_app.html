@@ -1,0 +1,732 @@
+Welcome back to our 3-part Mac OS X Development tutorial for beginner series!
+
+This introductory series about building apps on OS X has covered a lot of ground. This is what you've already learned:
+
+<ul>
+  <li><em>Tooling</em>: In <a href="http://www.raywenderlich.com/110170/mac-os-x-development-tutorial-for-beginners-part-1-intro-to-xcode">part one</a> you learned about the many facets of Xcode - and had a glimpse of how you could use it to start developing for OS X.</li>
+  <li><em>App Anatomy</em>: The <a href="http://www.raywenderlich.com/110267/mac-os-x-development-tutorial-for-beginners-part-2-os-x-app-anatomy">second part</a> covered a lot of the theory behind how OS X app are constructed - from the data layer, through the binary assets, to designing the UI.</li>
+</ul>
+
+In this third and final part, you're going to dive deep into the world of OS X development, by creating your first ever app!
+
+The app you're going to build is a magic-8 ball app, to help you make all those difficult decisions in day-to-day life. You'll start from scratch - first creating a "Hello World!" app before moving on to creating an app to solve all your problems!
+
+<div class="note">
+<em>Note:</em> This app requires OS X El Capitan, so if you don't have it - make sure you upgrade to it before trying to follow the tutorial.
+</div>
+
+<h2>Creating the Project</h2>
+
+Open Xcode and click <em>Create a new Xcode project</em> to start your new app. Choose <em>OS X </em><em>\</em><em> Application </em><em>\</em><em> Cocoa Application</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/01_project_template.png" alt="" title="" />
+
+
+Set the product name <em>MagicEight</em>, the language to <em>Swift</em> and ensure that the <em>Use Storyboards</em>  is checked:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/02_project_options.png" alt="" title="" />
+
+
+Choose a location on disk to save your project and then click <em>Create</em> to open your empty project.
+
+Build and run <em>MagicEight</em> to check that everything is working:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/03_bar_01.png" alt="" title="" />
+
+
+Great - so the app runs, but it does <i>absolutely nothing</i> yet. In the next section you're going to turn your app into the first app you should always write when learning a new platform—hello world!
+
+<h2>Hello World!</h2>
+
+The user interface for an OS X app is provided by the storyboard file, using interface builder. This allows you to design the UI in a very visual manner, and reduces the amount of complex code you have to write.
+
+Open <em>Main.storyboard</em> by selecting it in the Project Navigator in the left-hand pane:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/04_project_navigator.png" alt="" title="" />
+
+
+You'll now see the storyboard open in the center panel:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/05_storyboard.png" alt="" title="" />
+
+
+The template storyboard contains three components:
+
+<ul>
+<li>
+<em>Menu Bar</em> Controls the menu that appears when the app runs.
+</li>
+
+<li>
+<em>Window Controller</em> Manages the default window that appears. This uses one or more view controllers to manage their content.
+</li>
+
+<li>
+<em>View Controller</em> Responsible for a region of the window - both for display and handling user interaction.
+</li>
+</ul>
+
+During this introductory tutorial you'll concentrate your efforts on the view controller.
+
+First up, you need to add a label to the view controller to display your welcome text. A label is actually a special type of <code>NSTextField</code> that's designed for displaying a single line of non-editable text - perfect for "Hello World".
+
+To add your first label, follow this set of steps. There's an annotated screenshot so you can see to do:
+
+<ol start="1">
+<li>
+If it's not already visible use the icon in the toolbar to show the utilities panel on the right-hand side.
+</li>
+
+<li>
+Use the icon towards the bottom of the panel to open the <em>Object Library</em>. This, as the name suggests, is a catalog of things you can drag onto the storyboard canvas to build your layout.
+</li>
+
+<li>
+Use the search box at the bottom to search for <em>label</em>.
+</li>
+
+<li>
+You'll see the label object highlighted in the library.
+</li>
+</ol>
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/06_object_library.png" alt="" title="" />
+
+
+Now that you've found a label, you can set about using it. Drag the label from the object library onto the view controller:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/07_label_vc.png" alt="" title="" />
+
+
+To change the text content of the label, select the <em>Attributes Inspector</em> tab of the Utilities panel, locate the <em>Title</em> field and enter __Hello World!__:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/08_hello_world.png" alt="" title="" />
+
+
+You can use the attributes inspector to control the appearance and behavior of the different controls that OS X offers. Find the <em>Font</em> entry, and click the <em>T</em> icon to the right to open the font panel. Change the style to <em>Thin</em> and the size to <em>40</em>. Click <em>Done</em> to save the changes:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/09_font.png" alt="" title="" />
+
+
+Cast your eyes back over to the view controller canvas and you'll see something strange:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/10_wrong_size.png" alt="" title="" />
+
+
+Although you've adjusted the text and size of the label, it has remained the same size, causing nearly all of the text to disappear. Why is this?
+
+Although you placed the label on the view controller's canvas, you haven't actually told OS X <i>how</i> it should position it. The view controller appears at one size in the storyboard, but once it's running in the app, the user can change the window size - so you need to specify how the label should be positioned for <i>any</i> window size.
+
+This sounds like it might be a really difficult task, but luckily Apple has your back. OS X uses a powerful layout engine called Auto Layout, in which the relationships between different components of the view are expressed as rules. These rules are then interpreted at runtime to calculate the size and position of each element within the view.
+
+<div class="note">
+<em>Note:</em> Auto Layout is a complex topic, and this introductory tutorial won't cover it in any great depth. If you'd like to read more on the topic then there are some excellent tutorials on the site targeted to Auto Layout on iOS—luckily the engine is almost identical on the two platforms. TODO: Links
+</div>
+
+Ensure that the label is selected in the view controller, and then click the <em>Align</em> button in the lower toolbar. Select <em>Horizontally in Container</em>, ensuring the value is set to <em>0</em> before clicking <em>Add 1 Constraint</em> to add the constraint:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/11_align.png" alt="" title="" />
+
+
+This will ensure that the label will always appear in the center of the window, irrespective of its width. You'll notice that some angry red lines have appeared in the storyboard:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/12_angry_red.png" alt="" title="" />
+
+
+This is because you've provided constraints (i.e. rules) to specify the location of the label in the horizontal direction, but you've not provided any information about the vertical axis yet.
+
+Once again, ensure that the label is selected in the view controller, and this time click the <em>Pin</em> menu on the Auto Layout toolbar at the bottom. Enter <em>30</em> in the top constraint box and ensure that the I-bar beneath it is solid red. Set the value of Update Frames to <em>Items of New Constraints</em> before clicking <em>Add 1 Constraint</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/13_pin.png" alt="" title="" />
+
+
+Immediately you'll notice the view controller update—you can now see the entire label, and the angry red lines have changed to calming blue:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/14_happy_storyboard.png" alt="" title="" />
+
+
+And that's your "Hello World" app done (for now). Use the "play" button to build and run, and inspect your handiwork:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/15_bar_02.png" alt="" title="" />
+
+
+Congratulations! Not very personal though is it? In the next section you'll discover how to make the traditional greeting a little more friendly.
+
+<h2>Handling User Input</h2>
+
+In this section you're going to add a text field to allow the user to enter their name so that you can welcome them personally.
+
+Before you can jump in to some code, you need to add the new user interface elements and configure their layout.
+
+<h3>Control Layout</h3>
+
+As you did before, use the object library to locate and then drag a <em>Text Field</em> and a <em>Push Button</em> onto the view controller. Position them above the "Hello World!" label:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/16_position_textfield.png" alt="" title="" />
+
+
+Remember that placing the controls on the canvas isn't enough for OS X to understand how you want them positioned as the window changes size. You need to add some constraints to convey your wishes.
+
+Select the text field, and then <em>Control-Click</em> the button to select both simultaneously. Then click the <em>Stack</em> icon on the Auto Layout toolbar at the bottom of the storyboard:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/17_stack.png" alt="" title="" />
+
+
+This has created a new stack view containing the text field and the button. A stack view automatically generates the layout constraints required to position the contained views in a line. You can use the attributes inspector to configure many common properties of the stack view.
+
+<div class="note">
+<em>NOTE:</em> <code>NSStackView</code> has been in OS X since 10.9, but received a significant update in 10.11 (El Capitan)—in line with its introduction (<code>UIStackView</code>) in iOS. Stack views are similar on both platforms, so you can check out the iOS tutorial on stack views to get up to speed. Or hang tight—there's a tutorial on <code>NSStackView</code> on its way.
+</div>
+
+Once you've started stacking it's difficult to stop. This time, you're going to stack your newly created stack view with the "Hello World!" label—in a vertical stack view.
+
+Use the button to the left of the lower toolbar to show the Document Outline and then locate the "Hello World" control and the existing stack view. _<i>Command-click</i> them to select both:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/18_document_outline.png" alt="" title="" />
+
+
+As you did before, use the <em>Stack</em> button on the bottom toolbar to create a new stack view:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/19_stack.png" alt="" title="" />
+
+
+While this new stack view is selected, open the <em>Attributes Inspector</em> and set the Alignment to <em>Center X</em>, and the spacing to <em>20</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/20_stack_config.png" alt="" title="" />
+
+
+This ensures that the label and the upper stack view are nicely centered and there's a gap of 20 points between them.
+
+A couple more bits of layout to complete before you can turn your attention to the task of handling user input.
+
+The stack view handles the positioning of its content relative to each other, but it needs to be positioned within the view controller's view. Select the outer stack view and use the <em>Align</em> auto layout menu to center it vertically within its container:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/21_align.png" alt="" title="" />
+
+
+And use the <em>Pin</em> menu to pin the stack view to the top, with a spacing of <em>30</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/22_pin.png" alt="" title="" />
+
+
+Finally, to ensure that the text field always has the space for the user's name, you will fix its width.
+
+Select the text field and use the <em>Pin</em> menu in the bottom toolbar to specify a <em>Width</em> of <em>100</em>. Click <em>Add 1 Constraint</em> to save the new constraint:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/23_textfield_width.png" alt="" title="" />
+
+
+With that your layout is pretty much complete—it should look like the following:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/24_layout.png" alt="" title="" />
+
+
+Now you can turn your attention back to those new controls you added.
+
+<h3>Outlets and Actions</h3>
+
+Select the text field and open the <em>Attributes Inspector</em>. In the Placeholder field type <em>Name</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/25_name.png" alt="" title="" />
+
+
+This grayed out text will instruct the user what the field is for, and will disappear as soon as they start typing.
+
+Select the button, and again open the <em>Attributes Inspector</em>. Set the Title to <em>Welcome</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/26_welcome.png" alt="" title="" />
+
+
+That's the cosmetic aspect done. Time to wire these two controls into code.
+
+OS X provides a way to interact with the UI designed in a storyboard from code using outlets and actions:
+
+<ul>
+<li>
+An outlet is a property in code that is connected to a component in the storyboard. This allows you to access the properties of controls within a storyboard from your code.
+</li>
+
+<li>
+Actions are functions in code that are invoked when the user interacts with the components in the UI - e.g. by clicking on a button.
+</li>
+</ul>
+
+You are going to add outlets for the text field and the label, and an action that will be called when the user clicks the welcome button.
+
+The view controller you've been working on already has a skeleton class associated with it in code—in <em>ViewController.swift</em>. This is where you'll add the outlets and action.
+
+Open the assistant editor using the button in the toolbar:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/27_assistant_editor.png" alt="" title="" />
+
+
+This will split the screen and show a code file alongside the storyboard. It should be displaying <em>ViewController.swift</em>, but if it isn't use the jump bar to select <em>Automatic </em><em>\</em><em> ViewController.swift</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/28_jump_bar.png" alt="" title="" />
+
+
+<em>Right-click-drag</em> (or <em>Control-drag</em>) from the text field in the storyboard over to the line above <code>override func viewDidLoad()</code> in <em>ViewController.swift</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/29_textfield_outlet.png" alt="" title="" />
+
+
+Ensure that <em>Outlet</em> is selected and call the new outlet <em>nameTextField</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/30_name_textfield.png" alt="" title="" />
+
+
+This will add the following line of code to the <code>ViewController</code> class and updates the storyboard to automatically connect the text field to this property when loading the view controller:
+
+<pre lang="swift">
+@IBOutlet weak var nameTextField: NSTextField!
+</pre>
+
+Repeat exactly the same process for the "Hello World!" label, this time specifying that the outlet should be called <em>welcomeLabel</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/31_welcome_label.png" alt="" title="" />
+
+
+Now time to turn your attention to the button. Once again <em>Control-drag</em> from the button in the storyboard over to the <code>ViewController</code> class:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/32_button_action.png" alt="" title="" />
+
+
+Change the Connection to <em>Action</em> and name it <em>handleWelcome</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/33_action_settings.png" alt="" title="" />
+
+
+Click <em>Connect</em> to make the connection and Xcode will add the following empty method definition to the <code>ViewController</code> class:
+
+<pre lang="swift">
+@IBAction func handleWelcome(sender: AnyObject) {
+}
+</pre>
+
+This method will be called every time the user clicks the button, but it doesn't currently do anything.
+
+Add the following line to the <code>handleWelcome(_:)</code> method body:
+
+<pre lang="swift">
+welcomeLabel.stringValue = "Hello \(nameTextField.stringValue)!"
+</pre>
+
+This updates the <code>stringValue</code> property of the <code>welcomeLabel</code> to a welcome message constructed using the <code>stringValue</code> of the <code>nameTextField</code>. As you might have guessed, <code>stringValue</code> represents the value currently displayed by a text-based control—be it user-entered or defined in the storyboard.
+
+That's all the code you need to get your personalized version of "Hello World" going! Build and run to give it a try. Once the app has started, try entering your name in the <em>Name</em> box and clicking the <em>Welcome</em> button. You'll see your very own version of "Hello world!":
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/34_hello_sam.png" alt="" title="" />
+
+
+Pretty cool eh? Well, the fun doesn't stop there. Next up you're going to learn about adding images to your app, to create an amazing magic-8 ball utility!
+
+<h2>Assets</h2>
+
+You were promised a magic 8-ball app at the start of this tutorial, and so far you've seen no mention of a ball. Well, that's all about to change.
+
+An 8-ball is pretty distinctive, and it wouldn't be a very exciting 8-ball app without some visualization. [Download](TODO: URL) the images you'll need to make your app look swish. Uncompress the zip file and you'll find two images inside—representing the two sides of a magic 8-ball:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/35_assets.png" alt="" title="" />
+
+
+Image assets are stored in an asset catalog within an OS X app. This catalog manages the different imagery and the different resolutions required for the app icons and the in-app images.
+
+Open <em>Assets.xcassets</em> by selecting it in the project navigator:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/36_asset_catalog.png" alt="" title="" />
+
+
+You can see that the catalog currently only contains one item - <em>AppIcon</em>. This is where you would put the artwork to give your app a cool icon.
+
+You need to add the downloaded images to the asset catalog. Locate the images in finder, and <em>drag</em> them both into the asset catalog:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/37_drag_asset_catalog.png" alt="" title="" />
+
+
+This will create two new entries in the asset catalog:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/38_added_assets.png" alt="" title="" />
+
+
+Notice that there are three "cells" for the images, and that they appear in the leftmost "1x" one. These cells represent the different screen scales - standard (1x), retina (2x) and retina-HD (3x). Normally you would provide assets for each of these cells, but in this simple project you will provide just one.
+
+The image you've been provided is actually designed to be used at retina resolutions (2x), so drag the image from the left-hand cell to the central (2x) cell:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/39_drag_retina.png" alt="" title="" />
+
+
+Repeat for both of the 8-balls assets, so that the asset catalog looks like this:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/40_finished_asset_catalog.png" alt="" title="" />
+
+
+Those images are now available to use in your app—both from code and inside the storyboard. Time to put them to use.
+
+<h3>Displaying Images</h3>
+
+You've already seen how to display text, buttons and text input fields in your app, but how about images? Enter <code>ImageView</code>.
+
+Open <em>Main.storyboard</em> and use the object library to search for <em>image view</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/41_image_view.png" alt="" title="" />
+
+
+Drag an image view onto the view controller canvas, at the bottom of the stack view. Notice how a horizontal blue line will appear denoting where in the stack view that the new image view will appear:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/42_add_to_stack.png" alt="" title="" />
+
+
+Open the <em>Attributes Inspector</em> and set the Image property to <em>8ball</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/43_set_8ball.png" alt="" title="" />
+
+
+This will update the canvas with the image, read from the asset catalog:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/44_vc_with_image.png" alt="" title="" />
+
+
+Build and run the app to see how the image appears:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/45_bar_03.png" alt="" title="" />
+
+
+Well, the image has appeared, but you can't see it all. You can drag to resize the window in the usual way, but it would be much better if the window was correctly sized when the app starts, and then keeps a fixed size.
+
+<h2>Window Size</h2>
+
+The initial size of MagicEight's window is determined by the size of the view controller in the storyboard. Select the view controller's view in <em>Main.storyboard</em> and open the <em>Size Inspector</em>. Set the Width to <em>350</em> and the height to <em>480</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/46_vc_size.png" alt="" title="" />
+
+
+Notice that the storyboard canvas now looks strange:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/47_strange_vc.png" alt="" title="" />
+
+
+This is because the layout constraints need to be re-evaluated now that the view controller's view has changed size.
+
+Use the <em>Resolve Auto Layout Issues</em> menu on the bottom auto layout menu bar and select <em>All View in View Controller </em><em>\</em><em> Update Frames</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/48_fix_al.png" alt="" title="" />
+
+
+This will re-run the layout engine over the storyboard, and update the preview:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/49_fixed_vc.png" alt="" title="" />
+
+
+Now build and run to see how the app looks now:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/50_bar_04.png" alt="" title="" />
+
+
+That looks much better. Try resizing the window—you'll see that you can still manually drag it to sizes and shapes that don't work for MagicEight's layout.
+
+You have a couple of options here—you can either update the layout so that it adapts nicely as the window changes size (e.g. to resize the image for small windows), or you can fix the window size. This is a simple app, so you're going to take the second, easier approach.
+
+<h3>Window Sizing</h3>
+
+The window controller is responsible for managing the size of the window. Open <em>Main.storyboard</em> and select the window inside the window controller:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/51_select_window.png" alt="" title="" />
+
+
+Open the <em>Size Inspector</em> and set the Content Size to a Width of <em>350</em> and a height of <em>480</em>. Then check <em>Minimum Content Size</em> and <em>Maximum Content Size</em> ensuring that the the sizes are the same as the content size you entered:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/52_content_size.png" alt="" title="" />
+
+
+Now build and run MagicEight again, and attempt to resize the window. You'll notice that you no longer have control over the window size—it's now fixed. Mega—just what you wanted.
+
+You can now turn your attention back to the task in-hand—building the "magic" of the magic 8-ball. Well, nearly—there's a bit more layout to do first.
+
+<h2>Handling clicks</h2>
+
+When the user clicks on the 8-ball you will switch the image to the other side and display a small piece of advice. You need a new label to display this advice.
+
+Open <em>Main.storyboard</em> and find the view controller scene. Use the <em>Object Library</em> to locate a <em>wrapping label</em> and drag it from the library beneath the stack view:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/53_wrapping_label.png" alt="" title="" />
+
+
+You want this label to be positioned at the center of the magic-8 image, so you need to add some auto layout constraints to ensure that happens.
+
+<em>Control-drag</em> from the <em>Multiline Label</em> to the <em>Image View</em> in the <em>Document Outline</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/54_adding_constraints.png" alt="" title="" />
+
+
+Hold _<i>shift</i> and select <em>Center Vertically</em> and <em>Center Horizontally</em> before clicking <em>Add Constraints</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/55_center_constraints.png" alt="" title="" />
+
+
+The label doesn't automatically reposition—but you've handled this before. Use the <em>Resolve Auto Layout Issues</em> menu on the bottom auto layout toolbar to select <em>All View in View Controller </em><em>\</em><em> Update Frames</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/56_fix_al.png" alt="" title="" />
+
+
+This repositions the label, and it is not immediately obvious that you need to do some work on the appearance.
+
+Select the multiline label, and use the <em>Attributes Inspector</em> to set the following:
+
+<ul>
+<li>
+<em>Title</em>: <em>Piece of Advice</em>
+</li>
+
+<li>
+<em>Alignment</em>: <em>Center</em>
+</li>
+
+<li>
+<em>Text Color</em>: <em>Keyboard Focus Indicator</em>
+</li>
+
+<li>
+<em>Font</em>: <em>System 20</em>
+</li>
+</ul>
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/57_label_config.png" alt="" title="" />
+
+
+Head over to the <em>Size Inspector</em> and set the Preferred Width to <em>Explicit</em> with a value of <em>75</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/58_label_size.png" alt="" title="" />
+
+
+To get an idea of what the end product might look like, select the image view, and use the <em>Attributes Inspector</em> to set the Image to <em>magic8ball</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/59_change_image.png" alt="" title="" />
+
+
+Once again, use the <em>Resolve Auto Layout Issues</em> to update the layout:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/60_magic8_layout.png" alt="" title="" />
+
+
+This is looking pretty good. You need to respond each time the user clicks on the 8-ball—time to discover gesture recognizers.
+
+<h3>Gesture Recognizers</h3>
+
+When you added the button you were able to create an action in code that would run every time the user clicks the button. That was possible because buttons are designed to handle clicks—but the same is not true of image views. Apple has provided a set of gesture recognizers that can be added to any view. These recognizers convert low-level mouse and trackpad input into semantic events—such as click, zoom and rotate.
+
+You will add a click gesture recognizer to the image view, and then create a corresponding action in the view controller's code.
+
+In <em>Main.storyboard</em>, head over to the <em>Object Library</em> and search for <em>click gesture</em>. Drag the <em>Click Gesture Recognizer</em> out of the library and onto the image view. It will appear like this in the document outline:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/61_gesture_recogniser.png" alt="" title="" />
+
+
+This gesture recognizer will be activated whenever the user clicks on the image—exactly what you want. You now need to create some new connections, and then you'll be ready to switch over to code for the final sprint.
+
+<h3>IB Connections</h3>
+
+In the same way you did before, open up the assistant editor and ensure that it is showing <em>ViewController.swift</em>. Then create two new outlets by <em>control-dragging</em> from the storyboard to the code: one for the image view (call it <em>ballImageView</em>) and one for the multiline label (call it <em>adviceLabel</em>). This adds the following new outlets:
+
+<pre lang="swift">
+@IBOutlet weak var ballImageView: NSImageView!
+@IBOutlet weak var adviceLabel: NSTextField!
+</pre>
+
+You also need an action to wire up the newly-created gesture recognizer. <em>Control-drag</em> from the click gesture recognizer in the document outline, over to the code:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/62_gesture_action.png" alt="" title="" />
+
+
+Change the Connection to <em>Action</em> and name it <em>handleBallClick</em>:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/63_action_config.png" alt="" title="" />
+
+
+Click <em>Connect</em> and Xcode will add the following function definition to the <code>ViewController</code> class:
+
+<pre lang="swift">
+@IBAction func handleBallClick(sender: AnyObject) {
+}
+</pre>
+
+You've now finished all the work in Interface Builder, so you can switch back to the standard editor, and open <em>ViewController.swift</em> using the project outline.
+
+<h2>Manipulating the UI from code</h2>
+
+When the user clicks on the 8-ball you want to switch between showing some advice, or showing the "8". This means that the <code>handleBallClick(_:)</code> will manipulate both the image view and the advice label.
+
+Add the following code to <code>handleBallClick(_:)</code>:
+
+<pre lang="swift">
+// 1:
+if(adviceLabel.hidden) {
+  // 2:
+  adviceLabel.hidden = false
+  ballImageView.image = NSImage(named: "magic8ball")
+} else {
+  // 3:
+  adviceLabel.hidden = true
+  ballImageView.image = NSImage(named: "8ball")
+}
+</pre>
+
+<ol start="1">
+<li>
+Check whether the <code>adviceLabel</code> is currently visible. <code>hidden</code> is a boolean property on <code>NSView</code> (and hence <code>NSTextField</code>) that allows you to specify whether the view should be visible or not.
+</li>
+
+<li>
+If the advice label is currently hidden then show it, and change the image to the magic-side. <code>NSImage(named:)</code> loads the image from the asset catalog, and the <code>image</code> property on <code>NSImageView</code> specifies the image to display.
+</li>
+
+<li>
+Conversely, if the advice label is currently visible then hide it and switch the ball back to the "8" side.
+</li>
+</ol>
+
+Build and run and click around the ball to see it switching between showing the "8" and the piece of advice. Pretty neat right? Notice how when you first start the app the advice is already showing? That's not really what you want, but it's a simple fix.
+
+<h2>Initial Setup</h2>
+
+When the app first starts you want to ensure that the advice label is hidden, and the 8-ball image is showing. View controllers have a perfect way of configuring this initial setup—in the form of <code>viewDidLoad()</code>.
+
+Once the view controller has finished loading all the view components from the storyboard, it calls the <code>viewDidLoad()</code> method to give you a chance to provide some final pieces of configuration.
+
+In <em>ViewController.swift</em>, find the <code>viewDidLoad()</code> method and add the following body:
+
+<pre lang="swift">
+adviceLabel.hidden = true
+ballImageView.image = NSImage(named: "8ball")
+</pre>
+
+You'll recognize this code from the click handler action—it just hides the advice label and sets the image to <em>8ball</em>.
+
+Build and run to check that it worked as expected.
+
+<h2>Advice Generator</h2>
+
+At the moment, no matter how many times you "shake" the ball, it always gives you the same advice. That's not especially helpful. Time to add a bit of randomness.
+
+Add the following code as a property inside <code>ViewController</code>—just below the class definition line:
+
+<pre lang="swift">
+let adviceList = [
+  "Yes",
+  "No",
+  "Ray says 'do it!'",
+  "Maybe",
+  "Try again later",
+  "How can I know?",
+  "Totally",
+  "Never",
+]
+</pre>
+
+This is an array of strings the make up all the different options for advice that the ball can dispense.
+
+Head to the very bottom of the file (not within the <code>ViewController</code> class) and add the following extension:
+
+<pre lang="swift">
+extension Array {
+  var randomElement: Element? {
+    if count < 1 { return .None }
+    let randomIndex = arc4random_uniform(UInt32(count))
+    return self[Int(randomIndex)]
+  }
+}
+</pre>
+
+This adds a new property to the standard library's <code>Array</code> type that will return a random element. If the array is empty it returns <code>nil</code>, otherwise it generates a random index using <code>arc4random_uniform()</code> before returning the corresponding element.
+
+Update the first branch (i.e. <code>adviceLabel.hidden == true</code>) of the <code>if</code> statement in <code>handleBallClick(_:)</code> to match the following:
+
+<pre lang="swift">
+if let advice = adviceList.randomElement {
+  adviceLabel.stringValue = advice
+  adviceLabel.hidden = false
+  ballImageView.image = NSImage(named: "magic8ball")
+}
+</pre>
+
+This attempts to get a random piece of advice to display, and if successful updates the <code>stringValue</code> on <code>adviceLabel</code> to show it.
+
+Build and run, and click the 8-ball a few times to start benefiting from the ball's wisdom:
+
+
+<img src="/Users/sam/dev/razeware/tutorials/osx/intro/02a_first_osx_app/images/64_final_bar.png" alt="" title="" />
+
+
+<h2>Where to go from here</h2>
+
+You can download the completed version of MagicEight [here](TODO: URL).
+
+This introductory series has given you a basic level of knowledge to get started with OS X apps - but there's so much more to learn!
+
+Apple has some great documentation covering all aspects of OS X development - head on over to https://developer.apple.com/library/mac/navigation/
+
+You should also stick around on raywenderlich.com - we've got some awesome OS X tutorials lined up for the coming months!
+
+If you have any comments or questions feel free to reach out on twitter, or in the comments section below!
