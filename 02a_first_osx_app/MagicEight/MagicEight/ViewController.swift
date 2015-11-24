@@ -23,7 +23,7 @@
 import Cocoa
 
 class ViewController: NSViewController {
-
+  
   let adviceList = [
     "Yes",
     "No",
@@ -34,12 +34,11 @@ class ViewController: NSViewController {
     "Totally",
     "Never",
   ]
-  
+
   @IBOutlet weak var nameTextField: NSTextField!
   @IBOutlet weak var welcomeLabel: NSTextField!
   @IBOutlet weak var ballImageView: NSImageView!
   @IBOutlet weak var adviceLabel: NSTextField!
-  
   
   @IBAction func handleWelcome(sender: AnyObject) {
     welcomeLabel.stringValue = "Hello \(nameTextField.stringValue)!"
@@ -48,9 +47,9 @@ class ViewController: NSViewController {
   @IBAction func handleBallClick(sender: AnyObject) {
     // 1:
     if(adviceLabel.hidden) {
-      // 2:
       if let advice = adviceList.randomElement {
         adviceLabel.stringValue = advice
+        // 2:
         adviceLabel.hidden = false
         ballImageView.image = NSImage(named: "magic8ball")
       }
@@ -61,12 +60,9 @@ class ViewController: NSViewController {
     }
   }
   
-  
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
-    
     adviceLabel.hidden = true
     ballImageView.image = NSImage(named: "8ball")
   }
@@ -76,10 +72,7 @@ class ViewController: NSViewController {
     // Update the view, if already loaded.
     }
   }
-
-
 }
-
 
 extension Array {
   var randomElement: Element? {

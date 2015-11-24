@@ -7,23 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		220C3C611C00355200567EF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3C601C00355200567EF6 /* AppDelegate.swift */; };
-		220C3C631C00355200567EF6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220C3C621C00355200567EF6 /* ViewController.swift */; };
-		220C3C651C00355200567EF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 220C3C641C00355200567EF6 /* Assets.xcassets */; };
-		220C3C681C00355200567EF6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 220C3C661C00355200567EF6 /* Main.storyboard */; };
+		22040FBA1C03E593002D0783 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22040FB91C03E593002D0783 /* AppDelegate.swift */; };
+		22040FBC1C03E593002D0783 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22040FBB1C03E593002D0783 /* ViewController.swift */; };
+		22040FBE1C03E594002D0783 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22040FBD1C03E594002D0783 /* Assets.xcassets */; };
+		22040FC11C03E594002D0783 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22040FBF1C03E594002D0783 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		220C3C5D1C00355200567EF6 /* MagicEight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicEight.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		220C3C601C00355200567EF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		220C3C621C00355200567EF6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		220C3C641C00355200567EF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		220C3C671C00355200567EF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		220C3C691C00355200567EF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22040FB61C03E593002D0783 /* MagicEight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagicEight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22040FB91C03E593002D0783 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		22040FBB1C03E593002D0783 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		22040FBD1C03E594002D0783 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22040FC01C03E594002D0783 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22040FC21C03E594002D0783 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		220C3C5A1C00355200567EF6 /* Frameworks */ = {
+		22040FB31C03E593002D0783 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,30 +33,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		220C3C541C00355200567EF6 = {
+		22040FAD1C03E593002D0783 = {
 			isa = PBXGroup;
 			children = (
-				220C3C5F1C00355200567EF6 /* MagicEight */,
-				220C3C5E1C00355200567EF6 /* Products */,
+				22040FB81C03E593002D0783 /* MagicEight */,
+				22040FB71C03E593002D0783 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		220C3C5E1C00355200567EF6 /* Products */ = {
+		22040FB71C03E593002D0783 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				220C3C5D1C00355200567EF6 /* MagicEight.app */,
+				22040FB61C03E593002D0783 /* MagicEight.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		220C3C5F1C00355200567EF6 /* MagicEight */ = {
+		22040FB81C03E593002D0783 /* MagicEight */ = {
 			isa = PBXGroup;
 			children = (
-				220C3C601C00355200567EF6 /* AppDelegate.swift */,
-				220C3C621C00355200567EF6 /* ViewController.swift */,
-				220C3C641C00355200567EF6 /* Assets.xcassets */,
-				220C3C661C00355200567EF6 /* Main.storyboard */,
-				220C3C691C00355200567EF6 /* Info.plist */,
+				22040FB91C03E593002D0783 /* AppDelegate.swift */,
+				22040FBB1C03E593002D0783 /* ViewController.swift */,
+				22040FBD1C03E594002D0783 /* Assets.xcassets */,
+				22040FBF1C03E594002D0783 /* Main.storyboard */,
+				22040FC21C03E594002D0783 /* Info.plist */,
 			);
 			path = MagicEight;
 			sourceTree = "<group>";
@@ -64,13 +64,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		220C3C5C1C00355200567EF6 /* MagicEight */ = {
+		22040FB51C03E593002D0783 /* MagicEight */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 220C3C6C1C00355200567EF6 /* Build configuration list for PBXNativeTarget "MagicEight" */;
+			buildConfigurationList = 22040FC51C03E594002D0783 /* Build configuration list for PBXNativeTarget "MagicEight" */;
 			buildPhases = (
-				220C3C591C00355200567EF6 /* Sources */,
-				220C3C5A1C00355200567EF6 /* Frameworks */,
-				220C3C5B1C00355200567EF6 /* Resources */,
+				22040FB21C03E593002D0783 /* Sources */,
+				22040FB31C03E593002D0783 /* Frameworks */,
+				22040FB41C03E593002D0783 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -78,25 +78,25 @@
 			);
 			name = MagicEight;
 			productName = MagicEight;
-			productReference = 220C3C5D1C00355200567EF6 /* MagicEight.app */;
+			productReference = 22040FB61C03E593002D0783 /* MagicEight.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		220C3C551C00355200567EF6 /* Project object */ = {
+		22040FAE1C03E593002D0783 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Ray Wenderlich";
 				TargetAttributes = {
-					220C3C5C1C00355200567EF6 = {
+					22040FB51C03E593002D0783 = {
 						CreatedOnToolsVersion = 7.1.1;
 					};
 				};
 			};
-			buildConfigurationList = 220C3C581C00355200567EF6 /* Build configuration list for PBXProject "MagicEight" */;
+			buildConfigurationList = 22040FB11C03E593002D0783 /* Build configuration list for PBXProject "MagicEight" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -104,45 +104,45 @@
 				en,
 				Base,
 			);
-			mainGroup = 220C3C541C00355200567EF6;
-			productRefGroup = 220C3C5E1C00355200567EF6 /* Products */;
+			mainGroup = 22040FAD1C03E593002D0783;
+			productRefGroup = 22040FB71C03E593002D0783 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				220C3C5C1C00355200567EF6 /* MagicEight */,
+				22040FB51C03E593002D0783 /* MagicEight */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		220C3C5B1C00355200567EF6 /* Resources */ = {
+		22040FB41C03E593002D0783 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				220C3C651C00355200567EF6 /* Assets.xcassets in Resources */,
-				220C3C681C00355200567EF6 /* Main.storyboard in Resources */,
+				22040FBE1C03E594002D0783 /* Assets.xcassets in Resources */,
+				22040FC11C03E594002D0783 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		220C3C591C00355200567EF6 /* Sources */ = {
+		22040FB21C03E593002D0783 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				220C3C631C00355200567EF6 /* ViewController.swift in Sources */,
-				220C3C611C00355200567EF6 /* AppDelegate.swift in Sources */,
+				22040FBC1C03E593002D0783 /* ViewController.swift in Sources */,
+				22040FBA1C03E593002D0783 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		220C3C661C00355200567EF6 /* Main.storyboard */ = {
+		22040FBF1C03E594002D0783 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				220C3C671C00355200567EF6 /* Base */,
+				22040FC01C03E594002D0783 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -150,7 +150,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		220C3C6A1C00355200567EF6 /* Debug */ = {
+		22040FC31C03E594002D0783 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -194,7 +194,7 @@
 			};
 			name = Debug;
 		};
-		220C3C6B1C00355200567EF6 /* Release */ = {
+		22040FC41C03E594002D0783 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -230,7 +230,7 @@
 			};
 			name = Release;
 		};
-		220C3C6D1C00355200567EF6 /* Debug */ = {
+		22040FC61C03E594002D0783 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -242,7 +242,7 @@
 			};
 			name = Debug;
 		};
-		220C3C6E1C00355200567EF6 /* Release */ = {
+		22040FC71C03E594002D0783 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -257,24 +257,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		220C3C581C00355200567EF6 /* Build configuration list for PBXProject "MagicEight" */ = {
+		22040FB11C03E593002D0783 /* Build configuration list for PBXProject "MagicEight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				220C3C6A1C00355200567EF6 /* Debug */,
-				220C3C6B1C00355200567EF6 /* Release */,
+				22040FC31C03E594002D0783 /* Debug */,
+				22040FC41C03E594002D0783 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		220C3C6C1C00355200567EF6 /* Build configuration list for PBXNativeTarget "MagicEight" */ = {
+		22040FC51C03E594002D0783 /* Build configuration list for PBXNativeTarget "MagicEight" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				220C3C6D1C00355200567EF6 /* Debug */,
-				220C3C6E1C00355200567EF6 /* Release */,
+				22040FC61C03E594002D0783 /* Debug */,
+				22040FC71C03E594002D0783 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 220C3C551C00355200567EF6 /* Project object */;
+	rootObject = 22040FAE1C03E593002D0783 /* Project object */;
 }
