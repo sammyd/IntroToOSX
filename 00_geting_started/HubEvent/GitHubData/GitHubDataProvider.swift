@@ -93,6 +93,6 @@ extension GitHubDataNetworkProvider: GitHubDataProvider {
       let events = json.convertToGitHubEvents()
       callback(events)
     })
-    task?.resume()
+    task.resume()
   }
 }
