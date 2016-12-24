@@ -22,7 +22,7 @@
 
 import Cocoa
 
-class CodeStringFormattingTransformer: NSValueTransformer {
+class CodeStringFormattingTransformer: ValueTransformer {
   
   let name = "CodeStringFormattingTransformer"
   
@@ -34,11 +34,11 @@ class CodeStringFormattingTransformer: NSValueTransformer {
     return false
   }
   
-  override func transformedValue(value: AnyObject?) -> AnyObject? {
+  override func transformedValue(_ value: Any?) -> Any? {
     if let s = value as? String {
-      let unescaped = s.stringByReplacingOccurrencesOfString("\\/", withString: "/")
-        .stringByReplacingOccurrencesOfString("\\r", withString: "")
-        .stringByReplacingOccurrencesOfString("\\n", withString: "\n")
+      let unescaped = s.replacingOccurrences(of: "\\/", with: "/")
+        .replacingOccurrences(of: "\\r", with: "")
+        .replacingOccurrences(of: "\\n", with: "\n")
       
       let font = NSFont(name: "Menlo", size: 11.0)!
       let attributes = [ NSFontAttributeName : font ]

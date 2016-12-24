@@ -23,7 +23,7 @@
 import Foundation
 
 public protocol GitHubDataProvider {
-  func getEvents(user: String, callback: ([GitHubEvent])->())
+  func getEvents(_ user: String, callback: ([GitHubEvent])->())
 }
 
 /**
@@ -46,12 +46,12 @@ extension JSON {
 
 // Data from file
 
-public class GitHubDataFileProvider {
-  private let path: String
+open class GitHubDataFileProvider {
+  fileprivate let path: String
   
   public init(filename: String) {
-    path = NSBundle(forClass: self.dynamicType)
-      .pathForResource(filename, ofType: "json")!
+    path = Bundle(for: type(of: self))
+      .path(forResource: filename, ofType: "json")!
   }
   
   public convenience init() {
@@ -60,13 +60,13 @@ public class GitHubDataFileProvider {
 }
 
 extension GitHubDataFileProvider: GitHubDataProvider {
-  public func getEvents(user: String, callback: ([GitHubEvent]) -> ()) {
+  public func getEvents(_ user: String, callback: @escaping ([GitHubEvent]) -> ()) {
     // Note that we're ignoring the supplied user name here
-    dispatch_async(dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)) {
-      let data = NSData(contentsOfFile: self.path)!
+    DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+      let data = try! Data(contentsOf: URL(fileURLWithPath: self.path))
       let json = JSON(data: data, options: [], error: nil)
       let events = json.convertToGitHubEvents()
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         callback(events)
       }
     }
@@ -76,14 +76,14 @@ extension GitHubDataFileProvider: GitHubDataProvider {
 
 // Data from network
 
-public class GitHubDataNetworkProvider {
+open class GitHubDataNetworkProvider {
   public init() { }
 }
 
 extension GitHubDataNetworkProvider: GitHubDataProvider {
-  public func getEvents(user: String, callback: ([GitHubEvent])->()) {
-    let url = NSURL(string: "https://api.github.com/users/\(user)/events")
-    let task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: {
+  public func getEvents(_ user: String, callback: @escaping ([GitHubEvent])->()) {
+    let url = URL(string: "https://api.github.com/users/\(user)/events")
+    let task = URLSession.shared.dataTask(with: url!, completionHandler: {
       (data, response, error) in
       if (error != nil) {
         print("Error: \(error!.localizedDescription)")

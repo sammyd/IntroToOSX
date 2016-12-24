@@ -25,7 +25,7 @@ import Cocoa
 class WindowController: NSWindowController {
   
   // The shared data model
-  let sharedDataStore = DataStore(username: "sammyd", type: .Network)
+  let sharedDataStore = DataStore(username: "sammyd", type: .network)
   
   override func windowDidLoad() {
     super.windowDidLoad()

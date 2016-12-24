@@ -680,7 +680,7 @@
                                 <rect key="frame" x="76" y="186" width="199" height="264"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nit-Tw-Opu">
-                                        <rect key="frame" x="3.5" y="242" width="192" height="22"/>
+                                        <rect key="frame" x="4" y="242" width="192" height="22"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xdt-9e-7XD">
                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="22"/>
@@ -726,7 +726,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-wm-gB3">
-                                        <rect key="frame" x="22.5" y="0.0" width="154" height="154"/>
+                                        <rect key="frame" x="23" y="0.0" width="154" height="154"/>
                                         <gestureRecognizers>
                                             <clickGestureRecognizer delaysPrimaryMouseButtonEvents="YES" numberOfClicksRequired="1" id="mRz-fh-byF">
                                                 <connections>
@@ -750,8 +750,8 @@
                                     <real value="3.4028234663852886e+38"/>
                                 </customSpacing>
                             </stackView>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="75" translatesAutoresizingMaskIntoConstraints="NO" id="5iQ-eK-ykI">
-                                <rect key="frame" x="140.5" y="226.5" width="70" height="72"/>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" preferredMaxLayoutWidth="75" translatesAutoresizingMaskIntoConstraints="NO" id="5iQ-eK-ykI">
+                                <rect key="frame" x="140" y="226" width="70" height="72"/>
                                 <animations/>
                                 <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" alignment="center" title="Piece of Advice" id="baH-eF-NOb">
                                     <font key="font" metaFont="system" size="20"/>

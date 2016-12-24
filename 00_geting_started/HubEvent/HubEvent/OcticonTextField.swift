@@ -34,7 +34,7 @@ class OcticonTextField: NSTextField {
     prepareOcticonFont()
   }
   
-  private func prepareOcticonFont() {
+  fileprivate func prepareOcticonFont() {
     font = NSFont(name: "github-octicons", size: font!.pointSize)
   }
 }

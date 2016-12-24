@@ -27,20 +27,20 @@ import Foundation
 Describes what constitutes an event on GitHub
 */
 
-public class GitHubEvent: NSObject {
-  public let id: Int
-  public let eventType: GitHubEventType
-  public let repoName: String?
-  public let time: NSDate?
-  public let rawJSON: String?
-  private class var dateFormatter : NSDateFormatter {
+open class GitHubEvent: NSObject {
+  open let id: Int
+  open let eventType: GitHubEventType
+  open let repoName: String?
+  open let time: Date?
+  open let rawJSON: String?
+  fileprivate class var dateFormatter : DateFormatter {
     struct Static {
-      static let instance : NSDateFormatter = NSDateFormatter()
+      static let instance : DateFormatter = DateFormatter()
     }
     return Static.instance
   }
   
-  public init(id: Int, eventType: GitHubEventType, repoName: String?, time: NSDate?, rawJSON: String?) {
+  public init(id: Int, eventType: GitHubEventType, repoName: String?, time: Date?, rawJSON: String?) {
     self.id = id
     self.eventType = eventType
     self.repoName = repoName
@@ -53,7 +53,7 @@ public class GitHubEvent: NSObject {
     self.init(id: data.id, eventType: data.eventType, repoName: data.repoName, time: data.time, rawJSON: json.rawString())
   }
   
-  public class func extractDataFromJson(jsonEvent: JSON) -> (id: Int, eventType: GitHubEventType, repoName: String?, time: NSDate?) {
+  open class func extractDataFromJson(_ jsonEvent: JSON) -> (id: Int, eventType: GitHubEventType, repoName: String?, time: Date?) {
     let id = Int(jsonEvent["id"].string!)!
     
     let repoName = jsonEvent["repo"]["name"].string
@@ -82,22 +82,22 @@ public class GitHubEvent: NSObject {
       }
     }
     
-    var date: NSDate?
+    var date: Date?
     if let createdString = jsonEvent["created_at"].string {
       GitHubEvent.dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-      date = GitHubEvent.dateFormatter.dateFromString(createdString)
+      date = GitHubEvent.dateFormatter.date(from: createdString)
     }
     
     return (id, eventType, repoName, date)
   }
   
   // Printable
-  public override var description: String {
+  open override var description: String {
     return "[\(id)] \(time) : \(eventType.rawValue)) \(repoName)"
   }
   
   // KVO niceness
-  public var eventIcon: String {
+  open var eventIcon: String {
     return eventType.icon
   }
 }

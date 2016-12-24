@@ -22,16 +22,16 @@
 
 import Cocoa
 
-class DateTimeTransformer: NSValueTransformer {
+class DateTimeTransformer: ValueTransformer {
 
   let name = "DateTimeTransformer"
   
-  private class var dateFormatter : NSDateFormatter {
+  fileprivate class var dateFormatter : DateFormatter {
     struct Static {
-      static var instance : NSDateFormatter =  {
-        let df = NSDateFormatter()
-        df.dateStyle = .ShortStyle
-        df.timeStyle = .ShortStyle
+      static var instance : DateFormatter =  {
+        let df = DateFormatter()
+        df.dateStyle = .short
+        df.timeStyle = .short
         return df
         }()
     }
@@ -46,9 +46,9 @@ class DateTimeTransformer: NSValueTransformer {
     return false
   }
   
-  override func transformedValue(value: AnyObject?) -> AnyObject? {
-    if let date = value as? NSDate {
-      return self.dynamicType.dateFormatter.stringFromDate(date)
+  override func transformedValue(_ value: Any?) -> Any? {
+    if let date = value as? Date {
+      return type(of: self).dateFormatter.string(from: date)
     }
     return nil
   }

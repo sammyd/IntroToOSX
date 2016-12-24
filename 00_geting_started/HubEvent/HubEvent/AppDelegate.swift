@@ -28,9 +28,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   override class func initialize() {
     super.initialize()
     let codeStringTransformer = CodeStringFormattingTransformer()
-    NSValueTransformer.setValueTransformer(codeStringTransformer, forName: codeStringTransformer.name)
+    ValueTransformer.setValueTransformer(codeStringTransformer, forName: codeStringTransformer.name)
     let dateTimeTransformer = DateTimeTransformer()
-    NSValueTransformer.setValueTransformer(dateTimeTransformer, forName: dateTimeTransformer.name)
+    ValueTransformer.setValueTransformer(dateTimeTransformer, forName: dateTimeTransformer.name)
   }
 }
 

@@ -24,8 +24,8 @@ import Foundation
 import GitHubData
 
 enum DataSourceType {
-  case Network
-  case Disk
+  case network
+  case disk
 }
 
 
@@ -33,13 +33,13 @@ class DataStore : NSObject {
   private let dataProvider: GitHubDataProvider
   
   dynamic var events = [GitHubEvent]()
-  dynamic var selectionIndexes = NSIndexSet()
+  dynamic var selectionIndexes = IndexSet()
   
   init(username: String, type: DataSourceType) {
     switch type {
-    case .Network:
+    case .network:
       dataProvider = GitHubDataNetworkProvider()
-    case .Disk:
+    case .disk:
       dataProvider = GitHubDataFileProvider()
     }
     
@@ -47,13 +47,13 @@ class DataStore : NSObject {
     
     dataProvider.getEvents(username) {
       eventList in
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         self.events = eventList
       }
     }
   }
   
   convenience init(username: String) {
-    self.init(username: username, type: .Disk)
+    self.init(username: username, type: .disk)
   }
 }
