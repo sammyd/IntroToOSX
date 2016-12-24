@@ -23,7 +23,7 @@
 import Foundation
 
 public protocol GitHubDataProvider {
-  func getEvents(_ user: String, callback: ([GitHubEvent])->())
+  func getEvents(_ user: String, callback: @escaping ([GitHubEvent])->())
 }
 
 /**

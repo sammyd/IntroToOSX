@@ -24,7 +24,7 @@ import Cocoa
 
 class DateTimeTransformer: ValueTransformer {
 
-  let name = "DateTimeTransformer"
+  let name = NSValueTransformerName("DateTimeTransformer")
   
   fileprivate class var dateFormatter : DateFormatter {
     struct Static {

@@ -24,7 +24,7 @@ import Cocoa
 
 class CodeStringFormattingTransformer: ValueTransformer {
   
-  let name = "CodeStringFormattingTransformer"
+  let name =  NSValueTransformerName("CodeStringFormattingTransformer")
   
   override class func transformedValueClass() -> AnyClass {
     return NSAttributedString.self
